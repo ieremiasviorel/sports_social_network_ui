@@ -1,0 +1,12 @@
+.container {
+    height: 80px;
+    border: 1px green dashed;
+
+    .menu-area {
+        float: left;
+    }
+
+    .user-details-area {
+        float: right;
+    }
+}
