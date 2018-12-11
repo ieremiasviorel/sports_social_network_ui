@@ -18,19 +18,17 @@ const TYPE = [
   styleUrls: ['./event-create.component.scss']
 })
 export class EventCreateComponent implements OnInit {
-  eventNamePlaceholer = "Type name of the event";
+  eventNamePlaceholer = 'Type name of the event';
   sports = SPORTS;
   skill = SKILL;
   type = TYPE;
 
-  onCreate(eventName)
-  {
+  onCreate(eventName) {
     console.log('Create clicked');
-    console.log(eventName.value)
+    console.log(eventName.value);
   }
 
-  onCancel()
-  {
+  onCancel() {
     console.log('Cancel clicked');
   }
 
