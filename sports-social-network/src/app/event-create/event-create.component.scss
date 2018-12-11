@@ -1,0 +1,35 @@
+.eventDiv {
+  width: 100%;
+  height: 100%;
+  background: yellow;
+  margin:auto;
+
+  .form-createEvent {
+    background: gray;
+    padding: 10px;
+    border: 5px solid black;
+    float:right;
+    width: 50%;
+
+    input {
+      margin-top:5px;
+      margin-bottom:5px;
+      width: 95%;
+    }
+
+    .btn-createEvent {
+      background: greenyellow;
+      color: white;
+      font-weight: bold;
+      border-radius:4px;
+    }
+
+    .btn-cancelEvent {
+      background: red;
+      color: white;
+      font-weight: bold;
+      border-radius:4px;
+    }
+  }
+
+}

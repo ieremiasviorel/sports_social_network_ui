@@ -1,0 +1,26 @@
+<app-event-operations></app-event-operations>
+<div class="joinEvent">
+  <div class="joinEventSearch">
+    <input #search placeholder="Search">
+    <div class ="listEvents">
+      <ul *ngFor="let event of events" style="list-style: none;">
+        <li class="listEventsItem">
+          <p>{{event.name}}</p>
+        </li>
+      </ul>
+    </div>
+    <button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
+  </div>
+
+  <div class="joinEventPref">
+    <select>
+      <option *ngFor="let sport of sports" >{{sport}}</option>
+    </select>
+    <br>
+
+    <select>
+      <option *ngFor="let s of skill" >{{s}}</option>
+    </select>
+    <br>
+  </div>
+</div>

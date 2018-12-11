@@ -1,0 +1,27 @@
+<div class="listRecDiv">
+  <p>RECOMMENDED</p>
+  <div class="listRecommanded">
+  <ul *ngFor="let rec of recommended" style="list-style: none;">
+    <li class="listRecItem">
+      <div>
+        <p>{{rec.name}}</p>
+        <button class="btn-joinGroup" (click)="onJoinGroup(groupName)">JOIN</button>
+      </div>
+    </li>
+  </ul>
+  </div>
+
+</div>
+
+<div class="listGroupsDiv">
+  <p>YOUR GROUPS</p>
+  <div class="listYourGroups" >
+    <ul *ngFor="let g of yourGroups" style="list-style: none;">
+        <li class="listGroupItem">
+          <p>{{g.name}}</p>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<button class="btn-createGroup" (click)="onCreateGroup()">CREATE GROUP</button>
