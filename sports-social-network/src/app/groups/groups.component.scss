@@ -1,0 +1,53 @@
+
+.listRecDiv {
+  margin: 20px;
+
+  p {
+    font-family: "Comic Sans MS";
+    font-weight: bold;
+    color: black;
+  }
+
+  .listRecommanded {
+    border: 1px solid black;
+    width: 50%;
+    padding-inline-end: 40px;
+
+    .listRecItem {
+      background: red;
+      padding-left: 10px;
+      border: 1px solid black;
+
+
+
+      button {
+        font-weight: bold;
+        font-family: "Comic Sans MS";
+        width: 20%;
+      }
+    }
+  }
+}
+
+.listGroupsDiv {
+  margin: 20px;
+
+  p {
+    font-family: "Comic Sans MS";
+    font-weight: bold;
+    color: black;
+  }
+
+  .listYourGroups {
+    border: 1px solid black;
+    width: 50%;
+    padding-inline-end: 40px;
+
+    .listGroupItem {
+      background:cadetblue;
+      padding-left: 10px;
+      border: 1px solid black;
+
+    }
+  }
+}

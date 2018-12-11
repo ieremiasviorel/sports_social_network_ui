@@ -15,13 +15,23 @@ import {
   MatIconModule,
   MatCardModule
 } from '@angular/material';
+import { GroupsComponent } from './groups/groups.component';
+import { GroupCreateComponent } from './group-create/group-create.component';
+import { EventCreateComponent } from './event-create/event-create.component';
+import { EventOperationsComponent } from './event-operations/event-operations.component';
+import { EventJoinComponent } from './event-join/event-join.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     EventsComponent,
-    HeaderComponent
+    HeaderComponent,
+    GroupsComponent,
+    GroupCreateComponent,
+    EventCreateComponent,
+    EventOperationsComponent,
+    EventJoinComponent
   ],
   imports: [
     BrowserModule,

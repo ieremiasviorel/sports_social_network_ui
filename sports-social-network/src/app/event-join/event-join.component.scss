@@ -1,0 +1,19 @@
+.joinEvent {
+  .joinEventSearch {
+    width: 50%;
+    float: left;
+    .listEvents {
+      border: 1px solid red;
+      .listEventsItem {
+        background: cadetblue;
+        margin: 5px;
+        border: 1px solid black;
+        margin-right: 40px;
+      }
+    }
+  }
+  .joinEventPref {
+    width: 20%;
+    float: left;
+  }
+}
