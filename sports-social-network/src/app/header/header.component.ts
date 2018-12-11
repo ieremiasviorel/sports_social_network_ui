@@ -9,9 +9,14 @@ export class HeaderComponent implements OnInit {
 
   USER_MENUS: string[] = ['HOME', 'EVENTS', 'GROUPS', 'PROFILE'];
 
+  selectedMenu: string = this.USER_MENUS[0];
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  selectMenu(selectedMenu: string): void {
+    this.selectedMenu = selectedMenu;
+  }
 }

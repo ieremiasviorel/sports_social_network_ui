@@ -1,12 +1,51 @@
-.container {
-    height: 80px;
-    border: 1px green dashed;
+@import '../../assets/scss/variables.scss';
+$navbar-height: 80px;
+.background-container {
+    height: $navbar-height;
+    background: rgba($primary, 0.3);
+}
 
+.content-container {
+    overflow: hidden;
+    background: none;
     .menu-area {
         float: left;
     }
-
     .user-details-area {
         float: right;
+        line-height: $navbar-height;
     }
+}
+
+.menu-button {
+    width: 160px;
+    height: $navbar-height - 20;
+    margin: 0px 5px;
+    border-radius: 0;
+    vertical-align: top;
+    &[type=selected] {
+        border-bottom: 5px $primary-dark solid;
+    }
+}
+
+.user-icon {
+    width: 60px;
+    height: 60px;
+    margin: 10px 0;
+}
+
+.user-name {
+    margin: 0 10px;
+    font-size: 32px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+div.mat-menu-content {
+    padding: 0;
+    border-radius: 0;
+}
+
+button.mat-menu-item {
+    background-color: white;
 }
