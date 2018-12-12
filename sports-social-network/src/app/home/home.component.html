@@ -1,5 +1,33 @@
-<p>
-  home works!
-</p>
-<input type="text" [(ngModel)]="username" />
-<button (click)="printUsername()">Click!</button>
+<div class="cards-container" *ngIf="events$ | async as events">
+  <mat-card class="event-card" *ngFor="let event of events">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>{{ event.name }}</mat-card-title>
+      <mat-card-subtitle>{{ event.category }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ event.image_url }}">
+    <mat-card-content>
+      <p>{{ event.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>JOIN</button>
+      <button mat-button>More</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<button mat-raised-button *ngIf="!chatOpen" class="chat-trigger" (click)="openChat()">CHAT</button>
+
+<div *ngIf="chatOpen" class="chat-window">
+  <div class="chat-header">
+    <span>Quick Chat</span>
+    <i class="material-icons chat-close-button" (click)="closeChat()">close</i>
+  </div>
+  <div class="messages-box" *ngIf="messages$ | async as messages">
+    <div class="message-row" *ngFor="let message of messages" [ngClass]="message.type == 'RECEIVED' ? 'ingoing' : 'outgoing'">
+      {{ message.content }}
+    </div>
+  </div>
+</div>
+
+<img src="../../assets/images/cup-icon.png" class="quiz-trigger">

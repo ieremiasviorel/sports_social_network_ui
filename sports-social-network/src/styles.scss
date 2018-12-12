@@ -1,10 +1,9 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
-$primary: #07575B;
-$accent: #FFEB3B;
-$warn: #8D230F;
-$disable: #BCBABE;
+//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'assets/scss/variables.scss';
+@import 'assets//scss/theme.scss';
 
 body {
     margin: 0;
+    background-image: url("./assets/images/running-1.jpg");
+    background-size: cover;
 }

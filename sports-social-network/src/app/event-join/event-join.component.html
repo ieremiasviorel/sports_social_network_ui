@@ -2,7 +2,7 @@
 <div class="joinEvent">
   <div class="joinEventSearch">
     <input #search placeholder="Search">
-    <div class ="listEvents">
+    <div class="listEvents">
       <ul *ngFor="let event of events" style="list-style: none;">
         <li class="listEventsItem">
           <p>{{event.name}}</p>
@@ -14,12 +14,12 @@
 
   <div class="joinEventPref">
     <select>
-      <option *ngFor="let sport of sports" >{{sport}}</option>
+      <option *ngFor="let sport of sports">{{sport}}</option>
     </select>
     <br>
 
     <select>
-      <option *ngFor="let s of skill" >{{s}}</option>
+      <option *ngFor="let s of skill">{{s}}</option>
     </select>
     <br>
   </div>

@@ -1,10 +1,22 @@
-<div class="container">
-  <div class="menu-area">
-    <button mat-raised-button color="primary" *ngFor="let userMenu of USER_MENUS">{{ userMenu }}</button>
-  </div>
-  <div class="user-details-area">
-    <i class="material-icons">
-      person
-      </i>
+<div class="background-container">
+  <div class="content-container">
+
+    <div class="menu-area">
+      <button class="menu-button" mat-raised-button color="primary" [type]="selectedTab =='selected'" *ngFor="let userMenu of USER_MENUS"
+        [type]="selectedMenu == userMenu ? 'selected' : null" (click)="selectMenu(userMenu)">
+        {{ userMenu }}
+      </button>
+    </div>
+
+    <div class="user-details-area">
+      <img class="user-icon" src="../../assets/images/user-icon.png">
+      <span class="user-name" [matMenuTriggerFor]="appMenu">John Doe</span>
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Help</button>
+      </mat-menu>
+    </div>
+
   </div>
 </div>

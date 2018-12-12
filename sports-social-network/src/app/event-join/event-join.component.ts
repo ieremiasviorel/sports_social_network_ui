@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 const EVENTS = [
-  {name:'Fotbal Marasti', price:0},
-  {name:'Baschet Observator', price:10}
+  { name: 'Fotbal Marasti', price: 0 },
+  { name: 'Baschet Observator', price: 10 }
 ];
 
 const SPORTS = [
@@ -25,8 +25,7 @@ export class EventJoinComponent implements OnInit {
   sports = SPORTS;
   skill = SKILL;
 
-  onJoinEvent()
-  {
+  onJoinEvent() {
 
   }
   constructor() { }

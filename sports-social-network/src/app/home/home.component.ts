@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { EventsService } from '../services/events.service';
+import { Event } from '../models/event';
+import { MessagesService } from '../services/messages.service';
+import { Message } from '../models/message';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +13,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  events$: Observable<Event[]>;
+  messages$: Observable<Message[]>;
+  chatOpen: boolean;
 
-  username: string = "John Doe";
+  constructor(
+    private eventsService: EventsService,
+    private messagesService: MessagesService
+  ) { }
 
   ngOnInit() {
+    this.events$ = this.eventsService.getAllEvents();
+    this.messages$ = this.messagesService.getUserMessages();
   }
 
-  printUsername() {
-    console.log(this.username);
+  openChat(): void {
+    this.chatOpen = true;
   }
 
+  closeChat(): void {
+    this.chatOpen = false;
+  }
 }
