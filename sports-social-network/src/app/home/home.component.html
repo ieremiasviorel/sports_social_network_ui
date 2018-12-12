@@ -15,3 +15,19 @@
     </mat-card-actions>
   </mat-card>
 </div>
+
+<button mat-raised-button *ngIf="!chatOpen" class="chat-trigger" (click)="openChat()">CHAT</button>
+
+<div *ngIf="chatOpen" class="chat-window">
+  <div class="chat-header">
+    <span>Quick Chat</span>
+    <i class="material-icons chat-close-button" (click)="closeChat()">close</i>
+  </div>
+  <div class="messages-box" *ngIf="messages$ | async as messages">
+    <div class="message-row" *ngFor="let message of messages" [ngClass]="message.type == 'RECEIVED' ? 'ingoing' : 'outgoing'">
+      {{ message.content }}
+    </div>
+  </div>
+</div>
+
+<img src="../../assets/images/cup-icon.png" class="quiz-trigger">

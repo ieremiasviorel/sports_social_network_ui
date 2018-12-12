@@ -47,7 +47,6 @@ import { EventJoinComponent } from './event-join/event-join.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

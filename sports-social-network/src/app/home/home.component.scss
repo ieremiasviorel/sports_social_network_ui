@@ -1,3 +1,4 @@
+@import '../../assets/scss/variables.scss';
 .cards-container {
     width: 800px;
     margin: auto;
@@ -10,7 +11,6 @@
     margin: 1%;
     margin-top: 60px;
     padding: 0;
-
     mat-card-header,
     mat-card-content,
     mat-card-actions {
@@ -29,5 +29,77 @@
     }
     mat-card-actions {
         padding-top: 0;
+    }
+}
+
+.chat-trigger {
+    position: fixed;
+    left: -17px;
+    top: 300px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transform: rotate(-90deg);
+}
+
+.chat-window {
+    position: fixed;
+    top: 120px;
+    left: 0px;
+    width: 300px;
+    height: 400px;
+    border-radius: 5px;
+    background: white;
+    overflow: hidden;
+}
+
+.chat-header {
+    height: 30px;
+    margin-bottom: 7px;
+    border-radius: 0 4px 4px 0;
+    background-color: #DBB687;
+    line-height: 30px;
+}
+
+.chat-close-button {
+    float: right;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+.messages-box {
+    overflow-y: scroll;
+}
+
+.message-row {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    text-overflow: ellipsis;
+
+    &.outgoing {
+        clear: both;
+        float: right;
+        background-color: #05728F;
+    }
+
+    &.ingoing {
+        clear: both;
+        float: left;
+        background-color: #BBBBBB;
+    }
+}
+
+.quiz-trigger {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    &:hover {
+        width: 120px;
+        height: 120px;
     }
 }
