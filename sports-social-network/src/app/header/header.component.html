@@ -2,9 +2,9 @@
   <div class="content-container">
 
     <div class="menu-area">
-      <button class="menu-button" mat-raised-button color="primary" [type]="selectedTab =='selected'" *ngFor="let userMenu of USER_MENUS"
-        [type]="selectedMenu == userMenu ? 'selected' : null" (click)="selectMenu(userMenu)">
-        {{ userMenu }}
+      <button class="menu-button" mat-raised-button color="primary"  *ngFor="let userMenu of USER_MENUS"
+        [type]="selectedMenu == userMenu.name ? 'selected' : null" (click)="selectMenu(userMenu.name)">
+        {{ userMenu.name }}
       </button>
     </div>
 

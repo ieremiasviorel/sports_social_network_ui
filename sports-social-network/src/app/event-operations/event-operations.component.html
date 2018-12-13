@@ -1,6 +1,6 @@
 <div class="container">
   <div class="operations-area" *ngFor="let operation of EVENT_OPERATIONS">
-    <button mat-raised-button color="primary">{{ operation }}</button>
+    <button mat-raised-button color="primary"  (click)="selectOperation(operation.name)" [type]="selectedOperation == operation.name ? 'selected' : null">{{ operation.name }}</button>
     <br>
   </div>
 </div>
