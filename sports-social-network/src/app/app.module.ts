@@ -10,12 +10,14 @@ import { EventsComponent } from './events/events.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 
+import {AgmCoreModule} from '@agm/core';
+
 import {
   MatButtonModule,
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule, MatSliderModule
 } from '@angular/material';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
@@ -46,7 +48,12 @@ import { EventJoinComponent } from './event-join/event-join.component';
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatSliderModule,
+
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

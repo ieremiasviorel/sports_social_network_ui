@@ -1,11 +1,12 @@
 <app-event-operations></app-event-operations>
 <div class="joinEvent">
   <div class="joinEventSearch">
-    <input #search placeholder="Search">
+    <input class="searchEvent" placeholder="Search">
     <div class="listEvents">
       <ul *ngFor="let event of events" style="list-style: none;">
         <li class="listEventsItem">
-          <p>{{event.name}}</p>
+          {{event.name}}
+          <button class="btn-joinEvent" (click)="onJoinGroup(event)">JOIN</button>
         </li>
       </ul>
     </div>
@@ -13,14 +14,23 @@
   </div>
 
   <div class="joinEventPref">
+    PREFERENCES
+    <br>
+    Sport:
     <select>
       <option *ngFor="let sport of sports">{{sport}}</option>
     </select>
     <br>
 
+    Skill level:
     <select>
       <option *ngFor="let s of skill">{{s}}</option>
     </select>
     <br>
+    Price:
+    <mat-slider class="Price" min="1" max="100" step="1" value="0"  thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <br>
+    Participants:
+    <mat-slider class="participants" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
   </div>
 </div>

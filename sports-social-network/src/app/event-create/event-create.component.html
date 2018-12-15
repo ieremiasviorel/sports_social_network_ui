@@ -1,29 +1,41 @@
 <app-event-operations></app-event-operations>
 <div class="eventDiv">
   <form class="form-createEvent">
+    <p>Name of the event:</p>
     <input #eventName placeholder="{{eventNamePlaceholer}}">
+    <br>
+    <p>Number of participants:</p>
     <input #eventNrPart placeholder="Type required number of participants">
+    <br>
+    <p>Price:</p>
     <input #eventPrice placeholder="Type price">
+    <br>
+    <p>Address:</p>
     <input #eventAddress placeholder="Type address">
+    <br>
+    <p>Additional information:</p>
     <input #eventAdditInfo placeholder="Additional information">
+    <br>
 
     <br>
+    <p>Sport:</p>
     <select>
       <option *ngFor="let sport of sports">{{sport}}</option>
     </select>
     <br>
 
+    <p>Skill:</p>
     <select>
       <option *ngFor="let s of skill">{{s}}</option>
     </select>
     <br>
 
-
+    <p>Type:</p>
     <select>
       <option *ngFor="let t of type">{{t}}</option>
     </select>
     <br>
-
+    <agm-map [latitude]="latitude" [longitude]="longitude"></agm-map>
     <button class="btn-createEvent" (click)="onCreate(eventName)">CREATE</button>
     <button class="btn-cancelEvent" (click)="onCancel()">CANCEL</button>
 
