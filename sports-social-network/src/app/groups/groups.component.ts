@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
 
 const RECOMMENDED = [
   {name:'Fotbal'},
@@ -28,10 +28,10 @@ export class GroupsComponent implements OnInit {
   }
 
   onCreateGroup() {
-
+    this.router.navigateByUrl('/group-create');
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }

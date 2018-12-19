@@ -23,6 +23,9 @@ export class EventCreateComponent implements OnInit {
   skill = SKILL;
   type = TYPE;
 
+  latitude: 46.7712;
+  longitude: 23.6236;
+
   onCreate(eventName) {
     console.log('Create clicked');
     console.log(eventName.value);

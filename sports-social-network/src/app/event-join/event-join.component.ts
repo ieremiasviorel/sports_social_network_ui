@@ -25,7 +25,15 @@ export class EventJoinComponent implements OnInit {
   sports = SPORTS;
   skill = SKILL;
 
-  onJoinEvent() {
+  formatLabel(value: number | null) {
+    if (!value) {
+      return 0;
+    }
+
+    return value;
+  }
+
+  onJoinEvent(event) {
 
   }
   constructor() { }

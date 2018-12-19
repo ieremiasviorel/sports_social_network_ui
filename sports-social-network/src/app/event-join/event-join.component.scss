@@ -2,6 +2,12 @@
   .joinEventSearch {
     width: 50%;
     float: left;
+    margin: 20px;
+
+    .searchEvent {
+      margin: 20px;
+    }
+
     .listEvents {
       border: 1px solid red;
       .listEventsItem {
@@ -9,11 +15,28 @@
         margin: 5px;
         border: 1px solid black;
         margin-right: 40px;
+        padding: 5px;
+
+        button {
+          float: right;
+          background: green;
+          color: white;
+          border: 1px solid black;
+          font-weight: bold;
+          font-family: "Comic Sans MS";
+        }
       }
     }
+
   }
+
   .joinEventPref {
+    margin: 20px;
     width: 20%;
     float: left;
+
+    mat-slider {
+      color: green;
+    }
   }
 }

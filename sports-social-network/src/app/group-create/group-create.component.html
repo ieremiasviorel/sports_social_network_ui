@@ -1,21 +1,27 @@
 <div class="groupDiv">
   <form class="form-createGroup">
+    <p>Name of the group:</p>
     <input #groupName placeholder="Type name of the group">
+    <br>
+    <p>Description:</p>
     <input #groupDescription placeholder="Type description of the group">
+    <br>
 
     <br>
+    <p>Sport:</p>
     <select>
       <option *ngFor="let sport of sports" >{{sport}}</option>
     </select>
     <br>
 
+    <p>Type:</p>
     <select>
       <option *ngFor="let t of type" >{{t}}</option>
     </select>
     <br>
 
-    <button class="btn-createGroup" (click)="onCreate()">CREATE</button>
     <button class="btn-cancelGroup" (click)="onCancel()">CANCEL</button>
+    <button class="btn-createGroup" (click)="onCreate()">CREATE</button>
 
 
   </form>

@@ -1,12 +1,10 @@
 <div class="listRecDiv">
   <p>RECOMMENDED</p>
-  <div class="listRecommanded">
+  <div class="listRecommended">
   <ul *ngFor="let rec of recommended" style="list-style: none;">
     <li class="listRecItem">
-      <div>
-        <p>{{rec.name}}</p>
+        {{rec.name}}
         <button class="btn-joinGroup" (click)="onJoinGroup(groupName)">JOIN</button>
-      </div>
     </li>
   </ul>
   </div>

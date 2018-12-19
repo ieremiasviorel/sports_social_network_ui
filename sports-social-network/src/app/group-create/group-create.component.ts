@@ -19,14 +19,12 @@ export class GroupCreateComponent implements OnInit {
   type = TYPE;
   sports = SPORTS;
 
-  onCreate(eventName)
-  {
+  onCreate(eventName) {
     console.log('Create clicked');
-    console.log(eventName.value)
+    console.log(eventName.value);
   }
 
-  onCancel()
-  {
+  onCancel() {
     console.log('Cancel clicked');
   }
   constructor() { }

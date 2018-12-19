@@ -5,25 +5,24 @@
   p {
     font-family: "Comic Sans MS";
     font-weight: bold;
-    color: black;
+    color: white;
   }
 
-  .listRecommanded {
+  .listRecommended {
     border: 1px solid black;
     width: 50%;
     padding-inline-end: 40px;
 
     .listRecItem {
       background: red;
-      padding-left: 10px;
       border: 1px solid black;
-
-
-
+      padding: 20px;
       button {
         font-weight: bold;
         font-family: "Comic Sans MS";
-        width: 20%;
+        float: right;
+        background: green;
+        border: 1px solid black;
       }
     }
   }
@@ -35,7 +34,7 @@
   p {
     font-family: "Comic Sans MS";
     font-weight: bold;
-    color: black;
+    color: white;
   }
 
   .listYourGroups {
@@ -50,4 +49,12 @@
 
     }
   }
+}
+
+.btn-createGroup {
+  margin: 20px;
+  font-weight: bold;
+  font-family: "Comic Sans MS";
+  background: green;
+  border: 1px solid black;
 }
