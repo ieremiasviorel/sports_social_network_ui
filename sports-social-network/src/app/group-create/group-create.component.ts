@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import { GroupsService } from '../services/groups.service';
+import { Group } from '../models/group';
+import {HttpClient} from '@angular/common/http';
 
 const TYPE = [
   'Public', 'Private'
@@ -16,20 +20,31 @@ const SPORTS = [
 })
 export class GroupCreateComponent implements OnInit {
 
+  yourGroups$: Observable<Group[]>;
   type = TYPE;
   sports = SPORTS;
 
-  onCreate(eventName) {
+  selectedImage = null;
+
+  onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers) {
     console.log('Create clicked');
-    console.log(eventName.value);
+    console.log(groupName.value);
+    console.log(groupDescription.value);
+    console.log(groupSport.value);
+    console.log(groupType.value);
+    console.log(groupMaxMembers.value);
   }
 
   onCancel() {
     console.log('Cancel clicked');
   }
-  constructor() { }
+  constructor(private groupsService: GroupsService, private http: HttpClient) { }
 
   ngOnInit() {
+    this.yourGroups$ = this.groupsService.getAllGroups();
   }
 
+  onImageSelected(event, logo) {
+    this.selectedImage = event.target.files[0];
+  }
 }

@@ -1,10 +1,11 @@
+<div class="lists">
 <div class="listRecDiv">
   <p>RECOMMENDED</p>
   <div class="listRecommended">
   <ul *ngFor="let rec of recommended" style="list-style: none;">
     <li class="listRecItem">
         {{rec.name}}
-        <button class="btn-joinGroup" (click)="onJoinGroup(groupName)">JOIN</button>
+        <button class="btn-joinGroup" (click)="onJoinGroup()">JOIN</button>
     </li>
   </ul>
   </div>
@@ -13,13 +14,23 @@
 
 <div class="listGroupsDiv">
   <p>YOUR GROUPS</p>
-  <div class="listYourGroups" >
-    <ul *ngFor="let g of yourGroups" style="list-style: none;">
-        <li class="listGroupItem">
-          <p>{{g.name}}</p>
+  <div class="listYourGroups" *ngIf="yourGroups$ | async as yourGroups">
+    <ul  style="list-style: none;">
+        <li class="listGroupItem" *ngFor="let g of yourGroups">
+          <button (click)="selectGroup(g)"
+                  [type]="selectedGroup == g.name ? 'selected' : null">{{g.name}}</button>
         </li>
     </ul>
   </div>
 </div>
+</div>
+<div class="groupDetails">
+  <p id="groupName"></p>
+  <p id="groupNrMem"></p>
+  <p id="groupType"></p>
+  <p id="groupCategory"></p>
+  <p id="groupDescription"></p>
+  <img #groupLogo/>
 
+</div>
 <button class="btn-createGroup" (click)="onCreateGroup()">CREATE GROUP</button>
