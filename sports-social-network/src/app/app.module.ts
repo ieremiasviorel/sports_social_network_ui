@@ -17,7 +17,9 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule, MatSliderModule
+  MatCardModule,
+  MatSliderModule,
+  MatInputModule
 } from '@angular/material';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
@@ -50,6 +52,7 @@ import { EventJoinComponent } from './event-join/event-join.component';
     MatIconModule,
     MatCardModule,
     MatSliderModule,
+    MatInputModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
