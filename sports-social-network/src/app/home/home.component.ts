@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
 import { MessagesService } from '../services/messages.service';
-import { Message } from '../models/message';
+import { Message, Discussion, MessageType } from '../models/message';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +14,9 @@ import { Message } from '../models/message';
 export class HomeComponent implements OnInit {
 
   events$: Observable<Event[]>;
-  messages$: Observable<Message[]>;
+  lastDiscussion$: Observable<Discussion>;
   chatOpen: boolean;
+  messageText: string;
 
   constructor(
     private eventsService: EventsService,
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.events$ = this.eventsService.getAllEvents();
-    this.messages$ = this.messagesService.getUserMessages();
+    this.lastDiscussion$ = this.messagesService.getUserLastActiveDiscussion();
   }
 
   openChat(): void {
@@ -33,5 +34,15 @@ export class HomeComponent implements OnInit {
 
   closeChat(): void {
     this.chatOpen = false;
+  }
+
+  sendMessage(): void {
+    const messageToSend: Message = new Message();
+    messageToSend.content = this.messageText;
+    messageToSend.timestamp = Date.now().toString();
+    messageToSend.type = MessageType.SENT;
+
+    this.lastDiscussion$ = this.messagesService.sendMessage(messageToSend);
+    this.messageText = '';
   }
 }

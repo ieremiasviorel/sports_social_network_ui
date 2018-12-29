@@ -19,13 +19,18 @@ import {
   MatIconModule,
   MatCardModule,
   MatSliderModule,
-  MatInputModule
+  MatInputModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatAutocompleteModule
 } from '@angular/material';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventOperationsComponent } from './event-operations/event-operations.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,9 @@ import { EventJoinComponent } from './event-join/event-join.component';
     GroupCreateComponent,
     EventCreateComponent,
     EventOperationsComponent,
-    EventJoinComponent
+    EventJoinComponent,
+    ProfilePreferencesComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,9 @@ import { EventJoinComponent } from './event-join/event-join.component';
     MatCardModule,
     MatSliderModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatAutocompleteModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'

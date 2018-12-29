@@ -59,8 +59,15 @@
     line-height: 30px;
 }
 
+#ChatMoreOptions {
+    color: $primary;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .chat-close-button {
     float: right;
+    background: none;
     line-height: inherit;
     cursor: pointer;
 }

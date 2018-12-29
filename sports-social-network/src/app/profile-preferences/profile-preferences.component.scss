@@ -1,0 +1,61 @@
+@import '../../assets/scss/variables.scss';
+.default-container {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+
+.menu-container {
+    width: 20%;
+    padding-top: 100px;
+}
+
+.content-container {
+    width: 80%;
+}
+
+.content-card {
+    margin: 20px;
+    padding: 0 20px;
+    background-color: #E8F8FF;
+    overflow: hidden;
+}
+
+.options-row {
+    margin: 25px 0;
+}
+
+mat-checkbox {
+    margin-right: 30px;
+}
+
+mat-slider {
+    display: inline-block;
+    line-height: inherit;
+    vertical-align: top;
+}
+
+.time-form-field {
+    display: inline-block;
+    margin: 0 40px;
+}
+
+.time-input {
+    border: 1px $primary solid;
+    border-radius: 2px;
+    background-color: white;
+    text-decoration: none;
+}
+
+input[type=time]::-webkit-inner-spin-button, 
+input[type=time]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+button.mat-mini-fab {
+    display: inline-block;
+    padding: 0;
+    vertical-align: middle;
+}
+

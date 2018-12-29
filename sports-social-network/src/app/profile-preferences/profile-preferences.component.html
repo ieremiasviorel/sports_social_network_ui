@@ -1,0 +1,76 @@
+<div>
+  <div class="default-container menu-container">
+    <app-side-menu [menuOptions]="menuOptions" [selectedMenuOption]="menuOptions[0]">
+    </app-side-menu>
+  </div>
+  <div class="default-container content-container">
+    <div class="content-card">
+      <h2>General preference</h2>
+
+      <div class="options-row">
+        <mat-checkbox>Suggest new events on Home page</mat-checkbox>
+        <mat-checkbox>Suggest team events</mat-checkbox>
+        <mat-checkbox>Suggest single events</mat-checkbox>
+      </div>
+
+      <div class="options-row">
+        Preferred distance from me (km):
+        <mat-slider [max]="100" [min]="0" [step]="1" [thumbLabel]="true" [tickInterval]="1" style="width: 300px; margin-left: 65px;">
+        </mat-slider>
+      </div>
+
+      <div class="options-row">
+        Preferred time:
+        <div class="time-form-field" style="margin-left: 190px;">
+          <button mat-mini-fab color="warn">-</button>
+          <input type="time" class="time-input" value="12:00">
+          <button mat-mini-fab color="primary" class="time-adjust-button">+</button>
+        </div>
+        to
+        <div class="time-form-field">
+          <button mat-mini-fab color="warn">-</button>
+          <input type="time" class="time-input" value="18:00">
+          <button mat-mini-fab color="primary" class="time-adjust-button">+</button>
+        </div>
+      </div>
+
+      <div class="options-row" style="margin-left: 300px;">
+        <mat-checkbox>Mostly weekends</mat-checkbox>
+        <mat-checkbox>Mostly working days</mat-checkbox>
+      </div>
+
+      <div class="options-row">
+        <span style="display: inline-block; width: 200px;">
+          <div>Explore new things</div>
+          <div style="font-style: italic">(explore new things or stick to the things you usually do)</div>
+        </span>
+        <span style="display: inline-block; width: 80px; margin-left: 100px;">focus on same sports</span>
+        <mat-slider [max]="5" [min]="1" [step]="1" style="width: 500px; margin: 0 10px;"></mat-slider>
+        <span style="display: inline-block; width: 80px;">explore some new sports</span>
+      </div>
+      <hr>
+
+      <h2>Favorite activities</h2>
+
+      <div class="options-row">
+        <mat-form-field>
+          <mat-chip-list #chipList>
+            <mat-chip color="primary" *ngFor="let sport of SPORTS_LIST" [selectable]="true" [removable]="true"
+              (removed)="remove(fruit)">
+              {{ sport }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="New fruit..." #fruitInput [matAutocomplete]="auto" [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <!-- <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let sport of SPORTS_LIST | async" [value]="sport">
+              {{ sport }}
+            </mat-option>
+          </mat-autocomplete> -->
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>

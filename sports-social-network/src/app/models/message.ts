@@ -1,3 +1,8 @@
+export class Discussion {
+    interlocutor: string;
+    messages: Message[];
+}
+
 export class Message {
     content: string;
     author: string;
