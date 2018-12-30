@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,13 +17,14 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule, MatSliderModule
+  MatCardModule, MatSliderModule, MatFormFieldModule, MatSelect, MatSelectModule
 } from '@angular/material';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventOperationsComponent } from './event-operations/event-operations.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { EventJoinComponent } from './event-join/event-join.component';
     GroupCreateComponent,
     EventCreateComponent,
     EventOperationsComponent,
-    EventJoinComponent
+    EventJoinComponent,
+    JoinQuizzComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +52,11 @@ import { EventJoinComponent } from './event-join/event-join.component';
     MatIconModule,
     MatCardModule,
     MatSliderModule,
-
-    AgmCoreModule.forRoot({
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+   
+      AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
     })
   ],

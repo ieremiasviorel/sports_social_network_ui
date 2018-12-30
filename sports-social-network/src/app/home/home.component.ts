@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import {Router} from '@angular/router';
 
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   chatOpen: boolean;
 
   constructor(
+    private router: Router,
     private eventsService: EventsService,
     private messagesService: MessagesService
   ) { }
@@ -25,6 +27,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.events$ = this.eventsService.getAllEvents();
     this.messages$ = this.messagesService.getUserMessages();
+  }
+
+  joinQuizz(){
+    this.router.navigateByUrl('/join-quizz');
   }
 
   openChat(): void {

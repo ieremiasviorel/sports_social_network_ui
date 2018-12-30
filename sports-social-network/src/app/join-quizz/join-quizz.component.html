@@ -1,0 +1,22 @@
+<div class="quizz-form">
+<h1 class="quizz-title">Take a quizz to test your sport knowledge!</h1>
+<mat-form-field class="quizz-select">
+        <mat-select placeholder="Choose a sport" [formControl]="quizzControl" required>
+          <mat-option *ngFor="let sport of sports" [value]="sport">
+            {{sport}}
+          </mat-option>
+        </mat-select>
+    <mat-error *ngIf="quizzControl.hasError('required')">You must make a selection</mat-error>
+</mat-form-field>
+<br>
+<mat-form-field class="quizz-select">
+        <mat-select placeholder="Choose a difficulty" [formControl]="diffControl" required>
+                <mat-option *ngFor="let diff of difficulties" [value]="diff">
+                      {{diff}}
+                </mat-option>
+            </mat-select>
+</mat-form-field>
+<br>
+<button mat-stroked-button [disabled]="!quizzControl.valid || !diffControl.valid">Start Quizz</button>
+</div>
+

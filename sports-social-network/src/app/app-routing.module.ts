@@ -6,6 +6,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'group-create',
     component: GroupCreateComponent
+  },
+  {
+    path: 'join-quizz',
+    component: JoinQuizzComponent
   }
 
 ];
