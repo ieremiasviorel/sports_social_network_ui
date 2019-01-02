@@ -14,7 +14,7 @@
       </div>
 
       <div class="options-row">
-        Preferred distance from me (km):
+        Preferred distance (km):
         <mat-slider [max]="100" [min]="0" [step]="1" [thumbLabel]="true" [tickInterval]="1" style="width: 300px; margin-left: 65px;">
         </mat-slider>
       </div>
@@ -55,20 +55,20 @@
       <div class="options-row">
         <mat-form-field>
           <mat-chip-list #chipList>
-            <mat-chip color="primary" *ngFor="let sport of SPORTS_LIST" [selectable]="true" [removable]="true"
-              (removed)="remove(fruit)">
+            <mat-chip color="primary" *ngFor="let sport of userPreferredSports" [selectable]="true" [removable]="true"
+              (removed)="removePreferredSport(sport)">
               {{ sport }}
               <mat-icon matChipRemove>cancel</mat-icon>
             </mat-chip>
-            <input placeholder="New fruit..." #fruitInput [matAutocomplete]="auto" [matChipInputFor]="chipList"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-              (matChipInputTokenEnd)="add($event)">
           </mat-chip-list>
-          <!-- <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-            <mat-option *ngFor="let sport of SPORTS_LIST | async" [value]="sport">
+          <input [formControl]="preferenceControl" placeholder="add preference..." #PreferenceInput [matAutocomplete]="auto"
+            [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addPreferredSport($event)">
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedPreferredSport($event)">
+            <mat-option *ngFor="let sport of FILTERED_SPORTS_LIST | async" [value]="sport">
               {{ sport }}
             </mat-option>
-          </mat-autocomplete> -->
+          </mat-autocomplete>
         </mat-form-field>
       </div>
     </div>
