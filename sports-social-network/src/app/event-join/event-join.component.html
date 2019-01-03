@@ -23,21 +23,21 @@
     <h2>PREFERENCES</h2>
     Sport:
     <select>
-      <option *ngFor="let sport of sports">{{sport}}</option>
+      <option #prefSport *ngFor="let sport of sports">{{sport}}</option>
     </select>
     <br>
 
     Skill level:
     <select>
-      <option *ngFor="let s of skill">{{s}}</option>
+      <option #prefSkill *ngFor="let s of skill">{{s}}</option>
     </select>
     <br>
     Price:
-    <mat-slider class="Price" min="1" max="100" step="1" value="0"  thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider #prefPrice class="Price" min="1" max="100" step="1" value="0"  thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
     <br>
     Participants:
-    <mat-slider class="participants" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider #prefPart class="participants" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
     <br>
-    <button class="applyFilters" (click)="onApplyFilters()">Apply filters</button>
+    <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply filters</button>
   </div>
 </div>

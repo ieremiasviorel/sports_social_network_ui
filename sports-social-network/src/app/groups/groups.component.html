@@ -25,12 +25,13 @@
 </div>
 </div>
 <div class="groupDetails">
-  <p id="groupName"></p>
-  <p id="groupNrMem"></p>
-  <p id="groupType"></p>
-  <p id="groupCategory"></p>
-  <p id="groupDescription"></p>
-  <img #groupLogo/>
+  <p>{{selectedGroupName}}</p>
+  <p>{{selectedGroupMembers}}</p>
+  <p>{{selectedGroupType}}</p>
+  <p>{{selectedGroupCategory}}</p>
+  <p>{{selectedGroupDescription}}</p>
+  <p>{{logo}}</p>
+  <img style="max-width:100px;max-height:100px" [src]="selectedGroupLogo"/>
 
 </div>
 <button class="btn-createGroup" (click)="onCreateGroup()">CREATE GROUP</button>

@@ -5,7 +5,7 @@
     "numberMembers": 10,
     "category": "Fotbal",
     "description": "Echipe de amatori, 5 vs 5",
-    "image_url": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
+    "logo": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
   },
   {
     "name": "Rugby Marasti",
@@ -13,6 +13,6 @@
     "numberMembers": 20,
     "category": "Rugby",
     "description": "Echipe intermediate, 6 vs 6",
-    "image_url": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
+    "logo": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
   }
 ]

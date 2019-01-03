@@ -4,11 +4,11 @@ import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
 
 const SPORTS = [
-  'Fotbal', 'Baschet'
+  '', 'Fotbal', 'Baschet'
 ];
 
 const SKILL = [
-  'Beginner', 'Intermediate', 'Advanced'
+  '', 'Beginner', 'Intermediate', 'Advanced'
 ];
 
 
@@ -65,7 +65,6 @@ export class EventJoinComponent implements OnInit {
     }
   }
 
-  onApplyFilters() {
-
+  onApplyFilters(prefSport, prefSkill, prefPrice, prefPart) {
   }
 }

@@ -25,12 +25,11 @@
     <mat-slider #groupMaxMembers class="maxMembers" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
 
     <br>
-    <input type="file" (change)="onImageSelected($event, logo)">
-    <br>
-    <input #logo type="image">
-
+    <img [src]="imageUrl" style="width:100px;height:100px">
+    <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+x
     <button class="btn-cancelGroup" (click)="onCancel()">CANCEL</button>
-    <button class="btn-createGroup" (click)="onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">CREATE</button>
+    <button class="btn-createGroup" [disabled]="Image.value==''" (click)="onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">CREATE</button>
 
 
   </form>

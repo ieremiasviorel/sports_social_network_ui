@@ -19,7 +19,8 @@ const SPORTS = [
   styleUrls: ['./group-create.component.scss']
 })
 export class GroupCreateComponent implements OnInit {
-
+  imageUrl = '/assets/images/default-image.png';
+  fileToUpload: File = null;
   yourGroups$: Observable<Group[]>;
   type = TYPE;
   sports = SPORTS;
@@ -33,6 +34,7 @@ export class GroupCreateComponent implements OnInit {
     console.log(groupSport.value);
     console.log(groupType.value);
     console.log(groupMaxMembers.value);
+    console.log(this.fileToUpload.name);
   }
 
   onCancel() {
@@ -44,7 +46,15 @@ export class GroupCreateComponent implements OnInit {
     this.yourGroups$ = this.groupsService.getAllGroups();
   }
 
-  onImageSelected(event, logo) {
-    this.selectedImage = event.target.files[0];
+  handleFileInput(file: FileList) {
+    this.fileToUpload = file.item(0);
+
+    // Show image preview
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+    };
+    reader.readAsDataURL(this.fileToUpload);
   }
+
 }
