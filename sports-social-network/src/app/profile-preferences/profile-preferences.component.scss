@@ -15,14 +15,29 @@
 }
 
 .content-card {
-    margin: 20px;
+    margin: 60px;
     padding: 0 20px;
+    border-radius: 5px;
     background-color: #E8F8FF;
     overflow: hidden;
 }
 
 .options-row {
+    display: flex;
+    align-items: center;
     margin: 25px 0;
+}
+
+.options-row-label {
+    display: inline-block;
+    width: 20%;
+    margin-right: 5%;
+}
+
+.options-row-content {
+    display: flex;
+    align-items: center;
+    width: 75%;
 }
 
 mat-checkbox {
@@ -31,16 +46,18 @@ mat-checkbox {
 
 mat-slider {
     display: inline-block;
-    line-height: inherit;
-    vertical-align: top;
+}
+
+mat-form-field {
+    width: 100%;
 }
 
 .time-form-field {
     display: inline-block;
-    margin: 0 40px;
 }
 
 .time-input {
+    margin: 0 10px;
     border: 1px $primary solid;
     border-radius: 2px;
     background-color: white;
