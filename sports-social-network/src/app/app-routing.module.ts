@@ -37,6 +37,11 @@ const routes: Routes = [
     path: 'profile',
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/profile/preferences'
+      },
+      {
         path: 'preferences',
         component: ProfilePreferencesComponent
       }
