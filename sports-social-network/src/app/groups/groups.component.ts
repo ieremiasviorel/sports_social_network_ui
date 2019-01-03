@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-
-const RECOMMENDED = [
-  {name:'Fotbal'},
-  {name:'Baschet'}
-];
-
-const YOUR_GROUPS = [
-  {name:'Rugby', status:'Full'},
-  {name:'Tenis', status:'Mue'}
-];
+import {Observable} from 'rxjs';
+import { GroupsService } from '../services/groups.service';
+import { Group } from '../models/group';
 
 @Component({
   selector: 'app-groups',
@@ -17,11 +10,35 @@ const YOUR_GROUPS = [
   styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent implements OnInit {
+  recommended$: Observable<Group[]>;
+  yourGroups$: Observable<Group[]>;
 
-  recommended = RECOMMENDED;
-  yourGroups = YOUR_GROUPS;
+  selectedGroup: null;
+  selectedGroupName: string = '';
+  selectedGroupMembers: string = '';
+  selectedGroupType: string = '';
+  selectedGroupCategory: string = '';
+  selectedGroupDescription: string = '';
+  logo: string = '';
+  selectedGroupLogo: string = '';
 
+  constructor(private router: Router,  private groupsService: GroupsService) {
+  }
 
+  ngOnInit() {
+    this.yourGroups$ = this.groupsService.getAllGroups();
+  }
+
+  selectGroup(group) {
+    this.selectedGroup = group.name;
+    this.selectedGroupName = 'Name: ' + group.name;
+    this.selectedGroupMembers = 'Max number of members: ' + group.numberMembers;
+    this.selectedGroupType = 'Type: ' + group.type;
+    this.selectedGroupCategory = 'Category: ' + group.category;
+    this.selectedGroupDescription = 'Description: ' + group.description;
+    this.logo = 'Logo: ';
+    this.selectedGroupLogo = group.logo;
+  }
 
   onJoinGroup(groupName) {
 
@@ -31,10 +48,7 @@ export class GroupsComponent implements OnInit {
     this.router.navigateByUrl('/group-create');
   }
 
-  constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
 
 
 

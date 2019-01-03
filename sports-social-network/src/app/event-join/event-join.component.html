@@ -1,12 +1,18 @@
 <app-event-operations></app-event-operations>
-<div class="joinEvent">
+<div class="joinEvent" *ngIf="events$ | async as events">
   <div class="joinEventSearch">
-    <input class="searchEvent" placeholder="Search">
+    <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
+    <div class="listSearches">
+      <ul style="list-style: none;" >
+        <li class="listSearchItem" *ngFor="let search of searched">
+          <button (click)="deleteSearch(search)">{{search}}</button>
+        </li>
+      </ul>
+    </div>
     <div class="listEvents">
-      <ul *ngFor="let event of events" style="list-style: none;">
-        <li class="listEventsItem">
-          {{event.name}}
-          <button class="btn-joinEvent" (click)="onJoinGroup(event)">JOIN</button>
+      <ul style="list-style: none;">
+        <li class="listEventsItem" *ngFor="let event of events">
+          <button (click)="selectEvent(event)" [type]="selectedEvent== event.name ? 'selected' : null">{{event.name}}</button>
         </li>
       </ul>
     </div>
@@ -14,23 +20,24 @@
   </div>
 
   <div class="joinEventPref">
-    PREFERENCES
-    <br>
+    <h2>PREFERENCES</h2>
     Sport:
     <select>
-      <option *ngFor="let sport of sports">{{sport}}</option>
+      <option #prefSport *ngFor="let sport of sports">{{sport}}</option>
     </select>
     <br>
 
     Skill level:
     <select>
-      <option *ngFor="let s of skill">{{s}}</option>
+      <option #prefSkill *ngFor="let s of skill">{{s}}</option>
     </select>
     <br>
     Price:
-    <mat-slider class="Price" min="1" max="100" step="1" value="0"  thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider #prefPrice class="Price" min="1" max="100" step="1" value="0"  thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
     <br>
     Participants:
-    <mat-slider class="participants" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider #prefPart class="participants" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <br>
+    <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply filters</button>
   </div>
 </div>

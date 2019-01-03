@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
-const EVENTS = [
-  { name: 'Fotbal Marasti', price: 0 },
-  { name: 'Baschet Observator', price: 10 }
-];
+import {Observable} from 'rxjs';
+import { EventsService } from '../services/events.service';
+import { Event } from '../models/event';
 
 const SPORTS = [
-  'Fotbal', 'Baschet'
+  '', 'Fotbal', 'Baschet'
 ];
 
 const SKILL = [
-  'Beginner', 'Intermediate', 'Advanced'
+  '', 'Beginner', 'Intermediate', 'Advanced'
 ];
 
 
@@ -21,9 +19,20 @@ const SKILL = [
 })
 export class EventJoinComponent implements OnInit {
 
-  events = EVENTS;
+  events$: Observable<Event[]>;
   sports = SPORTS;
   skill = SKILL;
+  selectedEvent: null;
+  searched: string[] = [];
+
+  constructor(
+    private eventsService: EventsService
+  ) { }
+
+  ngOnInit() {
+    // @ts-ignore
+    this.events$ = this.eventsService.getAllEvents();
+  }
 
   formatLabel(value: number | null) {
     if (!value) {
@@ -34,11 +43,28 @@ export class EventJoinComponent implements OnInit {
   }
 
   onJoinEvent(event) {
-
-  }
-  constructor() { }
-
-  ngOnInit() {
+    console.log(event.name);
   }
 
+  selectEvent(event) {
+    this.selectedEvent = event.name;
+  }
+
+  onEnter(event, search) {
+    if (event.keyCode === 13) {
+      this.searched.push(search.value);
+      console.log(search.value);
+    }
+  }
+
+  deleteSearch(search) {
+    for (let i = 0; i < this.searched.length; i++) {
+      if (this.searched[i] === search) {
+        this.searched.splice(i, 1);
+      }
+    }
+  }
+
+  onApplyFilters(prefSport, prefSkill, prefPrice, prefPart) {
+  }
 }
