@@ -3,8 +3,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { startWith, map, filter } from 'rxjs/operators';
-import { splitAtColon } from '@angular/compiler/src/util';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile-preferences',
