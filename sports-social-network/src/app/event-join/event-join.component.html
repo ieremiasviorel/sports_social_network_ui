@@ -1,9 +1,9 @@
 <app-event-operations></app-event-operations>
-<div class="joinEvent" *ngIf="events$ | async as events">
+<div class="joinEvent">
   <div class="joinEventSearch">
     <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
     <div class="listSearches">
-      <ul style="list-style: none;" >
+      <ul style="list-style: none;">
         <li class="listSearchItem" *ngFor="let search of searched">
           <button (click)="deleteSearch(search)">{{search}}</button>
         </li>
@@ -12,7 +12,7 @@
     <div class="listEvents">
       <ul style="list-style: none;">
         <li class="listEventsItem" *ngFor="let event of events">
-          <button (click)="selectEvent(event)" [type]="selectedEvent== event.name ? 'selected' : null">{{event.name}}</button>
+          <button (click)="selectEvent(event)" [type]="selectedEvent== event ? 'selected' : null">{{event.name}}</button>
         </li>
       </ul>
     </div>
@@ -22,22 +22,24 @@
   <div class="joinEventPref">
     <h2>PREFERENCES</h2>
     Sport:
-    <select>
-      <option #prefSport *ngFor="let sport of sports">{{sport}}</option>
+    <select [(ngModel)]="prefSport" (change)="selectedSport($event.target.value)">
+      <option *ngFor="let sport of sports">{{sport}}</option>
     </select>
     <br>
 
     Skill level:
-    <select>
-      <option #prefSkill *ngFor="let s of skill">{{s}}</option>
+    <select [(ngModel)]="prefSkill" (change)="selectedSkill($event.target.value)">
+      <option *ngFor="let s of skill">{{s}}</option>
     </select>
     <br>
     Price:
-    <mat-slider #prefPrice class="Price" min="1" max="100" step="1" value="0"  thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider [(ngModel)]="prefPrice" class="Price" min="0" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+      tickInterval="5" (change)="slidePrice($event.value)"></mat-slider>
     <br>
     Participants:
-    <mat-slider #prefPart class="participants" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider [(ngModel)]="prefParticipantsNr" class="participants" min="0" max="100" step="1" value="0" thumbLabel
+      [displayWith]="formatLabel" tickInterval="5" (change)="slideParticipants($event.value)"></mat-slider>
     <br>
-    <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply filters</button>
+    <button class="applyFilters" (click)="onApplyFilters()">Apply filters</button>
   </div>
 </div>

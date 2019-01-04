@@ -26,8 +26,9 @@
 
     <br>
     <img [src]="imageUrl" style="width:100px;height:100px">
+    <br>
     <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
-x
+
     <button class="btn-cancelGroup" (click)="onCancel()">CANCEL</button>
     <button class="btn-createGroup" [disabled]="Image.value==''" (click)="onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">CREATE</button>
 

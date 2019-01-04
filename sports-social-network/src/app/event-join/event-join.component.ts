@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
 
 const SPORTS = [
-  '', 'Fotbal', 'Baschet'
+  '', 'FOTBAL', 'BASKET', 'BOWLING'
 ];
 
 const SKILL = [
@@ -19,10 +19,16 @@ const SKILL = [
 })
 export class EventJoinComponent implements OnInit {
 
-  events$: Observable<Event[]>;
+  events: Event[];
   sports = SPORTS;
   skill = SKILL;
   selectedEvent: null;
+
+  prefSport: string;
+  prefSkill: string;
+  prefPrice: number = 0;
+  prefParticipantsNr: number= 0;
+
   searched: string[] = [];
 
   constructor(
@@ -31,7 +37,10 @@ export class EventJoinComponent implements OnInit {
 
   ngOnInit() {
     // @ts-ignore
-    this.events$ = this.eventsService.getAllEvents();
+    this.events = this.eventsService.getAllEvents().subscribe(events => {
+      this.events = events as Event[];
+    });
+
   }
 
   formatLabel(value: number | null) {
@@ -42,12 +51,18 @@ export class EventJoinComponent implements OnInit {
     return value;
   }
 
-  onJoinEvent(event) {
-    console.log(event.name);
+  onJoinEvent() {
+    if (this.selectedEvent != null) {
+      for (let i = 0; i < this.events.length; i++) {
+        if (this.events[i] === this.selectedEvent) {
+          this.events.splice(i, 1);
+        }
+      }
+    }
   }
 
   selectEvent(event) {
-    this.selectedEvent = event.name;
+    this.selectedEvent = event;
   }
 
   onEnter(event, search) {
@@ -65,6 +80,34 @@ export class EventJoinComponent implements OnInit {
     }
   }
 
-  onApplyFilters(prefSport, prefSkill, prefPrice, prefPart) {
+  onApplyFilters() {
+    if (this.prefSport) {
+      this.events = this.events.filter(ev => ev.category === this.prefSport);
+    }
+    if (this.prefSkill) {
+      this.events = this.events.filter(ev => ev.skill === this.prefSkill);
+    }
+    if (this.prefPrice !== 0) {
+      this.events = this.events.filter(ev => ev.price < this.prefPrice);
+    }
+    if (this.prefParticipantsNr !== 0) {
+      this.events = this.events.filter(ev => ev.participants < this.prefParticipantsNr);
+    }
+  }
+
+  selectedSkill(value: any) {
+    this.prefSkill = value;
+  }
+
+  selectedSport(value: any) {
+    this.prefSport = value;
+  }
+
+  slidePrice(value: any) {
+    this.prefPrice = value;
+  }
+
+  slideParticipants(value: number) {
+    this.prefParticipantsNr = value;
   }
 }

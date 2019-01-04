@@ -1,17 +1,15 @@
 <div class="lists">
-<div class="listRecDiv">
+<div class="listRecDiv" *ngIf="recommended$ | async as recommended">
   <p>RECOMMENDED</p>
   <div class="listRecommended">
-  <ul *ngFor="let rec of recommended" style="list-style: none;">
-    <li class="listRecItem">
-        {{rec.name}}
-        <button class="btn-joinGroup" (click)="onJoinGroup()">JOIN</button>
+  <ul  style="list-style: none;">
+    <li class="listRecItem" *ngFor="let rec of recommended">
+      <button (click)="selectGroup(rec)"
+              [type]="selectedGroup == rec.name ? 'selected' : null">{{rec.name}}</button>
     </li>
   </ul>
   </div>
-
 </div>
-
 <div class="listGroupsDiv">
   <p>YOUR GROUPS</p>
   <div class="listYourGroups" *ngIf="yourGroups$ | async as yourGroups">
@@ -24,6 +22,9 @@
   </div>
 </div>
 </div>
+<button class="btn-createGroup" (click)="onCreateGroup()">CREATE GROUP</button>
+
+
 <div class="groupDetails">
   <p>{{selectedGroupName}}</p>
   <p>{{selectedGroupMembers}}</p>
@@ -34,4 +35,4 @@
   <img style="max-width:100px;max-height:100px" [src]="selectedGroupLogo"/>
 
 </div>
-<button class="btn-createGroup" (click)="onCreateGroup()">CREATE GROUP</button>
+

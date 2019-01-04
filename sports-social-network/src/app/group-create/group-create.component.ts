@@ -9,7 +9,7 @@ const TYPE = [
 ];
 
 const SPORTS = [
-  'Fotbal', 'Baschet'
+  'Fotbal', 'Baschet', 'Rugby', 'Volei', 'Tenis'
 ];
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 const SPORTS = [
-  'Fotbal', 'Baschet'
+  'Fotbal', 'Baschet', 'Rugby', 'Volei', 'Tenis'
 ];
 
 const SKILL = [
