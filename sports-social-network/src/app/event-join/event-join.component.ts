@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
 
@@ -11,6 +11,14 @@ const SKILL = [
   '', 'Beginner', 'Intermediate', 'Advanced'
 ];
 
+const EVENT_OPERATIONS = [
+  { name: 'Join Event', url: '/event-join' },
+  { name: 'My Own Events', url: '/event-join' },
+  { name: 'Create Event', url: '/event-create' },
+  { name: 'Past Events', url: '/event-join' },
+  { name: 'Send Invitation', url: '/event-join' },
+  { name: 'Recent Events', url: '/event-join' }
+];
 
 @Component({
   selector: 'app-event-join',
@@ -18,6 +26,8 @@ const SKILL = [
   styleUrls: ['./event-join.component.scss']
 })
 export class EventJoinComponent implements OnInit {
+
+  menuOptions: string[] = EVENT_OPERATIONS.map(eventOperation => eventOperation.name);
 
   events$: Observable<Event[]>;
   sports = SPORTS;

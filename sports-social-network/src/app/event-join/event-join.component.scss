@@ -88,3 +88,27 @@
     }
   }
 }
+
+@import '../../assets/scss/variables.scss';
+.default-container {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+
+.menu-container {
+    width: 20%;
+    padding-top: 100px;
+}
+
+.content-container {
+    width: 80%;
+}
+
+.content-card {
+    margin: 60px;
+    padding: 0 20px;
+    border-radius: 5px;
+    background-color: #E8F8FF;
+    overflow: hidden;
+}

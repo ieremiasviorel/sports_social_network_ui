@@ -1,4 +1,58 @@
-<app-event-operations></app-event-operations>
+<div>
+  <div class="default-container menu-container">
+    <app-side-menu [menuOptions]="menuOptions" [selectedMenuOption]="menuOptions[0]">
+    </app-side-menu>
+  </div>
+  <div class="default-container content-container">
+    <div class="content-card">
+      <div class="joinEvent" *ngIf="events$ | async as events">
+        <div class="joinEventSearch">
+          <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
+          <div class="listSearches">
+            <ul style="list-style: none;">
+              <li class="listSearchItem" *ngFor="let search of searched">
+                <button (click)="deleteSearch(search)">{{search}}</button>
+              </li>
+            </ul>
+          </div>
+          <div class="listEvents">
+            <ul style="list-style: none;">
+              <li class="listEventsItem" *ngFor="let event of events">
+                <button (click)="selectEvent(event)" [type]="selectedEvent== event.name ? 'selected' : null">{{event.name}}</button>
+              </li>
+            </ul>
+          </div>
+          <button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
+        </div>
+
+        <div class="joinEventPref">
+          <h2>PREFERENCES</h2>
+          Sport:
+          <select>
+            <option #prefSport *ngFor="let sport of sports">{{sport}}</option>
+          </select>
+          <br>
+
+          Skill level:
+          <select>
+            <option #prefSkill *ngFor="let s of skill">{{s}}</option>
+          </select>
+          <br>
+          Price:
+          <mat-slider #prefPrice class="Price" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+            tickInterval="5"></mat-slider>
+          <br>
+          Participants:
+          <mat-slider #prefPart class="participants" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+            tickInterval="5"></mat-slider>
+          <br>
+          <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
+            filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <app-event-operations></app-event-operations>
 <div class="joinEvent" *ngIf="events$ | async as events">
   <div class="joinEventSearch">
     <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
@@ -41,3 +95,4 @@
     <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply filters</button>
   </div>
 </div>
+ -->
