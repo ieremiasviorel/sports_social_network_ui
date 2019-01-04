@@ -48,32 +48,38 @@
     top: 120px;
     left: 0px;
     width: 300px;
-    height: 400px;
     border-radius: 5px;
     background: white;
-    overflow: hidden;
 }
 
 .chat-header {
-    height: 30px;
-    margin-bottom: 7px;
+    padding: 0 10px;
     border-radius: 0 4px 4px 0;
     background-color: #DBB687;
     line-height: 30px;
 }
 
+#ChatMoreOptions {
+    color: $primary;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .chat-close-button {
     float: right;
+    background: none;
     line-height: inherit;
     cursor: pointer;
 }
 
 .messages-box {
+    height: 300px;
+    padding-top: 7px;
     overflow-y: scroll;
 }
 
 .message-row {
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
     border-radius: 5px;
     text-overflow: ellipsis;
@@ -88,6 +94,18 @@
         clear: both;
         float: left;
         background-color: #BBBBBB;
+    }
+}
+
+.chat-input {
+    padding: 0 5px;
+    mat-form-field {
+        width: 78%;
+    }
+    button {
+        min-width: 20%;
+        margin-left: 2%;
+        padding: 0px;
     }
 }
 

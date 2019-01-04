@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,13 +17,20 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule, MatSliderModule
+  MatCardModule,
+  MatSliderModule,
+  MatInputModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatAutocompleteModule
 } from '@angular/material';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventOperationsComponent } from './event-operations/event-operations.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +42,15 @@ import { EventJoinComponent } from './event-join/event-join.component';
     GroupCreateComponent,
     EventCreateComponent,
     EventOperationsComponent,
-    EventJoinComponent
+    EventJoinComponent,
+    ProfilePreferencesComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
 
@@ -50,6 +60,10 @@ import { EventJoinComponent } from './event-join/event-join.component';
     MatIconModule,
     MatCardModule,
     MatSliderModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatAutocompleteModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
