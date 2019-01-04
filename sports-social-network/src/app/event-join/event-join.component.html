@@ -3,7 +3,7 @@
   <div class="joinEventSearch">
     <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
     <div class="listSearches">
-      <ul style="list-style: none;" >
+      <ul style="list-style: none;">
         <li class="listSearchItem" *ngFor="let search of searched">
           <button (click)="deleteSearch(search)">{{search}}</button>
         </li>
@@ -29,15 +29,17 @@
 
     Skill level:
     <select [(ngModel)]="prefSkill" (change)="selectedSkill($event.target.value)">
-      <option  *ngFor="let s of skill">{{s}}</option>
+      <option *ngFor="let s of skill">{{s}}</option>
     </select>
     <br>
     Price:
-    <mat-slider #prefPrice class="Price" min="0" max="100" step="1" value="0"  thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider [(ngModel)]="prefPrice" class="Price" min="0" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+      tickInterval="5"></mat-slider>
     <br>
     Participants:
-    <mat-slider #prefPart class="participants" min="0" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider [(ngModel)]="prefParticipantsNr" class="participants" min="0" max="100" step="1" value="0" thumbLabel
+      [displayWith]="formatLabel" tickInterval="5"></mat-slider>
     <br>
-    <button class="applyFilters" (click)="onApplyFilters(prefPrice, prefPart)">Apply filters</button>
+    <button class="applyFilters" (click)="onApplyFilters()">Apply filters</button>
   </div>
 </div>
