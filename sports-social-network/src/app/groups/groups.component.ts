@@ -26,7 +26,8 @@ export class GroupsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.yourGroups$ = this.groupsService.getAllGroups();
+    this.recommended$ = this.groupsService.getRecommendedGroups();
+    this.yourGroups$ = this.groupsService.getYourGroups();
   }
 
   selectGroup(group) {
