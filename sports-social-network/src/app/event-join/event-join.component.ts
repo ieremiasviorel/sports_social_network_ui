@@ -11,6 +11,14 @@ const SKILL = [
   '', 'Beginner', 'Intermediate', 'Advanced'
 ];
 
+const EVENT_OPERATIONS = [
+  { name: 'Join Event', url: '/event-join' },
+  { name: 'My Own Events', url: '/event-join' },
+  { name: 'Create Event', url: '/event-create' },
+  { name: 'Past Events', url: '/event-join' },
+  { name: 'Send Invitation', url: '/event-join' },
+  { name: 'Recent Events', url: '/event-join' }
+];
 
 @Component({
   selector: 'app-event-join',
@@ -19,6 +27,9 @@ const SKILL = [
 })
 export class EventJoinComponent implements OnInit {
 
+  menuOptions: string[] = EVENT_OPERATIONS.map(eventOperation => eventOperation.name);
+
+  events$: Observable<Event[]>;
   events: Event[];
   sports = SPORTS;
   skill = SKILL;
@@ -26,8 +37,8 @@ export class EventJoinComponent implements OnInit {
 
   prefSport: string;
   prefSkill: string;
-  prefPrice: number = 0;
-  prefParticipantsNr: number= 0;
+  prefPrice = 0;
+  prefParticipantsNr = 0;
 
   searched: string[] = [];
   selectedEventName: any;
