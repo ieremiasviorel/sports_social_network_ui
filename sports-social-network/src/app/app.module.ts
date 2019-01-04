@@ -17,7 +17,7 @@ import {
   MatMenuModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule, MatSliderModule, MatFormFieldModule, MatSelect, MatSelectModule
+  MatCardModule, MatSliderModule, MatFormFieldModule, MatSelect, MatSelectModule, MatDividerModule, MatRadioModule, MatListItem, MatListItemBase, MatDialogModule
 } from '@angular/material';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
@@ -25,6 +25,7 @@ import { EventCreateComponent } from './event-create/event-create.component';
 import { EventOperationsComponent } from './event-operations/event-operations.component';
 import { EventJoinComponent } from './event-join/event-join.component';
 import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
+import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,11 @@ import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
     EventCreateComponent,
     EventOperationsComponent,
     EventJoinComponent,
-    JoinQuizzComponent
+    JoinQuizzComponent,
+    QuizzDialogComponent
+  ],
+  entryComponents: [
+    QuizzDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -54,9 +59,12 @@ import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
     MatSliderModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDividerModule,
     ReactiveFormsModule,
-   
-      AgmCoreModule.forRoot({
+    MatRadioModule,
+    MatDialogModule,
+    
+    AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
     })
   ],
