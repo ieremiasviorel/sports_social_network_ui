@@ -26,8 +26,8 @@ export class EventJoinComponent implements OnInit {
 
   prefSport: string;
   prefSkill: string;
-  prefPrice: string;
-  prefParticipantsNr: string;
+  prefPrice: number = 0;
+  prefParticipantsNr: number= 0;
 
   searched: string[] = [];
 
@@ -81,36 +81,18 @@ export class EventJoinComponent implements OnInit {
   }
 
   onApplyFilters() {
-    console.log(this.events);
-    console.log(this.prefSport);
     if (this.prefSport) {
       this.events = this.events.filter(ev => ev.category === this.prefSport);
     }
-    console.log(this.events);
-    /*  if ( !(this.prefSport === '')) {
-       this.events.filter(event => event.category.toLowerCase() === this.prefSport.toLowerCase());
-     }
-     if ( !(this.prefSkill === '')) {
-       this.events.filter(event => event.skill.toLowerCase() === this.prefSkill.toLowerCase());
-     }
-     if ( !(prefPrice === 0)) {
-       console.log('3lung' + this.events.length);
-       for (let i = 0; i < this.events.length; i++) {
-         console.log(this.events[i].name + 'muee' + i);
-         if (!(this.events[i].price < prefPrice)) {
-           this.events.splice(i, 1);
-         }
-       }
-     }
-     if ( !(prefPart === 0)) {
-       console.log('4lung' + this.events.length);
-       for (let i = 0; i < this.events.length; i++) {
-         console.log(this.events[i].name + 'muee' + i);
-         if (!(this.events[i].participants < prefPart)) {
-           this.events.splice(i, 1);
-         }
-       }
-     } */
+    if (this.prefSkill) {
+      this.events = this.events.filter(ev => ev.skill === this.prefSkill);
+    }
+    if (this.prefPrice !== 0) {
+      this.events = this.events.filter(ev => ev.price < this.prefPrice);
+    }
+    if (this.prefParticipantsNr !== 0) {
+      this.events = this.events.filter(ev => ev.participants < this.prefParticipantsNr);
+    }
   }
 
   selectedSkill(value: any) {
@@ -119,5 +101,13 @@ export class EventJoinComponent implements OnInit {
 
   selectedSport(value: any) {
     this.prefSport = value;
+  }
+
+  slidePrice(value: any) {
+    this.prefPrice = value;
+  }
+
+  slideParticipants(value: number) {
+    this.prefParticipantsNr = value;
   }
 }

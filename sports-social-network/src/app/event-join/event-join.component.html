@@ -34,11 +34,11 @@
     <br>
     Price:
     <mat-slider [(ngModel)]="prefPrice" class="Price" min="0" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
-      tickInterval="5"></mat-slider>
+      tickInterval="5" (change)="slidePrice($event.value)"></mat-slider>
     <br>
     Participants:
     <mat-slider [(ngModel)]="prefParticipantsNr" class="participants" min="0" max="100" step="1" value="0" thumbLabel
-      [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+      [displayWith]="formatLabel" tickInterval="5" (change)="slideParticipants($event.value)"></mat-slider>
     <br>
     <button class="applyFilters" (click)="onApplyFilters()">Apply filters</button>
   </div>
