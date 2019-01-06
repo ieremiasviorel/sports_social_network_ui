@@ -28,13 +28,16 @@ export class GroupCreateComponent implements OnInit {
   selectedImage = null;
 
   onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers) {
+    const groupToCreate: Group = new Group();
+    groupToCreate.name = groupName.value;
+    groupToCreate.description = groupDescription.value;
+    groupToCreate.category = groupSport.value;
+    groupToCreate.type = groupType.value;
+    groupToCreate.numberMembers = groupMaxMembers.value;
+    groupToCreate.logo = this.fileToUpload.name;
+    // this.yourGroups$ = this.groupsService.createGroup(groupToCreate);
     console.log('Create clicked');
-    console.log(groupName.value);
-    console.log(groupDescription.value);
-    console.log(groupSport.value);
-    console.log(groupType.value);
-    console.log(groupMaxMembers.value);
-    console.log(this.fileToUpload.name);
+    console.log(this.yourGroups$);
   }
 
   onCancel() {

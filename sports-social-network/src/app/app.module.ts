@@ -31,6 +31,7 @@ import { EventOperationsComponent } from './event-operations/event-operations.co
 import { EventJoinComponent } from './event-join/event-join.component';
 import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { EventUserComponent } from './event-user/event-user.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     EventOperationsComponent,
     EventJoinComponent,
     ProfilePreferencesComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    EventUserComponent
   ],
   imports: [
     BrowserModule,

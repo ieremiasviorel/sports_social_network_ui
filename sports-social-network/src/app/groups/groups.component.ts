@@ -19,7 +19,6 @@ export class GroupsComponent implements OnInit {
   selectedGroupType: string = '';
   selectedGroupCategory: string = '';
   selectedGroupDescription: string = '';
-  logo: string = '';
   selectedGroupLogo: string = '';
 
   constructor(private router: Router,  private groupsService: GroupsService) {
@@ -32,12 +31,11 @@ export class GroupsComponent implements OnInit {
 
   selectGroup(group) {
     this.selectedGroup = group.name;
-    this.selectedGroupName = 'Name: ' + group.name;
-    this.selectedGroupMembers = 'Max number of members: ' + group.numberMembers;
-    this.selectedGroupType = 'Type: ' + group.type;
-    this.selectedGroupCategory = 'Category: ' + group.category;
-    this.selectedGroupDescription = 'Description: ' + group.description;
-    this.logo = 'Logo: ';
+    this.selectedGroupName = group.name;
+    this.selectedGroupMembers = '' + group.numberMembers;
+    this.selectedGroupType = '' + group.type;
+    this.selectedGroupCategory = '' + group.category;
+    this.selectedGroupDescription = '' + group.description;
     this.selectedGroupLogo = group.logo;
   }
 

@@ -1,11 +1,6 @@
-
-
-
-
-
 .joinEvent {
   .joinEventSearch {
-    width: 50%;
+    width: 30%;
     float: left;
     margin: 20px;
 
@@ -14,6 +9,7 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
+      height: 30px;
 
       .listSearchItem {
         float: left;
@@ -34,15 +30,14 @@
     }
 
     .listEvents {
-      border: 1px solid red;
       .listEventsItem {
         button {
+          width: 100%;
           background: cadetblue;
           margin: 5px;
           border: 1px solid black;
           margin-right: 40px;
           padding: 10px;
-          min-width: 400px;
           text-align: start;
 
           &[type=selected] {
@@ -52,6 +47,7 @@
         }
       }
     }
+
     .btn-joinEvent {
       margin-top: 20px;
       font-weight: bold;
@@ -63,13 +59,38 @@
       border-radius: 18px;
       -moz-border-radius: 5px;
     }
+  }
 
+  .eventJoinDetails {
+    float: left;
+    background-color: white;
+    height: 180px;
+    width: 20%;
+    margin: 20px;
+    padding: 20px;
+    overflow: scroll;
+    margin-top: 6%;
+
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 0;
+      max-width: 100%;
+    }
   }
 
   .joinEventPref {
-    margin: 20px;
+    margin-top: 6%;
     width: 20%;
-    float: left;
+    float: right;
+
+    h2 {
+      margin-top: 0;
+    }
 
     mat-slider {
       color: green;
@@ -88,3 +109,4 @@
     }
   }
 }
+

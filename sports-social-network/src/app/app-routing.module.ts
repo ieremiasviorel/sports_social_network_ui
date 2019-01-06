@@ -7,6 +7,7 @@ import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventJoinComponent } from './event-join/event-join.component';
 import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
+import {EventUserComponent} from "./event-user/event-user.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'event-create',
     component: EventCreateComponent
+  },
+  {
+    path: 'event-user',
+    component: EventUserComponent
   },
   {
     path: 'groups',

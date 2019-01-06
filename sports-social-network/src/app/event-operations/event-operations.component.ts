@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 
 const OPERATIONS = [
   {name: 'Join Event', url: '/event-join'},
-  {name: 'My Own Events', url: '/event-join'},
+  {name: 'My Own Events', url: '/event-user'},
   {name: 'Create Event', url: '/event-create'},
   {name: 'Past Events', url: '/event-join'},
   {name: 'Send Invitations', url: '/event-join'},
