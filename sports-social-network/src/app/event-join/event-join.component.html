@@ -3,20 +3,29 @@
   <div class="joinEventSearch">
     <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
     <div class="listSearches">
-      <ul style="list-style: none;">
+      <ul style="list-style: none;padding-inline-start: 0px;height:30px;margin: 0;">
         <li class="listSearchItem" *ngFor="let search of searched">
           <button (click)="deleteSearch(search)">{{search}}</button>
         </li>
       </ul>
     </div>
     <div class="listEvents">
-      <ul style="list-style: none;">
+      <ul style="list-style: none;padding-inline-start: 0px;margin:0;">
         <li class="listEventsItem" *ngFor="let event of events">
           <button (click)="selectEvent(event)" [type]="selectedEvent== event ? 'selected' : null">{{event.name}}</button>
         </li>
       </ul>
     </div>
     <button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
+  </div>
+
+  <div class="eventJoinDetails" [hidden]="!selectedEvent">
+    <label>Name: </label><p>{{selectedEventName}}</p>
+    <label>Sport: </label><p>{{selectedEventSport}}</p>
+    <label>Skill: </label><p>{{selectedEventSkill}}</p>
+    <label>Number of participants: </label><p>{{selectedEventNrParticipants}}</p>
+    <label>Price: </label><p>{{selectedEventPrice}}</p>
+    <label>Description: </label><p>{{selectedEventDescription}}</p>
   </div>
 
   <div class="joinEventPref">
@@ -26,7 +35,7 @@
       <option *ngFor="let sport of sports">{{sport}}</option>
     </select>
     <br>
-
+    <br>
     Skill level:
     <select [(ngModel)]="prefSkill" (change)="selectedSkill($event.target.value)">
       <option *ngFor="let s of skill">{{s}}</option>
@@ -43,3 +52,4 @@
     <button class="applyFilters" (click)="onApplyFilters()">Apply filters</button>
   </div>
 </div>
+

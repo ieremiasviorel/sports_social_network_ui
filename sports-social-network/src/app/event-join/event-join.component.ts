@@ -30,6 +30,12 @@ export class EventJoinComponent implements OnInit {
   prefParticipantsNr: number= 0;
 
   searched: string[] = [];
+  selectedEventName: any;
+  selectedEventSport: any;
+  selectedEventSkill: any;
+  selectedEventNrParticipants: any;
+  selectedEventPrice: any;
+  selectedEventDescription: any;
 
   constructor(
     private eventsService: EventsService
@@ -55,6 +61,7 @@ export class EventJoinComponent implements OnInit {
     if (this.selectedEvent != null) {
       for (let i = 0; i < this.events.length; i++) {
         if (this.events[i] === this.selectedEvent) {
+          this.eventsService.joinEvent(this.selectedEvent);
           this.events.splice(i, 1);
         }
       }
@@ -63,19 +70,44 @@ export class EventJoinComponent implements OnInit {
 
   selectEvent(event) {
     this.selectedEvent = event;
+    this.selectedEventName = event.name;
+    this.selectedEventSport = event.category;
+    this.selectedEventSkill = event.skill;
+    this.selectedEventNrParticipants = event.participants;
+    this.selectedEventPrice = event.price;
+    this.selectedEventDescription = event.description;
   }
 
   onEnter(event, search) {
     if (event.keyCode === 13) {
       this.searched.push(search.value);
+      if (this.sports.indexOf(search.value) > 0) {
+        this.events = this.events.filter(ev => ev.category === search.value);
+      }
+      search.value = '';
       console.log(search.value);
     }
+  }
+
+  filter() {
+    for (let i = 0; i < this.events.length; i++) {
+      for (let j = 0; j < this.searched.length; j++) {
+        if (this.sports.indexOf(this.searched[j]) > 0) {
+          this.events.splice(i, 1);
+        }
+      }
+    }
+
   }
 
   deleteSearch(search) {
     for (let i = 0; i < this.searched.length; i++) {
       if (this.searched[i] === search) {
         this.searched.splice(i, 1);
+        // @ts-ignore
+        this.events = this.eventsService.getAllEvents().subscribe(events => {
+          this.events = events as Event[];
+        });
       }
     }
   }

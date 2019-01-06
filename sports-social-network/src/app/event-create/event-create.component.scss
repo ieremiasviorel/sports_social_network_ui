@@ -4,9 +4,11 @@
   margin:auto;
 
   .form-createEvent {
-    background: gray;
+    background: #07575b;
     padding: 10px;
-    border: 5px solid black;
+    border: 1px solid white;
+    border-radius: 18px;
+    -moz-border-radius: 5px;
     width: 70%;
     margin: auto;
     margin-top:2%;
@@ -31,15 +33,19 @@
     .btn-createEvent {
       background: greenyellow;
       color: white;
+      font-size: 20px;
       font-weight: bold;
       border-radius:4px;
+      margin: 10px;
     }
 
     .btn-cancelEvent {
       background: red;
+      font-size: 20px;
       color: white;
       font-weight: bold;
       border-radius:4px;
+      margin: 10px;
     }
   }
 

@@ -9,7 +9,7 @@ import 'rxjs/operators';
   providedIn: 'root'
 })
 export class EventsService {
-  events: Observable<Event[]>;
+  events: Event[];
 
   constructor(
     private httpClient: HttpClient
@@ -20,7 +20,18 @@ export class EventsService {
     return this.httpClient.get<Event[]>(fileUrl);
   }
 
-  getFilteredEvents(prefSport: any, prefSkill: any, prefPrice: any, prefPart: any) {
+  public joinEvent(e: Event): Event[] {
+    const fileUrl = '../../assets/demo-data/events.json';
+    // @ts-ignore
+    this.events = this.httpClient.get<Event[]>(fileUrl).subscribe(events => {
+      this.events = events as Event[];
+    });
+    this.events.push(e);
+    return this.events;
+  }
 
+  public getUserEvents(): Observable<Event[]> {
+    const fileUrl = '../../assets/demo-data/userEvents.json';
+    return this.httpClient.get<Event[]>(fileUrl);
   }
 }
