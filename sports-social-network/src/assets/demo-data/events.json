@@ -2,24 +2,36 @@
     {
         "name": "Fotbal intre prieteni",
         "category": "FOTBAL",
+        "skill": "Beginner",
+        "price": 10,
+        "participants": 10,
         "description": "Echipe de amatori, 5 vs 5, in limita timpului disponibil",
         "image_url": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
     },
     {
         "name": "Alergare in parcul central",
         "category": "ALERGAT",
+        "skill": "Beginner",
+        "price": 30,
+        "participants": 100,
         "description": "Alergam in fiecare miercuri in parcul central ca sa ne mentinem in forma",
         "image_url": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/training-pace-calculator-1534874738.jpg?resize=480:*"
     },
     {
         "name": "Volei profesionist",
         "category": "VOLEI",
+        "skill": "Intermediate",
+        "price": 70,
+        "participants": 20,
         "description": "Echipa semi-amatoare de volei. E nevoie de inca 4 persoane pentru echipa adversa",
         "image_url": "https://media.volleyballengland.org/images/imagesource.php?image=4467.jpg&maxwidth=496"
     },
     {
         "name": "Bowling Championship",
         "category": "BOWLING",
+        "skill": "Advanced",
+        "price": 90,
+        "participants": 50,
         "description": "Campionatul local de bowling amator, Cluj-Napoca, editia XXI",
         "image_url": "https://www.khilari.com.pk/res/images/events/812x457/event_125_11th-tenpin-bowling-championship-2018_tf.jpg"
     }

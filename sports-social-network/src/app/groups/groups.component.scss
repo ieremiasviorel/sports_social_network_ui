@@ -1,53 +1,104 @@
+.lists {
+  float: left;
+  margin-left: 50px;
+  .listRecDiv {
+    margin: 20px;
 
-.listRecDiv {
-  margin: 20px;
+    p {
+      font-family: "Comic Sans MS";
+      font-weight: bold;
+      color: white;
+    }
 
-  p {
-    font-family: "Comic Sans MS";
-    font-weight: bold;
-    color: black;
+    .listRecommended {
+      border: 1px solid black;
+      width: 50%;
+      padding-inline-end: 40px;
+      min-width: 600px;
+
+      .listRecItem {
+        button {
+          background: cadetblue;
+          padding-left: 10px;
+          border: 1px solid black;
+          margin: 10px;
+          min-width: 500px;
+          text-align: start;
+          font: 16px bold;
+          font-family: "Comic Sans MS";
+
+          &[type=selected] {
+            border: 5px solid;
+          }
+        }
+      }
+    }
   }
 
-  .listRecommanded {
-    border: 1px solid black;
-    width: 50%;
-    padding-inline-end: 40px;
+  .listGroupsDiv {
+    margin: 20px;
 
-    .listRecItem {
-      background: red;
-      padding-left: 10px;
+    p {
+      font-family: "Comic Sans MS";
+      font-weight: bold;
+      color: white;
+    }
+
+    .listYourGroups {
+      min-width: 600px;
       border: 1px solid black;
+      width: 50%;
+      padding-inline-end: 40px;
 
+      .listGroupItem {
+        button {
+          background: cadetblue;
+          padding-left: 10px;
+          border: 1px solid black;
+          margin: 10px;
+          min-width: 500px;
+          text-align: start;
+          font: 16px bold;
+          font-family: "Comic Sans MS";
 
-
-      button {
-        font-weight: bold;
-        font-family: "Comic Sans MS";
-        width: 20%;
+          &[type=selected] {
+            border: 5px solid;
+          }
+        }
       }
     }
   }
 }
-
-.listGroupsDiv {
+.btn-createGroup {
   margin: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 10px;
+  color: white;
+  font-family: "Comic Sans MS";
+  background: cadetblue;
+  border: 1px solid white;
+  border-radius: 18px;
+  -moz-border-radius: 5px;
+}
+.groupDetails {
+  float: left;
+  background-color: white;
+  height: 300px;
+  width: 20%;
+  margin: 20px;
+  padding: 20px;
+  overflow: scroll;
+  margin-top: 3%;
+
+  label {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
 
   p {
-    font-family: "Comic Sans MS";
-    font-weight: bold;
-    color: black;
-  }
-
-  .listYourGroups {
-    border: 1px solid black;
-    width: 50%;
-    padding-inline-end: 40px;
-
-    .listGroupItem {
-      background:cadetblue;
-      padding-left: 10px;
-      border: 1px solid black;
-
-    }
+    margin-top: 0;
+    max-width: 100%;
   }
 }
+

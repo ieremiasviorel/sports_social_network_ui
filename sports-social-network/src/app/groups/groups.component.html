@@ -1,27 +1,39 @@
-<div class="listRecDiv">
+<div class="lists">
+<div class="listRecDiv" *ngIf="recommended$ | async as recommended">
   <p>RECOMMENDED</p>
-  <div class="listRecommanded">
-  <ul *ngFor="let rec of recommended" style="list-style: none;">
-    <li class="listRecItem">
-      <div>
-        <p>{{rec.name}}</p>
-        <button class="btn-joinGroup" (click)="onJoinGroup(groupName)">JOIN</button>
-      </div>
-    </li>
-  </ul>
-  </div>
-
-</div>
-
-<div class="listGroupsDiv">
-  <p>YOUR GROUPS</p>
-  <div class="listYourGroups" >
-    <ul *ngFor="let g of yourGroups" style="list-style: none;">
-        <li class="listGroupItem">
-          <p>{{g.name}}</p>
-        </li>
+  <div class="listRecommended">
+    <ul  style="list-style: none;">
+      <li class="listRecItem" *ngFor="let rec of recommended">
+        <button (click)="selectGroup(rec)"
+                [type]="selectedGroup == rec.name ? 'selected' : null">{{rec.name}}</button>
+      </li>
     </ul>
+    </div>
   </div>
+  <div class="listGroupsDiv">
+    <p>YOUR GROUPS</p>
+    <div class="listYourGroups" *ngIf="yourGroups$ | async as yourGroups">
+      <ul  style="list-style: none;">
+          <li class="listGroupItem" *ngFor="let g of yourGroups">
+            <button (click)="selectGroup(g)"
+                    [type]="selectedGroup == g.name ? 'selected' : null">{{g.name}}</button>
+          </li>
+      </ul>
+    </div>
+  </div>
+  <button class="btn-createGroup" (click)="onCreateGroup()">CREATE GROUP</button>
 </div>
 
-<button class="btn-createGroup" (click)="onCreateGroup()">CREATE GROUP</button>
+
+
+<div class="groupDetails" [hidden]="!selectedGroup">
+  <label>Name: </label><p>{{selectedGroupName}}</p>
+  <label>Max number of members: </label><p>{{selectedGroupMembers}}</p>
+  <label>Type: </label><p>{{selectedGroupType}}</p>
+  <label>Category: </label><p>{{selectedGroupCategory}}</p>
+  <label>Description: </label><p>{{selectedGroupDescription}}</p>
+  <label>Logo: </label><br>
+  <img style="max-width:100px;max-height:100px" [src]="selectedGroupLogo"/>
+
+</div>
+

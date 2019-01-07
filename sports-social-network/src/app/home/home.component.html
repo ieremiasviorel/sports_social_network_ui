@@ -18,16 +18,25 @@
 
 <button mat-raised-button *ngIf="!chatOpen" class="chat-trigger" (click)="openChat()">CHAT</button>
 
-<div *ngIf="chatOpen" class="chat-window">
+<div *ngIf="chatOpen && lastDiscussion$ | async as lastDiscussion" class="chat-window">
   <div class="chat-header">
-    <span>Quick Chat</span>
+    <span><b>{{ lastDiscussion.interlocutor }}</b></span>
     <i class="material-icons chat-close-button" (click)="closeChat()">close</i>
+    <a class="chat-close-button" id="ChatMoreOptions">more</a>
   </div>
-  <div class="messages-box" *ngIf="messages$ | async as messages">
-    <div class="message-row" *ngFor="let message of messages" [ngClass]="message.type == 'RECEIVED' ? 'ingoing' : 'outgoing'">
+  <div class="messages-box">
+    <div class="message-row" *ngFor="let message of lastDiscussion.messages" [ngClass]="message.type == 'RECEIVED' ? 'ingoing' : 'outgoing'">
       {{ message.content }}
     </div>
   </div>
+
+  <div class="chat-input">
+    <mat-form-field>
+      <input matInput [(ngModel)]="messageText" placeholder="type here...">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendMessage()">send</button>
+  </div>
+
 </div>
 
 <img src="../../assets/images/cup-icon.png" class="quiz-trigger">

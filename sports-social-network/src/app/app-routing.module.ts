@@ -7,6 +7,7 @@ import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventJoinComponent } from './event-join/event-join.component';
 import { EventRemindersComponent} from './event-reminders/event-reminders.component';
+import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
 
 const routes: Routes = [
   {
@@ -36,8 +37,21 @@ const routes: Routes = [
   {
     path: 'group-create',
     component: GroupCreateComponent
+  },
+  {
+    path: 'profile',
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/profile/preferences'
+      },
+      {
+        path: 'preferences',
+        component: ProfilePreferencesComponent
+      }
+    ]
   }
-
 ];
 
 @NgModule({
