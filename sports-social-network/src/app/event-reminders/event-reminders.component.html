@@ -1,0 +1,30 @@
+<app-event-operations></app-event-operations>
+<div class="main">
+  <div class="yourReminders">
+    <div class="listReminders">
+      <ul *ngFor="let r of yourReminders" style="list-style: none;">
+        <li class="listRemindersItem">
+          <p>{{r.name}}: in {{r.time}} {{r.unit}}</p>
+        </li>
+      </ul>
+    </div>
+    <button type="button" class="deleteReminder"> Delete selected reminder </button>
+  </div>
+
+  <div class="createReminder">
+    <h4> Create reminder </h4> 
+    <mat-form-field>
+      <mat-select placeHolder = "Event">
+        <mat-option *ngFor="let o of yourOptions" [value]=o.name>
+          {{o.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <input matInput placeholder="Time before">
+    <br>
+    <input matInput placeholder="Repetition">
+    <br>
+    <button type="button" class="addReminder"> Add reminder </button>
+  </div>
+</div>

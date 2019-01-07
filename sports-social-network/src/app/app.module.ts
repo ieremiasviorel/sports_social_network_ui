@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +23,7 @@ import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventOperationsComponent } from './event-operations/event-operations.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { EventRemindersComponent } from './event-reminders/event-reminders.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { EventJoinComponent } from './event-join/event-join.component';
     GroupCreateComponent,
     EventCreateComponent,
     EventOperationsComponent,
-    EventJoinComponent
+    EventJoinComponent,
+    EventRemindersComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { EventJoinComponent } from './event-join/event-join.component';
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+     MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

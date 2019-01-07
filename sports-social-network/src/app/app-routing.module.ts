@@ -6,6 +6,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { EventRemindersComponent} from './event-reminders/event-reminders.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'event-create',
     component: EventCreateComponent
+  },
+  {
+    path: 'event-reminders',
+    component: EventRemindersComponent
   },
   {
     path: 'groups',
