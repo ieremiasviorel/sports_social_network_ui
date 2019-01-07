@@ -24,7 +24,14 @@ import {
   MatCheckboxModule,
   MatChipsModule,
   MatAutocompleteModule,
-  MatSelectModule
+  MatSelectModule,
+  MatFormFieldModule, 
+  MatSelect, 
+  MatDividerModule,
+  MatRadioModule, 
+  MatListItem, 
+  MatListItemBase, 
+  MatDialogModule
 } from '@angular/material';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
@@ -35,6 +42,8 @@ import { EventRemindersComponent } from './event-reminders/event-reminders.compo
 import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { EventUserComponent } from './event-user/event-user.component';
+import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
+import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +59,12 @@ import { EventUserComponent } from './event-user/event-user.component';
     EventRemindersComponent,
     ProfilePreferencesComponent,
     SideMenuComponent,
-    EventUserComponent
+    EventUserComponent,
+    JoinQuizzComponent,
+    QuizzDialogComponent
+  ],
+  entryComponents: [
+    QuizzDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +85,11 @@ import { EventUserComponent } from './event-user/event-user.component';
     MatChipsModule,
     MatAutocompleteModule,
     MatSelectModule,
-
+    MatFormFieldModule,
+    MatDividerModule,
+    MatRadioModule,
+    MatDialogModule,
+    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
     })

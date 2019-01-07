@@ -8,6 +8,7 @@ import { EventCreateComponent } from './event-create/event-create.component';
 import { EventJoinComponent } from './event-join/event-join.component';
 import { EventRemindersComponent} from './event-reminders/event-reminders.component';
 import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
+import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
     component: GroupCreateComponent
   },
   {
+  path: 'join-quizz',
+  component: JoinQuizzComponent
+  },
+  {
     path: 'profile',
     children: [
       {
@@ -51,6 +56,7 @@ const routes: Routes = [
         component: ProfilePreferencesComponent
       }
     ]
+    
   }
 ];
 
