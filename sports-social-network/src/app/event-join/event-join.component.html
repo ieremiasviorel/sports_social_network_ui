@@ -1,6 +1,6 @@
 <div>
   <div class="default-container menu-container">
-    <app-side-menu [menuOptions]="menuOptions" [selectedMenuOption]="menuOptions[0]">
+    <app-side-menu [menuOptions]="menuOptions" [selectedMenuOption]="menuOptions[0]" (selectedMenuChange)="menuChanged($event)">
     </app-side-menu>
   </div>
   <div class="default-container content-container">
@@ -27,16 +27,17 @@
 
         <div class="joinEventPref">
           <h2>PREFERENCES</h2>
-          Sport:
-          <select>
-            <option #prefSport *ngFor="let sport of sports">{{sport}}</option>
-          </select>
+          <mat-form-field>
+            <mat-select placeholder="Sport">
+              <mat-option #prefSport *ngFor="let sport of SPORTS">{{ sport }}</mat-option>
+            </mat-select>
+          </mat-form-field>
           <br>
-
-          Skill level:
-          <select>
-            <option #prefSkill *ngFor="let s of skill">{{s}}</option>
-          </select>
+          <mat-form-field>
+            <mat-select placeholder="Skill level">
+              <mat-option #prefSkill *ngFor="let skill_level of SKILL_LEVELS">{{ skill_level }}</mat-option>
+            </mat-select>
+          </mat-form-field>
           <br>
           Price:
           <mat-slider #prefPrice class="Price" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"

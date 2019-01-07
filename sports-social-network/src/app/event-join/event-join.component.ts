@@ -2,14 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
-
-const SPORTS = [
-  '', 'Fotbal', 'Baschet'
-];
-
-const SKILL = [
-  '', 'Beginner', 'Intermediate', 'Advanced'
-];
+import { SPORTS, SKILL_LEVELS } from '../constants';
 
 const EVENT_OPERATIONS = [
   { name: 'Join Event', url: '/event-join' },
@@ -27,11 +20,12 @@ const EVENT_OPERATIONS = [
 })
 export class EventJoinComponent implements OnInit {
 
+  SPORTS = SPORTS;
+  SKILL_LEVELS = SKILL_LEVELS;
+
   menuOptions: string[] = EVENT_OPERATIONS.map(eventOperation => eventOperation.name);
 
   events$: Observable<Event[]>;
-  sports = SPORTS;
-  skill = SKILL;
   selectedEvent: null;
   searched: string[] = [];
 
@@ -40,7 +34,6 @@ export class EventJoinComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // @ts-ignore
     this.events$ = this.eventsService.getAllEvents();
   }
 
@@ -76,5 +69,9 @@ export class EventJoinComponent implements OnInit {
   }
 
   onApplyFilters(prefSport, prefSkill, prefPrice, prefPart) {
+  }
+
+  menuChanged(arg: string) {
+    console.log(arg);
   }
 }

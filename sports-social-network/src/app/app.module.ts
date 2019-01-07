@@ -20,6 +20,7 @@ import {
   MatCardModule,
   MatSliderModule,
   MatInputModule,
+  MatSelectModule,
   MatCheckboxModule,
   MatChipsModule,
   MatAutocompleteModule
@@ -61,6 +62,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     MatCardModule,
     MatSliderModule,
     MatInputModule,
+    MatSelectModule,
     MatCheckboxModule,
     MatChipsModule,
     MatAutocompleteModule,
