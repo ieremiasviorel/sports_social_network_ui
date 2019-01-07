@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
 import { SPORTS, SKILL_LEVELS } from '../constants';
@@ -30,6 +32,7 @@ export class EventJoinComponent implements OnInit {
   searched: string[] = [];
 
   constructor(
+    private router: Router,
     private eventsService: EventsService
   ) { }
 
@@ -71,7 +74,8 @@ export class EventJoinComponent implements OnInit {
   onApplyFilters(prefSport, prefSkill, prefPrice, prefPart) {
   }
 
-  menuChanged(arg: string) {
-    console.log(arg);
+  selectedMenuChanged(selectedMenuOption: string) {
+    const urlToNavigate: string = EVENT_OPERATIONS.find(menuOption => menuOption.name === selectedMenuOption).url;
+    this.router.navigate([urlToNavigate]);
   }
 }
