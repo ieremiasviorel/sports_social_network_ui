@@ -1,0 +1,67 @@
+.main {
+    margin: auto;
+
+    .yourReminders {
+        width: 50%;
+        //height: 30%;
+        float: left;
+        overflow: hidden;
+        overflow-y: auto;
+        .listReminders {
+            border: 1px solid olivedrab;
+            height: 300px;
+            .listRemindersItem {
+                background: cadetblue;
+                margin: 5px;
+                border: 1px solid black;
+                margin-right: 40px;
+                padding-left: 10px;
+                cursor: pointer;
+            }
+
+            .listRemindersItem:active {
+                border: 1px solid rgb(17, 185, 177);
+                border-width: thick;
+                outline: none;    
+                color: white;
+            }
+        }
+    }
+
+    .createReminder {
+        float:right;
+        width: 35%;
+        border: 1px solid olivedrab;
+        margin-top: 0px;
+        margin-right: 40px;
+        padding-left: 20px;
+        
+        h4 {
+            font-family: "FreeMono", sans-serif;
+            color: rgb(2, 29, 51);
+            padding-left: 220px; 
+        }
+
+        mat-option {
+            width: 150px;
+            padding-left: 10px;
+            margin-left: 100px;
+        }
+
+    }
+
+    button {
+        margin-left: 300px;
+        padding: 10px;
+        border-radius: 5px;
+        border-color: rgb(17, 185, 177);
+        border: 2px solid;
+        color: white;
+        background-color: cadetblue;
+        }
+
+    button:hover {
+        color: rgb(17, 185, 177); 
+        background-color: rgb(234, 247, 250);
+    }
+}

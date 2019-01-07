@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Ping Pong Observator",
+    "type": "Public",
+    "numberMembers": 10,
+    "category": "Ping Pong",
+    "description": "Echipe de amatori, 2 vs 2",
+    "logo": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
+  },
+  {
+    "name": "Baschet Manastur",
+    "type": "Public",
+    "numberMembers": 8,
+    "category": "Baschet",
+    "description": "Echipe intermediate, 4 vs 4",
+    "logo": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
+  }
+]

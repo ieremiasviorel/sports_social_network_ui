@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 const SPORTS = [
-  'Fotbal', 'Baschet'
+  'Fotbal', 'Baschet', 'Rugby', 'Volei', 'Tenis'
 ];
 
 const SKILL = [
@@ -26,7 +26,7 @@ export class EventCreateComponent implements OnInit {
   latitude: 46.7712;
   longitude: 23.6236;
 
-  onCreate(eventName, eventNrPart) {
+  onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType) {
     console.log('Create clicked');
     console.log(eventName.value);
     console.log(eventNrPart.value);

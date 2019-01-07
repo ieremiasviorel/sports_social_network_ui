@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 const OPERATIONS = [
-  {name: 'Join Event', url: '/event-join'},
-  {name: 'My Own Events', url: '/event-join'},
-  {name: 'Create Event', url: '/event-create'},
-  {name: 'Past Events', url: '/event-join'},
-  {name: 'Send Invitations', url: '/event-join'},
-  {name: 'Recent Events', url: '/event-join'}
+  { name: 'Join Event', url: '/event-join' },
+  { name: 'My Own Events', url: '/event-user' },
+  { name: 'Create Event', url: '/event-create' },
+  { name: 'Past Events', url: '/event-join' },
+  { name: 'Send Invitations', url: '/event-join' },
+  { name: 'Recent Events', url: '/event-join' }
 ];
 
 @Component({
@@ -18,20 +18,19 @@ const OPERATIONS = [
 export class EventOperationsComponent implements OnInit {
 
   EVENT_OPERATIONS = OPERATIONS;
-  selectedOperation: string = this.EVENT_OPERATIONS[0].name;
 
-  selectOperation(selectedOperation: string) {
+  selectedOperation = this.EVENT_OPERATIONS[0];
+
+  selectOperation(selectedOperation) {
+    console.log(selectedOperation);
     this.selectedOperation = selectedOperation;
-    for (let i = 0; i < this.EVENT_OPERATIONS.length; i++) {
-      if (selectedOperation === this.EVENT_OPERATIONS[i].name) {
-        this.router.navigateByUrl(this.EVENT_OPERATIONS[i].url);
-      }
-    }
+    console.log(this.selectedOperation);
+    const navigateUrl = this.EVENT_OPERATIONS.find(op => op.name === this.selectedOperation.name).url;
+    this.router.navigate([navigateUrl]);
   }
 
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
-
 }

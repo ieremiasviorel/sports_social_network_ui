@@ -1,94 +1,5 @@
 
 
-
-
-
-.joinEvent {
-  .joinEventSearch {
-    width: 50%;
-    float: left;
-    margin: 20px;
-
-    .listSearches {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-
-      .listSearchItem {
-        float: left;
-        margin: 10px;
-
-        button {
-          display: inline-block;
-          color: black;
-          background-color: transparentize(#ffffff, 0.5);
-          text-align: center;
-          text-decoration: none;
-        }
-      }
-    }
-
-    .searchEvent {
-      margin: 20px;
-    }
-
-    .listEvents {
-      border: 1px solid red;
-      .listEventsItem {
-        button {
-          background: cadetblue;
-          margin: 5px;
-          border: 1px solid black;
-          margin-right: 40px;
-          padding: 10px;
-          min-width: 400px;
-          text-align: start;
-
-          &[type=selected] {
-            border: 5px solid;
-          }
-
-        }
-      }
-    }
-    .btn-joinEvent {
-      margin-top: 20px;
-      font-weight: bold;
-      padding: 10px;
-      color: white;
-      font-family: "Comic Sans MS";
-      background: cadetblue;
-      border: 1px solid white;
-      border-radius: 18px;
-      -moz-border-radius: 5px;
-    }
-
-  }
-
-  .joinEventPref {
-    margin: 20px;
-    width: 20%;
-    float: left;
-
-    mat-slider {
-      color: green;
-    }
-
-    button {
-      margin-top: 20px;
-      font-weight: bold;
-      padding: 10px;
-      color: white;
-      font-family: "Comic Sans MS";
-      background: cadetblue;
-      border: 1px solid white;
-      border-radius: 18px;
-      -moz-border-radius: 5px;
-    }
-  }
-}
-
 @import '../../assets/scss/variables.scss';
 .default-container {
     display: inline-block;
@@ -111,4 +22,117 @@
     border-radius: 5px;
     background-color: #E8F8FF;
     overflow: hidden;
+}
+
+
+.joinEvent {
+  .joinEventSearch {
+    width: 30%;
+    float: left;
+    margin: 20px;
+
+    .listSearches {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 30px;
+
+      .listSearchItem {
+        float: left;
+        margin: 10px;
+
+        button {
+          display: inline-block;
+          color: black;
+          background-color: transparentize(#ffffff, 0.5);
+          text-align: center;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .searchEvent {
+      margin: 20px;
+    }
+
+    .listEvents {
+      .listEventsItem {
+        button {
+          width: 100%;
+          background: cadetblue;
+          margin: 5px;
+          border: 1px solid black;
+          margin-right: 40px;
+          padding: 10px;
+          text-align: start;
+
+          &[type=selected] {
+            border: 5px solid;
+          }
+
+        }
+      }
+    }
+
+    .btn-joinEvent {
+      margin-top: 20px;
+      font-weight: bold;
+      padding: 10px;
+      color: white;
+      font-family: "Comic Sans MS";
+      background: cadetblue;
+      border: 1px solid white;
+      border-radius: 18px;
+      -moz-border-radius: 5px;
+    }
+  }
+
+  .eventJoinDetails {
+    float: left;
+    background-color: white;
+    height: 180px;
+    width: 20%;
+    margin: 20px;
+    padding: 20px;
+    overflow: scroll;
+    margin-top: 6%;
+
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-top: 0;
+      max-width: 100%;
+    }
+  }
+
+  .joinEventPref {
+    margin-top: 6%;
+    width: 20%;
+    float: right;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    mat-slider {
+      color: green;
+    }
+
+    button {
+      margin-top: 20px;
+      font-weight: bold;
+      padding: 10px;
+      color: white;
+      font-family: "Comic Sans MS";
+      background: cadetblue;
+      border: 1px solid white;
+      border-radius: 18px;
+      -moz-border-radius: 5px;
+    }
+  }
 }

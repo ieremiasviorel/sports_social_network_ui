@@ -1,0 +1,69 @@
+@import '../../assets/scss/variables.scss';
+.default-container {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+
+.menu-container {
+    width: 20%;
+    padding-top: 60px;
+}
+
+.content-container {
+    width: 80%;
+}
+
+.content-card {
+    margin: 60px;
+    padding: 0 20px;
+    border-radius: 5px;
+    background-color: #E8F8FF;
+    overflow: hidden;
+}
+
+
+.listEvents {
+  width: 30%;
+  float: left;
+  margin-top: 2%;
+
+  .listEventsItem {
+    button {
+      background: cadetblue;
+      margin: 5px;
+      border: 1px solid black;
+      margin-right: 40px;
+      padding: 10px;
+      width: 100%;
+      text-align: start;
+
+      &[type=selected] {
+        border: 5px solid;
+      }
+
+    }
+  }
+}
+
+.eventJoinDetails {
+  float: left;
+  background-color: white;
+  height: 180px;
+  width: 20%;
+  margin: 20px;
+  padding: 20px;
+  overflow: scroll;
+  margin-top: 2%;
+
+
+  label {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-top: 0;
+    max-width: 100%;
+  }
+}

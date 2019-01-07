@@ -6,7 +6,10 @@ import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
 import { EventJoinComponent } from './event-join/event-join.component';
+import { EventRemindersComponent } from './event-reminders/event-reminders.component';
 import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
+import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
+import { EventUserComponent } from './event-user/event-user.component';
 
 const routes: Routes = [
   {
@@ -22,8 +25,16 @@ const routes: Routes = [
     component: EventJoinComponent
   },
   {
+    path: 'event-user',
+    component: EventUserComponent
+  },
+  {
     path: 'event-create',
     component: EventCreateComponent
+  },
+  {
+    path: 'event-reminders',
+    component: EventRemindersComponent
   },
   {
     path: 'groups',
@@ -32,6 +43,10 @@ const routes: Routes = [
   {
     path: 'group-create',
     component: GroupCreateComponent
+  },
+  {
+    path: 'join-quizz',
+    component: JoinQuizzComponent
   },
   {
     path: 'profile',

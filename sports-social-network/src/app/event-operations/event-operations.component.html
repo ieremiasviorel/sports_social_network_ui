@@ -1,6 +1,4 @@
-<div class="container">
-  <div class="operations-area" *ngFor="let operation of EVENT_OPERATIONS">
-    <button mat-raised-button color="primary"  (click)="selectOperation(operation.name)" [type]="selectedOperation == operation.name ? 'selected' : null">{{ operation.name }}</button>
-    <br>
-  </div>
+<div *ngFor="let operation of EVENT_OPERATIONS" class="menu-option" [ngClass]="selectedOperation.name === operation.name ? 'selected-menu-option' : 'default-menu-option'"
+  (click)="selectOperation(operation)">
+  {{ operation.name }}
 </div>

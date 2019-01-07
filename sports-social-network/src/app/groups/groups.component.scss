@@ -1,6 +1,6 @@
 .lists {
   float: left;
-
+  margin-left: 50px;
   .listRecDiv {
     margin: 20px;
 
@@ -17,16 +17,19 @@
       min-width: 600px;
 
       .listRecItem {
-        background: red;
-        border: 1px solid black;
-        padding: 20px;
-
         button {
-          font-weight: bold;
-          font-family: "Comic Sans MS";
-          float: right;
-          background: green;
+          background: cadetblue;
+          padding-left: 10px;
           border: 1px solid black;
+          margin: 10px;
+          min-width: 500px;
+          text-align: start;
+          font: 16px bold;
+          font-family: "Comic Sans MS";
+
+          &[type=selected] {
+            border: 5px solid;
+          }
         }
       }
     }
@@ -66,15 +69,7 @@
     }
   }
 }
-.groupDetails {
-  float:left;
-  background-color: white;
-  min-height: 500px;
-  min-width: 300px;
-  margin: 20px;
-}
 .btn-createGroup {
-  float: right;
   margin: 20px;
   margin-top: 20px;
   font-weight: bold;
@@ -86,3 +81,24 @@
   border-radius: 18px;
   -moz-border-radius: 5px;
 }
+.groupDetails {
+  float: left;
+  background-color: white;
+  height: 300px;
+  width: 20%;
+  margin: 20px;
+  padding: 20px;
+  overflow: scroll;
+  margin-top: 3%;
+
+  label {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-top: 0;
+    max-width: 100%;
+  }
+}
+
