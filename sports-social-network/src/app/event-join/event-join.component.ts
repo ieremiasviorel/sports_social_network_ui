@@ -1,13 +1,13 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
 import { SPORTS, SKILL_LEVELS } from '../constants';
-import {Observable} from 'rxjs';
-import {FormControl} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
-import {MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent } from '@angular/material';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-event-join',
@@ -27,7 +27,7 @@ export class EventJoinComponent implements OnInit {
   prefSport: string;
   prefSkill: string;
   prefPrice: number;
-  prefParticipantsNr: number;
+  prefPart: number;
 
   searched: string[] = [];
   selectedEventName: any;
@@ -168,8 +168,8 @@ export class EventJoinComponent implements OnInit {
     if (this.prefPrice) {
       this.events = this.events.filter(ev => ev.price < this.prefPrice);
     }
-    if (this.prefParticipantsNr) {
-      this.events = this.events.filter(ev => ev.participants < this.prefParticipantsNr);
+    if (this.prefPart) {
+      this.events = this.events.filter(ev => ev.participants < this.prefPart);
     }
   }
 }

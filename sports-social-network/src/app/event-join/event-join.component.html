@@ -56,11 +56,11 @@
     </mat-form-field>
     <br>
     Price:
-    <mat-slider #prefPrice class="Price" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+    <mat-slider [(ngModel)]="prefPrice" class="Price" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
       tickInterval="5"></mat-slider>
     <br>
     Participants:
-    <mat-slider #prefPart class="participants" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+    <mat-slider [(ngModel)]="prefPart" class="participants" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
       tickInterval="5"></mat-slider>
     <br>
     <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
