@@ -29,10 +29,10 @@
 
     <mat-card-content>
       <mat-radio-group [(ngModel)]="quizzAnswers[i]">
-        <mat-radio-button class="radio" [value]="a">{{ quizz.a }}</mat-radio-button>
-        <mat-radio-button class="radio" [value]="b">{{ quizz.b }}</mat-radio-button>
-        <mat-radio-button class="radio" [value]="b">{{ quizz.c }}</mat-radio-button>
-        <mat-radio-button class="radio" [value]="d">{{ quizz.d }}</mat-radio-button>
+        <mat-radio-button class="radio" [value]="'a'">{{ quizz.a }}</mat-radio-button>
+        <mat-radio-button class="radio" [value]="'b'">{{ quizz.b }}</mat-radio-button>
+        <mat-radio-button class="radio" [value]="'c'">{{ quizz.c }}</mat-radio-button>
+        <mat-radio-button class="radio" [value]="'d'">{{ quizz.d }}</mat-radio-button>
       </mat-radio-group>
     </mat-card-content>
   </mat-card>
