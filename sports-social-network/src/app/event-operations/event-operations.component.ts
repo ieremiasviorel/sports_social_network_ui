@@ -19,18 +19,15 @@ export class EventOperationsComponent implements OnInit {
 
   EVENT_OPERATIONS = OPERATIONS;
 
-  selectedOperation = this.EVENT_OPERATIONS[0];
+  selectedOperation: string = this.EVENT_OPERATIONS[0].name;
 
   selectOperation(selectedOperation) {
-    console.log(selectedOperation);
     this.selectedOperation = selectedOperation;
-    console.log(this.selectedOperation);
-    const navigateUrl = this.EVENT_OPERATIONS.find(op => op.name === this.selectedOperation.name).url;
+    const navigateUrl = this.EVENT_OPERATIONS.find(op => op.name === this.selectedOperation).url;
     this.router.navigate([navigateUrl]);
   }
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }

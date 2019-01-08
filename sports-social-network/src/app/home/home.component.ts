@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     this.lastDiscussion$ = this.messagesService.getUserLastActiveDiscussion();
   }
 
-  joinQuizz(){
+  joinQuizz() {
     this.router.navigateByUrl('/join-quizz');
   }
 

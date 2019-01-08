@@ -14,12 +14,12 @@ export class GroupsComponent implements OnInit {
   yourGroups$: Observable<Group[]>;
 
   selectedGroup: null;
-  selectedGroupName: string = '';
-  selectedGroupMembers: string = '';
-  selectedGroupType: string = '';
-  selectedGroupCategory: string = '';
-  selectedGroupDescription: string = '';
-  selectedGroupLogo: string = '';
+  selectedGroupName = '';
+  selectedGroupMembers = '';
+  selectedGroupType = '';
+  selectedGroupCategory = '';
+  selectedGroupDescription = '';
+  selectedGroupLogo = '';
 
   constructor(private router: Router,  private groupsService: GroupsService) {
   }

@@ -1,30 +1,21 @@
-<div>
-  <div class="default-container menu-container">
-    <app-event-operations></app-event-operations>
-  </div>
-  <div class="default-container content-container">
-    <div class="content-card">
-      <div class="listEvents">
-        <ul style="list-style: none;padding-inline-start: 0px;margin:0;">
-          <li class="listEventsItem" *ngFor="let event of events">
-            <button (click)="selectEvent(event)" [type]="selectedEvent== event ? 'selected' : null">{{event.name}}</button>
-          </li>
-        </ul>
-      </div>
-      <div class="eventJoinDetails" [hidden]="!selectedEvent">
-        <label>Name: </label>
-        <p>{{selectedEventName}}</p>
-        <label>Sport: </label>
-        <p>{{selectedEventSport}}</p>
-        <label>Skill: </label>
-        <p>{{selectedEventSkill}}</p>
-        <label>Number of participants: </label>
-        <p>{{selectedEventNrParticipants}}</p>
-        <label>Price: </label>
-        <p>{{selectedEventPrice}}</p>
-        <label>Description: </label>
-        <p>{{selectedEventDescription}}</p>
-      </div>
-    </div>
-  </div>
+<div class="listEvents">
+  <ul style="list-style: none;padding-inline-start: 0px;margin:0;">
+    <li class="listEventsItem" *ngFor="let event of events">
+      <button (click)="selectEvent(event)" [type]="selectedEvent== event ? 'selected' : null">{{event.name}}</button>
+    </li>
+  </ul>
+</div>
+<div class="eventJoinDetails" [hidden]="!selectedEvent">
+  <label>Name: </label>
+  <p>{{selectedEventName}}</p>
+  <label>Sport: </label>
+  <p>{{selectedEventSport}}</p>
+  <label>Skill: </label>
+  <p>{{selectedEventSkill}}</p>
+  <label>Number of participants: </label>
+  <p>{{selectedEventNrParticipants}}</p>
+  <label>Price: </label>
+  <p>{{selectedEventPrice}}</p>
+  <label>Description: </label>
+  <p>{{selectedEventDescription}}</p>
 </div>

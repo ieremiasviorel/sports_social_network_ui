@@ -53,7 +53,7 @@ export class GroupCreateComponent implements OnInit {
     this.fileToUpload = file.item(0);
 
     // Show image preview
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
     };

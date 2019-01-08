@@ -1,70 +1,61 @@
-<div>
-  <div class="default-container menu-container">
-    <app-event-operations></app-event-operations>
-  </div>
-  <div class="default-container content-container">
-    <div class="content-card">
-      <div class="joinEvent">
-        <div class="joinEventSearch">
-          <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
-          <div class="listSearches">
-            <ul style="list-style: none;padding-inline-start: 0px;height:30px;margin: 0;">
-              <li class="listSearchItem" *ngFor="let search of searched">
-                <button (click)="deleteSearch(search)">{{search}}</button>
-              </li>
-            </ul>
-          </div>
-          <div class="listEvents">
-            <ul style="list-style: none;padding-inline-start: 0px;margin:0;">
-              <li class="listEventsItem" *ngFor="let event of events">
-                <button (click)="selectEvent(event)" [type]="selectedEvent== event ? 'selected' : null">{{event.name}}</button>
-              </li>
-            </ul>
-          </div>
-          <button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
-        </div>
-
-        <div class="eventJoinDetails" [hidden]="!selectedEvent">
-          <label>Name: </label>
-          <p>{{selectedEventName}}</p>
-          <label>Sport: </label>
-          <p>{{selectedEventSport}}</p>
-          <label>Skill: </label>
-          <p>{{selectedEventSkill}}</p>
-          <label>Number of participants: </label>
-          <p>{{selectedEventNrParticipants}}</p>
-          <label>Price: </label>
-          <p>{{selectedEventPrice}}</p>
-          <label>Description: </label>
-          <p>{{selectedEventDescription}}</p>
-        </div>
-
-        <div class="joinEventPref">
-          <h2>PREFERENCES</h2>
-          <mat-form-field>
-            <mat-select [(ngModel)]="prefSport" placeholder="Sport">
-              <mat-option *ngFor="let sport of SPORTS" [value]="sport">{{ sport }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <mat-select [(ngModel)]="prefSkill" placeholder="Skill level">
-              <mat-option #prefSkill *ngFor="let skill_level of SKILL_LEVELS" [value]="skill_level">{{ skill_level }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br>
-          Price:
-          <mat-slider #prefPrice class="Price" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
-            tickInterval="5"></mat-slider>
-          <br>
-          Participants:
-          <mat-slider #prefPart class="participants" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
-            tickInterval="5"></mat-slider>
-          <br>
-          <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
-            filters</button>
-        </div>
-      </div>
+<div class="joinEvent">
+  <div class="joinEventSearch">
+    <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
+    <div class="listSearches">
+      <ul style="list-style: none;padding-inline-start: 0px;height:30px;margin: 0;">
+        <li class="listSearchItem" *ngFor="let search of searched">
+          <button (click)="deleteSearch(search)">{{search}}</button>
+        </li>
+      </ul>
     </div>
+    <div class="listEvents">
+      <ul style="list-style: none;padding-inline-start: 0px;margin:0;">
+        <li class="listEventsItem" *ngFor="let event of events">
+          <button (click)="selectEvent(event)" [type]="selectedEvent== event ? 'selected' : null">{{event.name}}</button>
+        </li>
+      </ul>
+    </div>
+    <button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
+  </div>
+
+  <div class="eventJoinDetails" [hidden]="!selectedEvent">
+    <label>Name: </label>
+    <p>{{selectedEventName}}</p>
+    <label>Sport: </label>
+    <p>{{selectedEventSport}}</p>
+    <label>Skill: </label>
+    <p>{{selectedEventSkill}}</p>
+    <label>Number of participants: </label>
+    <p>{{selectedEventNrParticipants}}</p>
+    <label>Price: </label>
+    <p>{{selectedEventPrice}}</p>
+    <label>Description: </label>
+    <p>{{selectedEventDescription}}</p>
+  </div>
+
+  <div class="joinEventPref">
+    <h2>PREFERENCES</h2>
+    <mat-form-field>
+      <mat-select [(ngModel)]="prefSport" placeholder="Sport">
+        <mat-option *ngFor="let sport of SPORTS" [value]="sport">{{ sport }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select [(ngModel)]="prefSkill" placeholder="Skill level">
+        <mat-option #prefSkill *ngFor="let skill_level of SKILL_LEVELS" [value]="skill_level">{{ skill_level }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    Price:
+    <mat-slider #prefPrice class="Price" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+      tickInterval="5"></mat-slider>
+    <br>
+    Participants:
+    <mat-slider #prefPart class="participants" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+      tickInterval="5"></mat-slider>
+    <br>
+    <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
+      filters</button>
   </div>
 </div>

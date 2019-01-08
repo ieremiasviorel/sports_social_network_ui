@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { EventsComponent } from './events/events.component';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupCreateComponent } from './group-create/group-create.component';
 import { EventCreateComponent } from './event-create/event-create.component';
@@ -10,6 +9,7 @@ import { EventRemindersComponent } from './event-reminders/event-reminders.compo
 import { ProfilePreferencesComponent } from './profile-preferences/profile-preferences.component';
 import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 import { EventUserComponent } from './event-user/event-user.component';
+import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
 
 const routes: Routes = [
   {
@@ -18,24 +18,51 @@ const routes: Routes = [
   },
   {
     path: 'events',
-    component: EventsComponent
+    component: EventsMainContainerComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'join'
+      },
+      {
+        path: 'join',
+        component: EventJoinComponent
+      },
+      {
+        path: 'user',
+        component: EventUserComponent
+      },
+      {
+        path: 'create',
+        component: EventCreateComponent
+      },
+      {
+        path: 'reminders',
+        component: EventRemindersComponent
+      }
+    ]
   },
-  {
-    path: 'event-join',
-    component: EventJoinComponent
-  },
-  {
-    path: 'event-user',
-    component: EventUserComponent
-  },
-  {
-    path: 'event-create',
-    component: EventCreateComponent
-  },
-  {
-    path: 'event-reminders',
-    component: EventRemindersComponent
-  },
+  /*  {
+     path: 'events',
+     component: EventsComponent
+   },
+   {
+     path: 'event-join',
+     component: EventJoinComponent
+   },
+   {
+     path: 'event-user',
+     component: EventUserComponent
+   },
+   {
+     path: 'event-create',
+     component: EventCreateComponent
+   },
+   {
+     path: 'event-reminders',
+     component: EventRemindersComponent
+   }, */
   {
     path: 'groups',
     component: GroupsComponent

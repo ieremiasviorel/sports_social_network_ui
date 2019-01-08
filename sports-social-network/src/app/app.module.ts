@@ -41,6 +41,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { EventUserComponent } from './event-user/event-user.component';
 import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
+import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
     SideMenuComponent,
     EventUserComponent,
     JoinQuizzComponent,
-    QuizzDialogComponent
+    QuizzDialogComponent,
+    EventsMainContainerComponent
   ],
   entryComponents: [
     QuizzDialogComponent
