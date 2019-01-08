@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-const SPORTS = [
-  'Fotbal', 'Baschet', 'Rugby', 'Volei', 'Tenis'
-];
-
-const SKILL = [
-  'Beginner', 'Intermediate', 'Advanced'
-];
+import {EventsService} from '../services/events.service';
+import { SPORTS, SKILL_LEVELS } from '../constants';
+import {Router} from '@angular/router';
+import { Event } from '../models/event';
 
 const TYPE = [
   'Public', 'Private'
@@ -20,23 +16,31 @@ const TYPE = [
 export class EventCreateComponent implements OnInit {
   eventNamePlaceholer = 'Type name of the event';
   sports = SPORTS;
-  skill = SKILL;
+  skill = SKILL_LEVELS;
   type = TYPE;
 
   latitude: 46.7712;
   longitude: 23.6236;
 
   onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType) {
-    console.log('Create clicked');
-    console.log(eventName.value);
-    console.log(eventNrPart.value);
+    const createdEvent: Event = new Event();
+    createdEvent.name = eventName.value;
+    createdEvent.category = eventSport.value;
+    createdEvent.skill = eventSkill.value;
+    createdEvent.participants = eventNrPart.value;
+    createdEvent.price = eventPrice.value;
+    createdEvent.description = eventAdditionalInfo.value;
+
+    this.eventsService.joinEvent(createdEvent);
+    this.router.navigateByUrl('/event-user');
   }
 
   onCancel() {
     console.log('Cancel clicked');
   }
 
-  constructor() { }
+  constructor(private router: Router,
+    private eventsService: EventsService) { }
 
   ngOnInit() {
   }
