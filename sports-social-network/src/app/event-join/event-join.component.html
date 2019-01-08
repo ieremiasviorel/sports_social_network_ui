@@ -1,13 +1,21 @@
 <div class="joinEvent">
   <div class="joinEventSearch">
-    <input #eventSearch class="searchEvent" placeholder="Search" (keydown)="onEnter($event, eventSearch)">
-    <div class="listSearches">
-      <ul style="list-style: none;padding-inline-start: 0px;height:30px;margin: 0;">
-        <li class="listSearchItem" *ngFor="let search of searched">
-          <button (click)="deleteSearch(search)">{{search}}</button>
-        </li>
-      </ul>
-    </div>
+    <mat-form-field>
+      <mat-chip-list #chipList>
+        <mat-chip color="primary" *ngFor="let sport of userPreferredSports" [selectable]="true" [removable]="true"
+          (removed)="removePreferredSport(sport)">
+          {{ sport }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+      <input [formControl]="preferenceControl" placeholder="Search by name..." #PreferenceInput [matAutocomplete]="auto"
+        [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addPreferredSport($event)">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedPreferredSport($event)">
+        <mat-option *ngFor="let sport of FILTERED_SPORTS_LIST | async" [value]="sport">
+          {{ sport }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
     <div class="listEvents">
       <ul style="list-style: none;padding-inline-start: 0px;margin:0;">
         <li class="listEventsItem" *ngFor="let event of events">

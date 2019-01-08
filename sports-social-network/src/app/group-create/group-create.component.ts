@@ -2,16 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import { GroupsService } from '../services/groups.service';
 import { Group } from '../models/group';
-import {HttpClient} from '@angular/common/http';
-
-const TYPE = [
-  'Public', 'Private'
-];
-
-const SPORTS = [
-  'Fotbal', 'Baschet', 'Rugby', 'Volei', 'Tenis'
-];
-
+import {Router} from '@angular/router';
+import { SPORTS, TYPE } from '../constants';
 
 @Component({
   selector: 'app-group-create',
@@ -25,8 +17,6 @@ export class GroupCreateComponent implements OnInit {
   type = TYPE;
   sports = SPORTS;
 
-  selectedImage = null;
-
   onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers) {
     const groupToCreate: Group = new Group();
     groupToCreate.name = groupName.value;
@@ -34,16 +24,15 @@ export class GroupCreateComponent implements OnInit {
     groupToCreate.category = groupSport.value;
     groupToCreate.type = groupType.value;
     groupToCreate.numberMembers = groupMaxMembers.value;
-    groupToCreate.logo = this.fileToUpload.name;
-    // this.yourGroups$ = this.groupsService.createGroup(groupToCreate);
-    console.log('Create clicked');
-    console.log(this.yourGroups$);
+    groupToCreate.logo = '../../assets/images/' + this.fileToUpload.name;
+    this.groupsService.createGroup(groupToCreate);
+    this.router.navigateByUrl('/groups');
   }
 
   onCancel() {
     console.log('Cancel clicked');
   }
-  constructor(private groupsService: GroupsService, private http: HttpClient) { }
+  constructor(private router: Router, private groupsService: GroupsService) { }
 
   ngOnInit() {
     this.yourGroups$ = this.groupsService.getAllGroups();
