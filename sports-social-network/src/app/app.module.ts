@@ -42,6 +42,7 @@ import { EventUserComponent } from './event-user/event-user.component';
 import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
 import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { EventsMainContainerComponent } from './events-main-container/events-mai
     HomeComponent,
     EventsComponent,
     HeaderComponent,
+    LoginDialogComponent,
     GroupsComponent,
     GroupCreateComponent,
     EventCreateComponent,
@@ -63,6 +65,7 @@ import { EventsMainContainerComponent } from './events-main-container/events-mai
     EventsMainContainerComponent
   ],
   entryComponents: [
+    LoginDialogComponent,
     QuizzDialogComponent
   ],
   imports: [

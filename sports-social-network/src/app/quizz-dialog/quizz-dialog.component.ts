@@ -9,8 +9,10 @@ import { MatDialogRef } from '@angular/material';
 })
 export class QuizzDialogComponent implements OnInit {
 
-  constructor(private router: Router,
-    private dialogRef: MatDialogRef<QuizzDialogComponent>, ) { }
+  constructor(
+    private router: Router,
+    private dialogRef: MatDialogRef<QuizzDialogComponent>
+  ) { }
 
   ngOnInit() {
   }

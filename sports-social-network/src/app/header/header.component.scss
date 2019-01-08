@@ -12,11 +12,16 @@ $navbar-height: 80px;
 
   .menu-area {
     float: left;
+    margin: 0 10px;
   }
 
   .user-details-area {
     float: right;
     line-height: $navbar-height;
+    button {
+      margin: 0 10px;
+      font-size: 20px;
+    }
   }
 }
 
