@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -9,25 +10,27 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   USER_MENUS = [
-    {name: 'HOME', url: '/'},
-    {name: 'EVENTS', url: '/events'},
-    {name: 'GROUPS', url: '/groups'},
-    {name: 'PROFILE', url: '/profile'},
-    ];
+    { name: 'HOME', url: '/' },
+    { name: 'EVENTS', url: '/events' },
+    { name: 'GROUPS', url: '/groups' },
+    { name: 'PROFILE', url: '/profile' },
+  ];
 
-  selectedMenu: string = this.USER_MENUS[0].name;
+  selectedMenu: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter(ev => ev instanceof NavigationStart))
+      .subscribe((ev: NavigationStart) => {
+        this.selectedMenu = this.USER_MENUS.find(menu => menu.url.indexOf(ev.url.split('/')[1]) > -1).name;
+      });
+  }
 
   ngOnInit() {
   }
 
   selectMenu(selectedMenu: string): void {
     this.selectedMenu = selectedMenu;
-    for (let i = 0; i < this.USER_MENUS.length; i++) {
-      if (selectedMenu === this.USER_MENUS[i].name) {
-        this.router.navigateByUrl(this.USER_MENUS[i].url);
-      }
-    }
+    this.router.navigate([this.USER_MENUS.find(menu => menu.name === selectedMenu).url]);
   }
 }
