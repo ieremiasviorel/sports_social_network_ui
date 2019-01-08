@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';
 import { SPORTS, SKILL_LEVELS } from '../constants';
-
-const EVENT_OPERATIONS = [
-  { name: 'Join Event', url: '/event-join' },
-  { name: 'My Own Events', url: '/event-user' },
-  { name: 'Create Event', url: '/event-create' },
-  { name: 'Past Events', url: '/event-join' },
-  { name: 'Send Invitation', url: '/event-join' },
-  { name: 'Recent Events', url: '/event-join' }
-];
+import {Observable} from 'rxjs';
+import {FormControl} from '@angular/forms';
+import {map, startWith} from 'rxjs/operators';
+import {MatAutocomplete, MatAutocompleteSelectedEvent, MatChipInputEvent} from '@angular/material';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-event-join',
@@ -23,7 +19,6 @@ export class EventJoinComponent implements OnInit {
   SPORTS = SPORTS;
   SKILL_LEVELS = SKILL_LEVELS;
 
-  menuOptions: string[] = EVENT_OPERATIONS.map(eventOperation => eventOperation.name);
 
   events: Event[];
   originalEventsList: Event[];
@@ -42,10 +37,70 @@ export class EventJoinComponent implements OnInit {
   selectedEventPrice: any;
   selectedEventDescription: any;
 
+  SPORTS_LIST: string[] = ['Tennis', 'Running', 'Climbing', 'Badminton', 'Yoga', 'Volleyball'];
+  FILTERED_SPORTS_LIST: Observable<string[]>;
+
+  userPreferredSports: string[] = [];
+  preferenceControl = new FormControl();
+  @ViewChild('PreferenceInput') preferenceInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+
   constructor(
     private router: Router,
     private eventsService: EventsService
-  ) { }
+  ) {
+    this.FILTERED_SPORTS_LIST = this.preferenceControl.valueChanges.pipe(
+      startWith(null),
+      map((sport: string | null) => sport ? this._filter(sport) : this.SPORTS_LIST));
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.SPORTS_LIST.filter(sport => sport.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  removePreferredSport(sportToRemove: string): void {
+    this.userPreferredSports = this.userPreferredSports
+      .filter(sportPreference => sportPreference !== sportToRemove);
+    this.SPORTS_LIST.push(sportToRemove);
+    this.events = this.originalEventsList;
+    if (this.userPreferredSports) {
+      for (let i = 0; i < this.userPreferredSports.length; i++) {
+        this.events = this.events.filter(ev => ev.name.toLowerCase().includes(this.userPreferredSports[i].toLowerCase()));
+      }
+    }
+    this.preferenceControl.setValue('');
+  }
+
+  addPreferredSport(event: MatChipInputEvent): void {
+    if (!this.matAutocomplete.isOpen) {
+      const input = event.input;
+      const value = event.value;
+
+      if ((value || '').trim()) {
+        this.userPreferredSports.push(value.trim());
+        this.SPORTS_LIST = this.SPORTS_LIST.filter(s => s !== value);
+        this.preferenceControl.setValue('');
+
+        this.events = this.events.filter(ev => ev.name.toLowerCase().includes(value.toLowerCase()));
+      }
+
+      if (input) {
+        input.value = '';
+      }
+    }
+  }
+
+  selectedPreferredSport(event: MatAutocompleteSelectedEvent): void {
+    const sportToAdd = event.option.value;
+    this.userPreferredSports.push(sportToAdd);
+    this.preferenceInput.nativeElement.value = '';
+    this.SPORTS_LIST = this.SPORTS_LIST.filter(s => s !== sportToAdd);
+    this.preferenceControl.setValue('');
+
+    this.events = this.events.filter(ev => ev.name.toLowerCase().includes(sportToAdd.toLowerCase()));
+  }
 
   ngOnInit() {
     this.eventsService.getAllEvents().subscribe(events => {
@@ -84,22 +139,11 @@ export class EventJoinComponent implements OnInit {
     if (event.keyCode === 13) {
       this.searched.push(search.value);
       if (this.SPORTS.indexOf(search.value) > 0) {
-        this.events = this.events.filter(ev => ev.category === search.value);
+
       }
       search.value = '';
       console.log(search.value);
     }
-  }
-
-  filter() {
-    for (let i = 0; i < this.events.length; i++) {
-      for (let j = 0; j < this.searched.length; j++) {
-        if (this.SPORTS.indexOf(this.searched[j]) > 0) {
-          this.events.splice(i, 1);
-        }
-      }
-    }
-
   }
 
   deleteSearch(search) {
@@ -127,26 +171,5 @@ export class EventJoinComponent implements OnInit {
     if (this.prefParticipantsNr) {
       this.events = this.events.filter(ev => ev.participants < this.prefParticipantsNr);
     }
-  }
-
-  selectedSkill(value: any) {
-    this.prefSkill = value;
-  }
-
-  selectedSport(value: any) {
-    this.prefSport = value;
-  }
-
-  slidePrice(value: any) {
-    this.prefPrice = value;
-  }
-
-  slideParticipants(value: number) {
-    this.prefParticipantsNr = value;
-  }
-
-  selectedMenuChanged(selectedMenuOption: string) {
-    const urlToNavigate: string = EVENT_OPERATIONS.find(menuOption => menuOption.name === selectedMenuOption).url;
-    this.router.navigate([urlToNavigate]);
   }
 }

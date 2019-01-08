@@ -16,3 +16,8 @@ export const SKILL_LEVELS = [
     'INTERMEDIATE',
     'ADVANCED'
 ];
+
+export const TYPE = [
+  'PUBLIC', 'PRIVATE'
+];
+

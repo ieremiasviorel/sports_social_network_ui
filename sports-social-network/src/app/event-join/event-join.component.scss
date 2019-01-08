@@ -30,27 +30,7 @@
     width: 30%;
     float: left;
     margin: 20px;
-
-    .listSearches {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      height: 30px;
-
-      .listSearchItem {
-        float: left;
-        margin: 10px;
-
-        button {
-          display: inline-block;
-          color: black;
-          background-color: transparentize(#ffffff, 0.5);
-          text-align: center;
-          text-decoration: none;
-        }
-      }
-    }
+    margin-bottom: 0;
 
     .searchEvent {
       margin: 20px;
