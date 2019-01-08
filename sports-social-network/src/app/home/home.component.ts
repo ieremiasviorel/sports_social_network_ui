@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import {Router} from '@angular/router';
 
 import { EventsService } from '../services/events.service';
 import { Event } from '../models/event';

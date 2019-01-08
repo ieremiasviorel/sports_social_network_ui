@@ -43,26 +43,6 @@ const routes: Routes = [
       }
     ]
   },
-  /*  {
-     path: 'events',
-     component: EventsComponent
-   },
-   {
-     path: 'event-join',
-     component: EventJoinComponent
-   },
-   {
-     path: 'event-user',
-     component: EventUserComponent
-   },
-   {
-     path: 'event-create',
-     component: EventCreateComponent
-   },
-   {
-     path: 'event-reminders',
-     component: EventRemindersComponent
-   }, */
   {
     path: 'groups',
     component: GroupsComponent
@@ -81,7 +61,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/profile/preferences'
+        redirectTo: 'preferences'
       },
       {
         path: 'preferences',

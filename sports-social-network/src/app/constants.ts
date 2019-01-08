@@ -18,6 +18,12 @@ export const SKILL_LEVELS = [
 ];
 
 export const TYPE = [
-  'PUBLIC', 'PRIVATE'
+    'PUBLIC',
+    'PRIVATE'
 ];
 
+export const QUIZZ_DIFFICULTY_LEVELS = [
+    'EASY',
+    'MEDIUM',
+    'HARD'
+];
