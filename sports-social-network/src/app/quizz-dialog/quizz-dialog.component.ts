@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-quizz-dialog',
@@ -9,14 +9,17 @@ import { MatDialogRef } from '@angular/material';
 })
 export class QuizzDialogComponent implements OnInit {
 
-  constructor(
-    private router: Router,
-    private dialogRef: MatDialogRef<QuizzDialogComponent>
-  ) { }
+ 
+  correct : string;
 
+  constructor(private router: Router,
+    private dialogRef: MatDialogRef<QuizzDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data
+     ) { }
+   
   ngOnInit() {
+    this.correct=this.data.correctAnswers;
   }
-
   goHome() {
     this.router.navigateByUrl('/');
     this.dialogRef.close();
