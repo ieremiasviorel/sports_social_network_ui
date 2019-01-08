@@ -18,7 +18,7 @@
     <mat-error *ngIf="quizzControl.hasError('required')">You must make a selection</mat-error>
   </mat-form-field>
   <br>
-  <button mat-stroked-button [disabled]="!quizzControl.valid || !diffControl.valid" (click)="startQuizz(sport)">
+  <button mat-stroked-button [disabled]="!quizzControl.valid || !diffControl.valid" (click)="startQuizz()">
     Start Quizz
   </button>
 </div>
