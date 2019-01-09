@@ -54,3 +54,46 @@
     line-height: inherit;
     cursor: pointer;
 }
+
+.events-window{
+    float:right;
+    width: 400px;
+}
+
+.events-information{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    background-color: rgba($primary, 0.7);
+    
+}
+
+.selected-events-information{
+    border: 5px solid;
+}
+
+.list-button{
+    padding: 0 5px;
+    min-width: 20%;
+    margin-left: 2%;
+    padding: 0px;
+    
+}
+.button-container{
+    background-color:  rgba($disable, 0.7);;
+    display: flex;
+    justify-content: center;
+}
+
+.list-button{
+    background-color: $disable;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+.invited{
+    width: 33%;
+    margin-left: 5%;
+    font-style: italic;
+}
+
