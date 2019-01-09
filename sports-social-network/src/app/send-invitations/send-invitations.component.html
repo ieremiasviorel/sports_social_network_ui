@@ -1,0 +1,22 @@
+<div class="friends-window" *ngIf="friends$ | async as friends">
+  <div class="friends-header">
+    <span><b>Friends</b></span>
+    <a class="friends-close-button" id="ChatMoreOptions">Options</a>
+  </div>
+   <div class="friend-box">
+      <ul class="friend-container"  *ngFor="let friend of friends">
+        <li class="information-container">
+            <img src="https://www.infrascan.net/demo/assets/img/avatar5.png" width="60px" class="img-circle">
+        </li>
+        <li class="information-container">
+          <p >{{friend.name}}</p>
+          <p>{{friend.rating}} stars</p>
+          <p>{{friend.events}} events</p>
+        </li>
+        <li class="information-container">
+            <mat-checkbox>Invite</mat-checkbox>
+        </li>
+        <hr>
+      </ul>
+  </div>
+</div>

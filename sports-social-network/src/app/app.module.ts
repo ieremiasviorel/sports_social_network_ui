@@ -43,6 +43,7 @@ import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
 import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     EventUserComponent,
     JoinQuizzComponent,
     QuizzDialogComponent,
-    EventsMainContainerComponent
+    EventsMainContainerComponent,
+    SendInvitationsComponent
   ],
   entryComponents: [
     LoginDialogComponent,

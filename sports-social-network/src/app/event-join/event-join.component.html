@@ -23,7 +23,7 @@
         </li>
       </ul>
     </div>
-    <button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
+    <button mat-stroked-button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
   </div>
 
   <div class="eventJoinDetails" [hidden]="!selectedEvent">
@@ -63,7 +63,7 @@
     <mat-slider [(ngModel)]="prefPart" class="participants" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
       tickInterval="5"></mat-slider>
     <br>
-    <button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
+    <button mat-stroked-button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
       filters</button>
   </div>
 </div>
