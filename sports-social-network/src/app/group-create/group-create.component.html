@@ -1,7 +1,11 @@
 <div class="groupDiv">
-  <form class="form-createGroup" name="form" #f="ngForm"
+  <form class="form-createGroup" name="form" #f="ngForm" style="padding: 20px;"
         (ngSubmit)="f.form.valid && onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">
-    <p>Name of the group:</p>
+    <img [src]="imageUrl" style="width:100px;height:100px;">
+    <br>
+    <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+    <br>
+    <p>Name of the group*:</p>
     <input type="text"
            name="groupName" [(ngModel)]="model.groupName" #groupName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && groupName.invalid }"
            required minlength="4" placeholder="Type name of the group">
@@ -19,27 +23,37 @@
     <br>
 
     <br>
-    <p>Sport:</p>
-    <select #groupSport>
-      <option *ngFor="let sport of sports" >{{sport}}</option>
-    </select>
+    <mat-form-field>
+      <mat-select required name="groupSport" [(ngModel)]="model.groupSport" #groupSport="ngModel" placeholder="Sport"
+                  [ngClass]="{ 'is-invalid': f.submitted && groupSport.invalid }">
+        <mat-option *ngFor="let sport of sports" [value]="sport">{{ sport }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="(groupSport.touched || f.submitted) && groupSport.invalid" style="color: red;font-size: small;">
+      <div *ngIf="groupSport?.errors.required">
+        You must provide the sport for the group.
+      </div>
+    </div>
     <br>
 
-    <p>Type:</p>
-    <select #groupType>
-      <option *ngFor="let t of type" >{{t}}</option>
-    </select>
+    <mat-form-field>
+      <mat-select required name="groupType" [(ngModel)]="model.groupType" #groupType="ngModel" placeholder="Type"
+                  [ngClass]="{ 'is-invalid': f.submitted && groupType.invalid }">
+        <mat-option *ngFor="let t of type" [value]="t">{{ t }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="(groupType.touched || f.submitted) && groupType.invalid" style="color: red;font-size: small;">
+      <div *ngIf="groupType?.errors.required">
+        You must provide the type of the group.
+      </div>
+    </div>
     <br>
 
     <br>
     Maximum number of members:
     <mat-slider #groupMaxMembers class="maxMembers" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
-
     <br>
-    <img [src]="imageUrl" style="width:100px;height:100px">
-    <br>
-    <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
-
+    
     <button type="button" class="btn-cancelGroup" (click)="onCancel()">CANCEL</button>
     <!--[disabled]="Image.value==''"-->
     <button type="submit" class="btn-createGroup">CREATE</button>

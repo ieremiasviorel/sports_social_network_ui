@@ -31,10 +31,13 @@ export class EventCreateComponent implements OnInit {
     createdEvent.name = eventName.value;
     createdEvent.category = eventSport.value;
     createdEvent.skill = eventSkill.value;
-    createdEvent.participants = eventNrPart.value;
-    createdEvent.price = eventPrice.value;
-    createdEvent.description = eventAdditionalInfo.value;
     createdEvent.type = eventType.value;
+    createdEvent.participants = eventNrPart.value;
+    if (eventPrice.value === '')
+      createdEvent.price = 0;
+    else
+      createdEvent.price = eventPrice.value;
+    createdEvent.description = eventAdditionalInfo.value;
 
     this.eventsService.joinEvent(createdEvent);
     this.router.navigateByUrl('/events/user');

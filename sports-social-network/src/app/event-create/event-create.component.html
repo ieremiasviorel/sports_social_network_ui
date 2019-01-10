@@ -2,7 +2,7 @@
   <form name="form" #f="ngForm" class="form-createEvent"
         (ngSubmit)="f.form.valid && onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType)">
     <h2>Create your Own Event</h2>
-    <p>Name of the event:</p>
+    <p>Name of the event*:</p>
     <input type="text"
       name="eventName" [(ngModel)]="model.eventName" #eventName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eventName.invalid }"
       required minlength="4" placeholder="Type name of the event">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <br>
-    <p>Number of participants:</p>
+    <p>Number of participants*:</p>
     <input type="number"
            name="eventNrPart" [(ngModel)]="model.eventNrPart" #eventNrPart="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eventNrPart.invalid }"
            required placeholder="Insert a positive number of required participants">
@@ -29,7 +29,7 @@
     <p>Price:</p>
     <input type="number" #eventPrice placeholder="Insert a positive price">
     <br>
-    <p>Address:</p>
+    <p>Address*:</p>
     <input name="eventAddress" [(ngModel)]="model.eventAddress" #eventAddress="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eventAddress.invalid }"
        required minlength="10" placeholder="Type the address of the event">
     <div *ngIf="(eventAddress.touched || f.submitted) && eventAddress.invalid" style="color: red;font-size: small;">
@@ -43,22 +43,43 @@
     <br>
 
     <br>
-    <p>Sport:</p>
-    <select #eventSport>
-      <option *ngFor="let sport of sports">{{sport}}</option>
-    </select>
+    <mat-form-field>
+      <mat-select required name="eventSport" [(ngModel)]="model.eventSport" #eventSport="ngModel" placeholder="Sport"
+                  [ngClass]="{ 'is-invalid': f.submitted && eventSport.invalid }">
+        <mat-option *ngFor="let sport of sports" [value]="sport">{{ sport }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="(eventSport.touched || f.submitted) && eventSport.invalid" style="color: red;font-size: small;">
+      <div *ngIf="eventSport?.errors.required">
+        You must provide the sport for the event.
+      </div>
+    </div>
     <br>
 
-    <p>Skill:</p>
-    <select #eventSkill>
-      <option *ngFor="let s of skill">{{s}}</option>
-    </select>
+    <mat-form-field>
+      <mat-select required name="eventSkill" [(ngModel)]="model.eventSkill" #eventSkill="ngModel" placeholder="Skill level"
+                  [ngClass]="{ 'is-invalid': f.submitted && eventSkill.invalid }">
+        <mat-option  *ngFor="let skill_level of skill" [value]="skill_level">{{ skill_level }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="(eventSkill.touched || f.submitted) && eventSkill.invalid" style="color: red;font-size: small;">
+      <div *ngIf="eventSkill?.errors.required">
+        You must provide the skill level for the event.
+      </div>
+    </div>
     <br>
 
-    <p>Type:</p>
-    <select #eventType>
-      <option *ngFor="let t of type">{{t}}</option>
-    </select>
+    <mat-form-field>
+      <mat-select required name="eventType" [(ngModel)]="model.eventType" #eventType="ngModel" placeholder="Type"
+                  [ngClass]="{ 'is-invalid': f.submitted && eventType.invalid }">
+        <mat-option *ngFor="let t of type" [value]="t">{{ t }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="(eventType.touched || f.submitted) && eventType.invalid" style="color: red;font-size: small;">
+      <div *ngIf="eventType?.errors.required">
+        You must provide the type of the event.
+      </div>
+    </div>
     <br>
     <agm-map [latitude]="latitude" [longitude]="longitude"></agm-map>
     <button class="btn-createEvent">CREATE</button>
