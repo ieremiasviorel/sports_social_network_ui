@@ -8,7 +8,7 @@
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
       </mat-chip-list>
-      <input [formControl]="preferenceControl" placeholder="Search by name..." #PreferenceInput [matAutocomplete]="auto"
+      <input [formControl]="preferenceControl" placeholder="Search from preferences..." #PreferenceInput [matAutocomplete]="auto"
         [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addPreferredSport($event)">
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedPreferredSport($event)">
         <mat-option *ngFor="let sport of FILTERED_SPORTS_LIST | async" [value]="sport">

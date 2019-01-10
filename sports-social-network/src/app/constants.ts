@@ -4,11 +4,13 @@ export const SPORTS = [
     'BASKETBALL',
     'BOWLING',
     'CHESS',
+    'CYCLING',
     'FOOTBALL',
     'HANDBALL',
+    'RUNNING',
     'TABLE TENNIS',
     'TENNIS',
-    'VEOLLEYBALL'
+    'VOLLEYBALL'
 ];
 
 export const SKILL_LEVELS = [
