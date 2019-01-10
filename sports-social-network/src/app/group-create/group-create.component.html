@@ -1,37 +1,29 @@
 <div class="groupDiv">
   <form class="form-createGroup">
-    <p>Name of the group:</p>
-    <input #groupName placeholder="Type name of the group">
+    <mat-form-field class="input-item">
+      <input matInput placeholder="Group Name">
+    </mat-form-field>
     <br>
-    <p>Description:</p>
-    <input #groupDescription placeholder="Type description of the group">
+    <mat-form-field class="input-item">
+      <mat-select placeholder="Pick a sport">
+        <mat-option *ngFor="let sport of sports" value="sport">
+          {{sport}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <br>
-
+    <mat-form-field class="input-item">
+      <mat-select placeholder="Privacy">
+        <mat-option *ngFor="let t of type" value="sport">
+          {{t}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <br>
-    <p>Sport:</p>
-    <select #groupSport>
-      <option *ngFor="let sport of sports" >{{sport}}</option>
-    </select>
+    <mat-form-field class="input-item">
+      <input matInput placeholder="Max Members">
+    </mat-form-field>
     <br>
-
-    <p>Type:</p>
-    <select #groupType>
-      <option *ngFor="let t of type" >{{t}}</option>
-    </select>
-    <br>
-
-    <br>
-    Maximum number of members:
-    <mat-slider #groupMaxMembers class="maxMembers" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
-
-    <br>
-    <img [src]="imageUrl" style="width:100px;height:100px">
-    <br>
-    <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
-
-    <button class="btn-cancelGroup" (click)="onCancel()">CANCEL</button>
-    <button class="btn-createGroup" [disabled]="Image.value==''" (click)="onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">CREATE</button>
-
-
+    <input type="file">
   </form>
 </div>

@@ -1,0 +1,38 @@
+<form class="create-form">
+  <h2 mat-dialog-title>Create Group</h2>
+  <mat-dialog-content>
+    <mat-form-field class="input-item">
+      <input matInput placeholder="Group Name" [(ngModel)]="name" name="nameInput">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="input-item">
+      <mat-select placeholder="Pick a sport" [(ngModel)]="selectedSport" name="sport">
+        <mat-option *ngFor="let sport of sports" [value]="sport">
+          {{sport}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="input-item">
+      <mat-select placeholder="Privacy" [(ngModel)]="selectedPrivacy" name="privacy">
+        <mat-option *ngFor="let t of type" [value]="t">
+          {{t}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="input-item">
+      <input matInput placeholder="Max Members"  [(ngModel)]="members" name="membersInput">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="create-full-width">
+      <textarea matInput placeholder="Description" [(ngModel)]="description" name="descInput"></textarea>
+    </mat-form-field>
+    <br>
+    <input type="file">
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button class="create-button" (click)="createGroup()">Create Group</button>
+    <button mat-raised-button class="cancel-button" (click)="goHome()" color="warn">Cancel</button>
+  </mat-dialog-actions>
+</form>

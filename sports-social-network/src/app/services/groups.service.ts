@@ -12,9 +12,7 @@ export class GroupsService {
 
   newGroups: Array<Group>;
 
-  private yourGroups: Group[];
-
-  constructor(
+    constructor(
     private httpClient: HttpClient
   ) {
     this.newGroups = new Array<Group>();
@@ -22,6 +20,7 @@ export class GroupsService {
 
   public createGroup(g: Group): void {
     this.newGroups.push(g);
+    
   }
 
   public getAllGroups(): Observable<Group[]> {
@@ -31,11 +30,12 @@ export class GroupsService {
 
   public getYourGroups(): Observable<Group[]> {
     const fileUrl = '../../assets/demo-data/groups.json';
+    console.log(this.newGroups);
     return this.httpClient.get<Group[]>(fileUrl)
       .pipe(
       map((groups: Group[]) => { this.newGroups.forEach(g => groups.push(g)); return groups; })
-    );
-  }
+    );}
+    
 
   public getRecommendedGroups(): Observable<Group[]> {
     const fileUrl = '../../assets/demo-data/recGroups.json';

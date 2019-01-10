@@ -1,39 +1,50 @@
-<div class="lists">
-<div class="listRecDiv" *ngIf="recommended$ | async as recommended">
-  <p>RECOMMENDED</p>
-  <div class="listRecommended">
-    <ul  style="list-style: none;">
-      <li class="listRecItem" *ngFor="let rec of recommended">
-        <button (click)="selectGroup(rec)"
-                [type]="selectedGroup == rec.name ? 'selected' : null">{{rec.name}}</button>
-      </li>
-    </ul>
-    </div>
-  </div>
-  <div class="listGroupsDiv">
-    <p>YOUR GROUPS</p>
-    <div class="listYourGroups" *ngIf="yourGroups$ | async as yourGroups">
-      <ul  style="list-style: none;">
-          <li class="listGroupItem" *ngFor="let g of yourGroups">
-            <button (click)="selectGroup(g)"
-                    [type]="selectedGroup == g.name ? 'selected' : null">{{g.name}}</button>
-          </li>
-      </ul>
-    </div>
-  </div>
-  <button class="btn-createGroup" (click)="onCreateGroup()">CREATE GROUP</button>
-</div>
-
-
-
-<div class="groupDetails" [hidden]="!selectedGroup">
-  <label>Name: </label><p>{{selectedGroupName}}</p>
-  <label>Max number of members: </label><p>{{selectedGroupMembers}}</p>
-  <label>Type: </label><p>{{selectedGroupType}}</p>
-  <label>Category: </label><p>{{selectedGroupCategory}}</p>
-  <label>Description: </label><p>{{selectedGroupDescription}}</p>
-  <label>Logo: </label><br>
-  <img style="max-width:100px;max-height:100px" [src]="selectedGroupLogo"/>
+<div class="group-holder" *ngIf="recommended$ | async as recommended">
+  <h2 class="title"> Recommended groups</h2>
+  <mat-card class="group-container" *ngFor="let group of recommended; index as i">
+    <mat-card-header>
+      <mat-card-title>{{ group.name }}</mat-card-title>
+      <mat-card-subtitle>
+        <p>{{ group.category }} </p>
+        <p>{{ group.numberMembers}}/20 members</p>
+      </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content *ngIf="hiddenRecomented[i]" >
+        <div class="details-container">
+          <img mat-card-image class="logo" src="{{ group.logo }}">
+          <p class="group-desc">{{ group.description }}</p>
+        </div>
+        </mat-card-content>
+      <mat-card-actions>
+        <button mat-button class="group-button">Join</button>
+        <button mat-button class="group-button" (click)=displayRecommendedDetails(i)>Show Details</button>
+      </mat-card-actions>
+      </mat-card>
 
 </div>
+
+<div class="group-holder" *ngIf="yourGroups$ | async as yourGroups">
+    <h2 class="title">Your groups</h2>
+    <mat-card class="group-container" *ngFor="let ygroup of yourGroups; index as i">
+      <mat-card-header>
+        <mat-card-title>{{ ygroup.name }}</mat-card-title>
+        <mat-card-subtitle>
+          <p>{{ ygroup.category }} </p>
+          <p>{{ ygroup.numberMembers}}/20 members</p>
+        </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content *ngIf="hiddenYour[i]" >
+          <div class="details-container">
+            <img mat-card-image class="logo" src="{{ ygroup.logo }}">
+            <p class="group-desc">{{ ygroup.description }}</p>
+          </div>
+          </mat-card-content>
+        <mat-card-actions>
+         <button mat-button class="group-button" (click)=displayYourDetails(i)>Show Details</button>
+        </mat-card-actions>
+        </mat-card>
+  
+  </div>
+
+  <button mat-button class="create-btn" (click)="openCreateDialog()">Create Group</button>
+  
 
