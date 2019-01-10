@@ -1,19 +1,30 @@
 <div class="eventDiv">
-  <form class="form-createEvent">
+  <form name="form" #f="ngForm" class="form-createEvent" (ngSubmit)="f.form.valid && onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType)">
+    <h2>Create your Own Event</h2>
     <p>Name of the event:</p>
-    <input #eventName placeholder="{{eventNamePlaceholer}}">
+    <input
+      name="eventName" [(ngModel)]="model.eventName" #eventName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eventName.invalid }"
+      required minlength="4" placeholder="Type name of the event">
+    <div *ngIf="(eventName.touched || f.submitted) && eventName.invalid" style="color: red;font-size: small;">
+      <div *ngIf="eventName?.errors.required ">
+        Name is required.
+      </div>
+      <div *ngIf="eventName?.errors.minlength">
+        Name is too short. Needs at least 4 characters.
+      </div>
+    </div>
     <br>
     <p>Number of participants:</p>
-    <input #eventNrPart placeholder="Type required number of participants">
+    <input #eventNrPart required placeholder="Insert a positive number of required participants">
     <br>
     <p>Price:</p>
-    <input #eventPrice placeholder="Type price">
+    <input #eventPrice required placeholder="Insert a positive price">
     <br>
     <p>Address:</p>
-    <input #eventAddress placeholder="Type address">
+    <input #eventAddress required minlength="10" placeholder="Type the address of the event">
     <br>
     <p>Additional information:</p>
-    <input #eventAdditionalInfo placeholder="Additional information">
+    <input #eventAdditionalInfo placeholder="Insert additional information about the event">
     <br>
 
     <br>
@@ -35,8 +46,7 @@
     </select>
     <br>
     <agm-map [latitude]="latitude" [longitude]="longitude"></agm-map>
-    <button class="btn-createEvent" (click)="onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType)">CREATE</button>
-    <button class="btn-cancelEvent" (click)="onCancel()">CANCEL</button>
+    <button class="btn-createEvent">CREATE</button>
 
   </form>
 </div>

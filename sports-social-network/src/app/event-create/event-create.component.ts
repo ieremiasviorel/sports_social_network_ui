@@ -3,6 +3,7 @@ import {EventsService} from '../services/events.service';
 import { SPORTS, SKILL_LEVELS } from '../constants';
 import {Router} from '@angular/router';
 import { Event } from '../models/event';
+import {isNumber} from 'util';
 
 const TYPE = [
   'Public', 'Private'
@@ -14,7 +15,7 @@ const TYPE = [
   styleUrls: ['./event-create.component.scss']
 })
 export class EventCreateComponent implements OnInit {
-  eventNamePlaceholer = 'Type name of the event';
+  model: any = {};
   sports = SPORTS;
   skill = SKILL_LEVELS;
   type = TYPE;
@@ -23,6 +24,13 @@ export class EventCreateComponent implements OnInit {
   longitude: 23.6236;
 
   onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType) {
+    // if (!isNumber(eventPrice.value)) {
+    //   alert('The price must be a number');
+    // }
+    //
+    // if (!isNumber(eventNrPart.value)) {
+    //   alert('The number of participants must be a number');
+    // }
     const createdEvent: Event = new Event();
     createdEvent.name = eventName.value;
     createdEvent.category = eventSport.value;
@@ -32,11 +40,11 @@ export class EventCreateComponent implements OnInit {
     createdEvent.description = eventAdditionalInfo.value;
 
     this.eventsService.joinEvent(createdEvent);
-    this.router.navigateByUrl('/event-user');
+    this.router.navigateByUrl('/events/user');
   }
 
   onCancel() {
-    console.log('Cancel clicked');
+    this.router.navigateByUrl('/events/join');
   }
 
   constructor(private router: Router,

@@ -1,4 +1,5 @@
 <div class="joinEvent">
+  <h2 style="margin-bottom: 0; ">Choose and join an event</h2>
   <div class="joinEventSearch">
     <mat-form-field>
       <mat-chip-list #chipList>
@@ -16,6 +17,7 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    <br><label>{{searchStatus}}</label>
     <div class="listEvents">
       <ul style="list-style: none;padding-inline-start: 0px;margin:0;">
         <li class="listEventsItem" *ngFor="let event of events">
@@ -24,6 +26,10 @@
       </ul>
     </div>
     <button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
+    <div *ngIf="selectedEvent == null" style="color: red;font-size: small;">
+        {{joinEventStatus}}
+
+    </div>
   </div>
 
   <div class="eventJoinDetails" [hidden]="!selectedEvent">

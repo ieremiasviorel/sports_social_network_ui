@@ -23,6 +23,7 @@ export class EventJoinComponent implements OnInit {
   events: Event[];
   originalEventsList: Event[];
   selectedEvent: null;
+  joinEventStatus: string = '';
 
   prefSport: string;
   prefSkill: string;
@@ -46,6 +47,8 @@ export class EventJoinComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
+  searchStatus: string = '';
+
   constructor(
     private router: Router,
     private eventsService: EventsService
@@ -65,9 +68,13 @@ export class EventJoinComponent implements OnInit {
       .filter(sportPreference => sportPreference !== sportToRemove);
     this.SPORTS_LIST.push(sportToRemove);
     this.events = this.originalEventsList;
+    this.searchStatus = '';
     if (this.userPreferredSports) {
       for (let i = 0; i < this.userPreferredSports.length; i++) {
         this.events = this.events.filter(ev => ev.name.toLowerCase().includes(this.userPreferredSports[i].toLowerCase()));
+        if (this.events.length === 0) {
+          this.searchStatus = 'No events with that name have been found.';
+        }
       }
     }
     this.preferenceControl.setValue('');
@@ -84,6 +91,10 @@ export class EventJoinComponent implements OnInit {
         this.preferenceControl.setValue('');
 
         this.events = this.events.filter(ev => ev.name.toLowerCase().includes(value.toLowerCase()));
+      }
+
+      if (this.events.length === 0) {
+        this.searchStatus = 'No events with that name have been found.';
       }
 
       if (input) {
@@ -122,6 +133,9 @@ export class EventJoinComponent implements OnInit {
     if (this.selectedEvent) {
       this.eventsService.joinEvent(this.selectedEvent);
       this.events = this.events.filter(ev => ev !== this.selectedEvent);
+      this.joinEventStatus = '';
+    } else {
+      this.joinEventStatus = 'You have not chosen an event from the list yet.';
     }
   }
 
@@ -133,6 +147,7 @@ export class EventJoinComponent implements OnInit {
     this.selectedEventNrParticipants = event.participants;
     this.selectedEventPrice = event.price;
     this.selectedEventDescription = event.description;
+    this.joinEventStatus = '';
   }
 
   onEnter(event, search) {
@@ -159,6 +174,7 @@ export class EventJoinComponent implements OnInit {
 
   onApplyFilters() {
     this.events = this.originalEventsList;
+    this.searchStatus = '';
     if (this.prefSport) {
       this.events = this.events.filter(ev => ev.category === this.prefSport);
     }
@@ -170,6 +186,9 @@ export class EventJoinComponent implements OnInit {
     }
     if (this.prefPart) {
       this.events = this.events.filter(ev => ev.participants < this.prefPart);
+    }
+    if (this.events.length === 0) {
+      this.searchStatus = 'No events with your preferences have been found.';
     }
   }
 }
