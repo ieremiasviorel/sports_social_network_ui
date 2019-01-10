@@ -19,7 +19,6 @@ export class EventJoinComponent implements OnInit {
   SPORTS = SPORTS;
   SKILL_LEVELS = SKILL_LEVELS;
 
-
   events: Event[];
   originalEventsList: Event[];
   selectedEvent: null;
@@ -38,7 +37,7 @@ export class EventJoinComponent implements OnInit {
   selectedEventPrice: any;
   selectedEventDescription: any;
 
-  SPORTS_LIST: string[] = ['Tennis', 'Running', 'Climbing', 'Badminton', 'Yoga', 'Volleyball'];
+  SPORTS_LIST: string[] = [];
   FILTERED_SPORTS_LIST: Observable<string[]>;
 
   userPreferredSports: string[] = [];
@@ -101,16 +100,6 @@ export class EventJoinComponent implements OnInit {
         input.value = '';
       }
     }
-  }
-
-  selectedPreferredSport(event: MatAutocompleteSelectedEvent): void {
-    const sportToAdd = event.option.value;
-    this.userPreferredSports.push(sportToAdd);
-    this.preferenceInput.nativeElement.value = '';
-    this.SPORTS_LIST = this.SPORTS_LIST.filter(s => s !== sportToAdd);
-    this.preferenceControl.setValue('');
-
-    this.events = this.events.filter(ev => ev.name.toLowerCase().includes(sportToAdd.toLowerCase()));
   }
 
   ngOnInit() {

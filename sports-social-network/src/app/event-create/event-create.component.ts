@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {EventsService} from '../services/events.service';
-import { SPORTS, SKILL_LEVELS } from '../constants';
+import { SPORTS, SKILL_LEVELS, TYPE} from '../constants';
 import {Router} from '@angular/router';
 import { Event } from '../models/event';
 import {isNumber} from 'util';
-
-const TYPE = [
-  'Public', 'Private'
-];
 
 @Component({
   selector: 'app-event-create',
@@ -38,6 +34,7 @@ export class EventCreateComponent implements OnInit {
     createdEvent.participants = eventNrPart.value;
     createdEvent.price = eventPrice.value;
     createdEvent.description = eventAdditionalInfo.value;
+    createdEvent.type = eventType.value;
 
     this.eventsService.joinEvent(createdEvent);
     this.router.navigateByUrl('/events/user');

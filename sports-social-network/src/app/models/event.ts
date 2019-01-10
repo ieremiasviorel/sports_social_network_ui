@@ -5,6 +5,7 @@ export class Event {
     participants: number;
     price: number;
     description: string;
+    type: string;
     location: string;
     time: string;
     initiator_username: string;

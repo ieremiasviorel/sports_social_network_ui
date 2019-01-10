@@ -17,6 +17,8 @@ export class GroupCreateComponent implements OnInit {
   type = TYPE;
   sports = SPORTS;
 
+  model: any = {};
+
   onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers) {
     const groupToCreate: Group = new Group();
     groupToCreate.name = groupName.value;
@@ -30,7 +32,7 @@ export class GroupCreateComponent implements OnInit {
   }
 
   onCancel() {
-    console.log('Cancel clicked');
+    this.router.navigateByUrl('/groups');
   }
   constructor(private router: Router, private groupsService: GroupsService) { }
 

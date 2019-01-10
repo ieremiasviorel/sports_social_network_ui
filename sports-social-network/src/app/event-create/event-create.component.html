@@ -1,13 +1,14 @@
 <div class="eventDiv">
-  <form name="form" #f="ngForm" class="form-createEvent" (ngSubmit)="f.form.valid && onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType)">
+  <form name="form" #f="ngForm" class="form-createEvent"
+        (ngSubmit)="f.form.valid && onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType)">
     <h2>Create your Own Event</h2>
     <p>Name of the event:</p>
-    <input
+    <input type="text"
       name="eventName" [(ngModel)]="model.eventName" #eventName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eventName.invalid }"
       required minlength="4" placeholder="Type name of the event">
     <div *ngIf="(eventName.touched || f.submitted) && eventName.invalid" style="color: red;font-size: small;">
       <div *ngIf="eventName?.errors.required ">
-        Name is required.
+        You must provide a name for the event.
       </div>
       <div *ngIf="eventName?.errors.minlength">
         Name is too short. Needs at least 4 characters.
@@ -15,13 +16,27 @@
     </div>
     <br>
     <p>Number of participants:</p>
-    <input #eventNrPart required placeholder="Insert a positive number of required participants">
+    <input type="number"
+           name="eventNrPart" [(ngModel)]="model.eventNrPart" #eventNrPart="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eventNrPart.invalid }"
+           required placeholder="Insert a positive number of required participants">
+    <div *ngIf="(eventNrPart.touched || f.submitted) && eventNrPart.invalid" style="color: red;font-size: small;">
+      <div *ngIf="eventNrPart?.errors.required">
+        You must provide the number of participants for the event.
+      </div>
+    </div>
+
     <br>
     <p>Price:</p>
-    <input #eventPrice required placeholder="Insert a positive price">
+    <input type="number" #eventPrice placeholder="Insert a positive price">
     <br>
     <p>Address:</p>
-    <input #eventAddress required minlength="10" placeholder="Type the address of the event">
+    <input name="eventAddress" [(ngModel)]="model.eventAddress" #eventAddress="ngModel" [ngClass]="{ 'is-invalid': f.submitted && eventAddress.invalid }"
+       required minlength="10" placeholder="Type the address of the event">
+    <div *ngIf="(eventAddress.touched || f.submitted) && eventAddress.invalid" style="color: red;font-size: small;">
+      <div *ngIf="eventAddress?.errors.required">
+        You must provide the address for the event.
+      </div>
+    </div>
     <br>
     <p>Additional information:</p>
     <input #eventAdditionalInfo placeholder="Insert additional information about the event">

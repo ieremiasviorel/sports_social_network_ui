@@ -1,7 +1,18 @@
 <div class="groupDiv">
-  <form class="form-createGroup">
+  <form class="form-createGroup" name="form" #f="ngForm"
+        (ngSubmit)="f.form.valid && onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">
     <p>Name of the group:</p>
-    <input #groupName placeholder="Type name of the group">
+    <input type="text"
+           name="groupName" [(ngModel)]="model.groupName" #groupName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && groupName.invalid }"
+           required minlength="4" placeholder="Type name of the group">
+    <div *ngIf="(groupName.touched || f.submitted) && groupName.invalid" style="color: red;font-size: small;">
+      <div *ngIf="groupName?.errors.required ">
+        You must provide a name for the event.
+      </div>
+      <div *ngIf="groupName?.errors.minlength">
+        Name is too short. Needs at least 4 characters.
+      </div>
+    </div>
     <br>
     <p>Description:</p>
     <input #groupDescription placeholder="Type description of the group">
@@ -29,8 +40,9 @@
     <br>
     <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
 
-    <button class="btn-cancelGroup" (click)="onCancel()">CANCEL</button>
-    <button class="btn-createGroup" [disabled]="Image.value==''" (click)="onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">CREATE</button>
+    <button type="button" class="btn-cancelGroup" (click)="onCancel()">CANCEL</button>
+    <!--[disabled]="Image.value==''"-->
+    <button type="submit" class="btn-createGroup">CREATE</button>
 
 
   </form>
