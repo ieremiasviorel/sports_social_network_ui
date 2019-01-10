@@ -22,7 +22,7 @@ export class EventJoinComponent implements OnInit {
 
   events: Event[];
   originalEventsList: Event[];
-  selectedEvent: null;
+  selectedEvent: Event;
 
   prefSport: string;
   prefSkill: string;
@@ -30,12 +30,6 @@ export class EventJoinComponent implements OnInit {
   prefPart: number;
 
   searched: string[] = [];
-  selectedEventName: any;
-  selectedEventSport: any;
-  selectedEventSkill: any;
-  selectedEventNrParticipants: any;
-  selectedEventPrice: any;
-  selectedEventDescription: any;
 
   SPORTS_LIST: string[] = ['Tennis', 'Running', 'Climbing', 'Badminton', 'Yoga', 'Volleyball'];
   FILTERED_SPORTS_LIST: Observable<string[]>;
@@ -100,6 +94,8 @@ export class EventJoinComponent implements OnInit {
     this.preferenceControl.setValue('');
 
     this.events = this.events.filter(ev => ev.name.toLowerCase().includes(sportToAdd.toLowerCase()));
+
+    this.selectedEvent = undefined;
   }
 
   ngOnInit() {
@@ -122,17 +118,12 @@ export class EventJoinComponent implements OnInit {
     if (this.selectedEvent) {
       this.eventsService.joinEvent(this.selectedEvent);
       this.events = this.events.filter(ev => ev !== this.selectedEvent);
+      this.selectedEvent = undefined;
     }
   }
 
-  selectEvent(event) {
+  selectEvent(event: Event): void {
     this.selectedEvent = event;
-    this.selectedEventName = event.name;
-    this.selectedEventSport = event.category;
-    this.selectedEventSkill = event.skill;
-    this.selectedEventNrParticipants = event.participants;
-    this.selectedEventPrice = event.price;
-    this.selectedEventDescription = event.description;
   }
 
   onEnter(event, search) {
@@ -142,7 +133,6 @@ export class EventJoinComponent implements OnInit {
 
       }
       search.value = '';
-      console.log(search.value);
     }
   }
 
@@ -171,5 +161,6 @@ export class EventJoinComponent implements OnInit {
     if (this.prefPart) {
       this.events = this.events.filter(ev => ev.participants < this.prefPart);
     }
+    this.selectedEvent = undefined;
   }
 }

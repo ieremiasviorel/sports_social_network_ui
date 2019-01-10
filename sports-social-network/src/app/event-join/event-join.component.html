@@ -1,23 +1,27 @@
-<div class="joinEvent">
-  <div class="joinEventSearch">
-    <mat-form-field>
-      <mat-chip-list #chipList>
-        <mat-chip color="primary" *ngFor="let sport of userPreferredSports" [selectable]="true" [removable]="true"
-          (removed)="removePreferredSport(sport)">
-          {{ sport }}
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
-      </mat-chip-list>
-      <input [formControl]="preferenceControl" placeholder="Search from preferences..." #PreferenceInput [matAutocomplete]="auto"
-        [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addPreferredSport($event)">
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedPreferredSport($event)">
-        <mat-option *ngFor="let sport of FILTERED_SPORTS_LIST | async" [value]="sport">
-          {{ sport }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <div class="listEvents">
-      <ul style="list-style: none;padding-inline-start: 0px;margin:0;">
+<div class="event-preference-search">
+  <mat-form-field>
+    <mat-chip-list #chipList>
+      <mat-chip color="primary" *ngFor="let sport of userPreferredSports" [selectable]="true" [removable]="true"
+        (removed)="removePreferredSport(sport)">
+        {{ sport }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+    <input [formControl]="preferenceControl" placeholder="Search from preferences..." #PreferenceInput
+      [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="addPreferredSport($event)">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedPreferredSport($event)">
+      <mat-option *ngFor="let sport of FILTERED_SPORTS_LIST | async" [value]="sport">
+        {{ sport }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+
+<div class="flex-container">
+  <div class="event-list">
+    <div>
+      <ul>
         <li class="listEventsItem" *ngFor="let event of events">
           <button (click)="selectEvent(event)" [type]="selectedEvent== event ? 'selected' : null">{{event.name}}</button>
         </li>
@@ -26,22 +30,22 @@
     <button mat-stroked-button class="btn-joinEvent" (click)="onJoinEvent()">Join Event</button>
   </div>
 
-  <div class="eventJoinDetails" [hidden]="!selectedEvent">
+  <div class="event-details" *ngIf="selectedEvent">
     <label>Name: </label>
-    <p>{{selectedEventName}}</p>
+    <p>{{selectedEvent.name}}</p>
     <label>Sport: </label>
-    <p>{{selectedEventSport}}</p>
+    <p>{{selectedEvent.category}}</p>
     <label>Skill: </label>
-    <p>{{selectedEventSkill}}</p>
+    <p>{{selectedEvent.skill}}</p>
     <label>Number of participants: </label>
-    <p>{{selectedEventNrParticipants}}</p>
+    <p>{{selectedEvent.participants}}</p>
     <label>Price: </label>
-    <p>{{selectedEventPrice}}</p>
+    <p>{{selectedEvent.price}}</p>
     <label>Description: </label>
-    <p>{{selectedEventDescription}}</p>
+    <p>{{selectedEvent.description}}</p>
   </div>
 
-  <div class="joinEventPref">
+  <div class="event-filters">
     <h2>PREFERENCES</h2>
     <mat-form-field>
       <mat-select [(ngModel)]="prefSport" placeholder="Sport">
@@ -56,14 +60,16 @@
     </mat-form-field>
     <br>
     Price:
-    <mat-slider [(ngModel)]="prefPrice" class="Price" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+    <br>
+    <mat-slider [(ngModel)]="prefPrice" color="primary" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
       tickInterval="5"></mat-slider>
     <br>
     Participants:
-    <mat-slider [(ngModel)]="prefPart" class="participants" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+    <br>
+    <mat-slider [(ngModel)]="prefPart" color="primary" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
       tickInterval="5"></mat-slider>
     <br>
-    <button mat-stroked-button class="applyFilters" (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
+    <button mat-stroked-button (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
       filters</button>
   </div>
 </div>
