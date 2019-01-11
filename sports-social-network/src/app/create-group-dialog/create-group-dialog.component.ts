@@ -13,14 +13,19 @@ import { GroupsComponent } from '../groups/groups.component';
 })
 export class CreateGroupDialogComponent implements OnInit {
 
+  type = TYPE;
+  sports = SPORTS;
+
   name: string;
   members: number;
   description: string;
   selectedSport: string;
   selectedPrivacy: string;
-  type = TYPE;
-  sports = SPORTS;
-  constructor(private dialogRef: MatDialogRef<CreateGroupDialogComponent>, private router: Router) { }
+
+  constructor(
+    private router: Router,
+    private dialogRef: MatDialogRef<CreateGroupDialogComponent>
+  ) { }
 
   ngOnInit() {
   }
@@ -34,9 +39,10 @@ export class CreateGroupDialogComponent implements OnInit {
     createdGroup.name = this.name;
     createdGroup.category = this.selectedSport;
     createdGroup.type = this.selectedPrivacy;
-    createdGroup.numberMembers = this.members;
+    createdGroup.numberMembers = 1;
     createdGroup.description = this.description;
-    createdGroup.logo = "http://allgbp.com/wp-content/uploads/2016/09/rugby2-640x364.jpg";
-    this.dialogRef.close({createdGroup: createdGroup});
+    createdGroup.logo = 'http://allgbp.com/wp-content/uploads/2016/09/rugby2-640x364.jpg';
+    createdGroup.maxNumber=this.members
+    this.dialogRef.close({ createdGroup: createdGroup });
   }
 }
