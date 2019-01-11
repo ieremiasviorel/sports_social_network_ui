@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
 import { GroupsService } from '../services/groups.service';
 import { Group } from '../models/group';
-import {Router} from '@angular/router';
 import { SPORTS, TYPE } from '../constants';
 
 @Component({
@@ -11,6 +12,7 @@ import { SPORTS, TYPE } from '../constants';
   styleUrls: ['./group-create.component.scss']
 })
 export class GroupCreateComponent implements OnInit {
+
   imageUrl = '/assets/images/default-image.png';
   fileToUpload: File = null;
   yourGroups$: Observable<Group[]>;
@@ -48,5 +50,4 @@ export class GroupCreateComponent implements OnInit {
     };
     reader.readAsDataURL(this.fileToUpload);
   }
-
 }
