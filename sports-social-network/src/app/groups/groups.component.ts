@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { GroupsService } from '../services/groups.service';
 import { Group } from '../models/group';
 
@@ -21,7 +21,7 @@ export class GroupsComponent implements OnInit {
   selectedGroupDescription = '';
   selectedGroupLogo = '';
 
-  constructor(private router: Router,  private groupsService: GroupsService) {
+  constructor(private router: Router, private groupsService: GroupsService) {
   }
 
   ngOnInit() {
