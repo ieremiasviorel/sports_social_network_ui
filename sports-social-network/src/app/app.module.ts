@@ -27,7 +27,9 @@ import {
   MatFormFieldModule,
   MatDividerModule,
   MatRadioModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 import { GroupsComponent } from './groups/groups.component';
@@ -94,6 +96,8 @@ import { SendInvitationsComponent } from './send-invitations/send-invitations.co
     MatDividerModule,
     MatRadioModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
