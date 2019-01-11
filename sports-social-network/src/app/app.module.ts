@@ -29,7 +29,8 @@ import {
   MatRadioModule,
   MatDialogModule,
   MatExpansionModule,
-  MatExpansionPanel
+  MatExpansionPanel,
+  MatListModule
 } from '@angular/material';
 
 import { GroupsComponent } from './groups/groups.component';
@@ -47,6 +48,7 @@ import { EventsMainContainerComponent } from './events-main-container/events-mai
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
 import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
+import { JoinConfirmationDialogComponent } from './join-confirmation-dialog/join-confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -68,12 +70,14 @@ import { CreateGroupDialogComponent } from './create-group-dialog/create-group-d
     QuizzDialogComponent,
     EventsMainContainerComponent,
     SendInvitationsComponent,
-    CreateGroupDialogComponent
+    CreateGroupDialogComponent,
+    JoinConfirmationDialogComponent
   ],
   entryComponents: [
     LoginDialogComponent,
     QuizzDialogComponent,
-    CreateGroupDialogComponent
+    CreateGroupDialogComponent,
+    JoinConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -100,6 +104,7 @@ import { CreateGroupDialogComponent } from './create-group-dialog/create-group-d
     MatRadioModule,
     MatDialogModule,
     MatExpansionModule,
+    MatListModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'

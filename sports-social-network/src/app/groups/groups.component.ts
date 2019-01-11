@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { GroupsService } from '../services/groups.service';
 import { Group } from '../models/group';
 import { tap } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-dialog.component';
+import { JoinConfirmationDialogComponent } from '../join-confirmation-dialog/join-confirmation-dialog.component';
 
 @Component({
   selector: 'app-groups',
@@ -13,54 +14,79 @@ import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-
   styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent implements OnInit {
+
   recommended$: Observable<Group[]>;
+  hiddenRecomended: Array<boolean>;
+
   yourGroups$: Observable<Group[]>;
-  hiddenRecomented: Array<boolean>;
   hiddenYour: Array<boolean>;
 
   sentGroup: Group;
+  
 
-  constructor(private router: Router,  public groupsService: GroupsService, public dialog: MatDialog) {
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private dialog2: MatDialog,
+    private groupsService: GroupsService
+  ) {
   }
 
   ngOnInit() {
     this.recommended$ = this.groupsService.getRecommendedGroups()
-    .pipe(tap(rec => { this.hiddenRecomented = new Array<boolean>(); rec.forEach(q => this.hiddenRecomented.push(false)); }));
+      .pipe(tap((recommendedGroups: Group[]) => {
+        this.hiddenRecomended = new Array<boolean>();
+        recommendedGroups.forEach(_ => this.hiddenRecomended.push(false));
+      }));
+
     this.yourGroups$ = this.groupsService.getYourGroups()
-    .pipe(tap(rec => { this.hiddenYour = new Array<boolean>(); rec.forEach(q => this.hiddenYour.push(false)); }));
+      .pipe(tap((yourGroups: Group[]) => {
+        this.hiddenYour = new Array<boolean>();
+        yourGroups.forEach(_ => this.hiddenYour.push(false));
+      }));
   }
-  onJoinGroup(groupName) {
+
+  onJoinGroup(groupName): void {
 
   }
 
-  onCreateGroup() {
+  onCreateGroup(): void {
     this.router.navigateByUrl('/group-create');
   }
 
-  displayRecommendedDetails(i : any){
-   this.hiddenRecomented[i]=!this.hiddenRecomented[i];
+  displayRecommendedGroupDetails(i: number): void {
+    this.hiddenRecomended[i] = !this.hiddenRecomended[i];
   }
 
-  displayYourDetails(i : any){
-    this.hiddenYour[i]=!this.hiddenYour[i];
+  displayYourGroupDetails(i: number): void {
+    this.hiddenYour[i] = !this.hiddenYour[i];
   }
 
-  
+  viewPosts(){
+    this.router.navigateByUrl('/group-create');
+  }
 
-  openCreateDialog(){
+  openCreateDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.data = {sentGroup : this.sentGroup};
+    dialogConfig.data = { sentGroup: this.sentGroup };
     const dialogRef = this.dialog.open(CreateGroupDialogComponent, dialogConfig);
     dialogRef.afterClosed()
-    .subscribe(response => {
-      if(response){
-       this.sentGroup=response;
-       this.groupsService.createGroup(this.sentGroup);
-       this.yourGroups$=this.groupsService.getYourGroups();
-      } 
-    });
+      .subscribe(response => {
+        if (response) {
+          this.sentGroup = response['createdGroup'];
+          this.groupsService.createGroup(this.sentGroup);
+          this.yourGroups$ = this.groupsService.getYourGroups();
+        }
+      });
+  }
+
+  sendRequest() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.panelClass = 'join-confirmation-dialog';
+    const dialogRef = this.dialog2.open(JoinConfirmationDialogComponent, dialogConfig);
   }
 }
-
