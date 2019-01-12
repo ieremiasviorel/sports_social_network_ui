@@ -39,9 +39,10 @@ export class CreateGroupDialogComponent implements OnInit {
     createdGroup.name = this.name;
     createdGroup.category = this.selectedSport;
     createdGroup.type = this.selectedPrivacy;
-    createdGroup.numberMembers = this.members;
+    createdGroup.numberMembers = 1;
     createdGroup.description = this.description;
     createdGroup.logo = 'http://allgbp.com/wp-content/uploads/2016/09/rugby2-640x364.jpg';
+    createdGroup.maxNumber = this.members;
     this.dialogRef.close({ createdGroup: createdGroup });
   }
 }
