@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { Group } from '../models/group';
-import { Event } from '../models/event';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Group } from '../models/group';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class GroupsService {
     const fileUrl = '../../assets/demo-data/groups.json';
     return this.httpClient.get<Group[]>(fileUrl)
       .pipe(
-        map((groups: Group[]) => { this.newGroups.forEach(g => groups.push(g)); console.log(groups); return groups; })
+        map((groups: Group[]) => { this.newGroups.forEach(g => groups.push(g)); return groups; })
       );
   }
 

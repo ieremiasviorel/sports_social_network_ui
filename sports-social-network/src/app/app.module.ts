@@ -97,6 +97,8 @@ import { CreateGroupDialogComponent } from './create-group-dialog/create-group-d
     MatDividerModule,
     MatRadioModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
