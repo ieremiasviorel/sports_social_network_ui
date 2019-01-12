@@ -4,7 +4,7 @@
   margin:auto;
 
   .form-createGroup {
-    background: #07575b;
+    background:rgba(#E8F8FF, 0.8);
     padding: 10px;
     border: 1px solid white;
     border-radius: 18px;
@@ -13,39 +13,12 @@
     margin: auto;
     margin-top: 2%;
     overflow: hidden;
-
-    p {
-      width: 10%;
-      display: inline-block;
-      margin-left: 0;
-      margin-right: 0;
-    }
-    input {
-      margin-top:5px;
-      margin-bottom:5px;
-      width: 50%;
-    }
-
-    .btn-createGroup {
-      background: greenyellow;
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      border-radius:4px;
-      float:right;
-      margin: 10px;
-    }
-
-    .btn-cancelGroup {
-      background: red;
-      font-size: 20px;
-      color: white;
-      font-weight: bold;
-      border-radius:4px;
-      float:right;
-      margin: 10px;
-
-    }
   }
-
 }
+.input-item{
+  width:20%;
+  margin-left:5%;
+  margin-top:10px;
+}
+
+

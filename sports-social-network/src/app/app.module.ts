@@ -45,6 +45,7 @@ import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
 import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
+import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
 
 @NgModule({
   declarations: [
@@ -64,11 +65,13 @@ import { SendInvitationsComponent } from './send-invitations/send-invitations.co
     JoinQuizzComponent,
     QuizzDialogComponent,
     EventsMainContainerComponent,
-    SendInvitationsComponent
+    SendInvitationsComponent,
+    CreateGroupDialogComponent
   ],
   entryComponents: [
     LoginDialogComponent,
-    QuizzDialogComponent
+    QuizzDialogComponent,
+    CreateGroupDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -94,8 +97,6 @@ import { SendInvitationsComponent } from './send-invitations/send-invitations.co
     MatDividerModule,
     MatRadioModule,
     MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
