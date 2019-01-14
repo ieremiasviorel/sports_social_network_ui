@@ -1,14 +1,12 @@
 <div class="groupDiv">
-  <form class="form-createGroup" name="form" #f="ngForm" style="padding: 20px;"
-        (ngSubmit)="f.form.valid && onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">
+  <form class="form-createGroup" name="form" #f="ngForm" style="padding: 20px;" (ngSubmit)="f.form.valid && onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers)">
     <img [src]="imageUrl" style="width:100px;height:100px;">
     <br>
     <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
     <br>
     <p>Name of the group*:</p>
-    <input type="text"
-           name="groupName" [(ngModel)]="model.groupName" #groupName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && groupName.invalid }"
-           required minlength="4" placeholder="Type name of the group">
+    <input type="text" name="groupName" [(ngModel)]="model.groupName" #groupName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && groupName.invalid }"
+      required minlength="4" placeholder="Type name of the group">
     <div *ngIf="(groupName.touched || f.submitted) && groupName.invalid" style="color: red;font-size: small;">
       <div *ngIf="groupName?.errors.required ">
         You must provide a name for the event.
@@ -25,7 +23,7 @@
     <br>
     <mat-form-field>
       <mat-select required name="groupSport" [(ngModel)]="model.groupSport" #groupSport="ngModel" placeholder="Sport"
-                  [ngClass]="{ 'is-invalid': f.submitted && groupSport.invalid }">
+        [ngClass]="{ 'is-invalid': f.submitted && groupSport.invalid }">
         <mat-option *ngFor="let sport of sports" [value]="sport">{{ sport }}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -38,7 +36,7 @@
 
     <mat-form-field>
       <mat-select required name="groupType" [(ngModel)]="model.groupType" #groupType="ngModel" placeholder="Type"
-                  [ngClass]="{ 'is-invalid': f.submitted && groupType.invalid }">
+        [ngClass]="{ 'is-invalid': f.submitted && groupType.invalid }">
         <mat-option *ngFor="let t of type" [value]="t">{{ t }}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -51,13 +49,30 @@
 
     <br>
     Maximum number of members:
-    <mat-slider #groupMaxMembers class="maxMembers" min="1" max="100" step="1" value="0"   thumbLabel  [displayWith]="formatLabel" tickInterval="5"></mat-slider>
+    <mat-slider #groupMaxMembers class="maxMembers" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
+      tickInterval="5"></mat-slider>
     <br>
 
     <button type="button" class="btn-cancelGroup" (click)="onCancel()">CANCEL</button>
     <!--[disabled]="Image.value==''"-->
     <button type="submit" class="btn-createGroup">CREATE</button>
-
-
   </form>
+</div>
+
+<div *ngIf="posts$ | async as post" class="container">
+  <div class="header">
+    <span class="header-information"><b>Posts</b></span>
+    <button class="header-button" mat-raised-button (click)="goBack()">Back</button>
+  </div>
+  <div class="post-info">
+    <ul *ngFor="let p of post" class="list-info">
+      <li class="information-container">
+        <h3>Title: {{p.title}}</h3>
+        <h4>Author: {{p.author}}</h4>
+      </li>
+      <li class="information-container"><i>{{p.comments}} Comments</i></li>
+      <li class="button-container"><button class="button-post" mat-raised-button>Post</button></li>
+      <hr>
+    </ul>
+  </div>
 </div>

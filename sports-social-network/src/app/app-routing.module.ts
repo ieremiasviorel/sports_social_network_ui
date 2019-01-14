@@ -10,6 +10,8 @@ import { ProfilePreferencesComponent } from './profile-preferences/profile-prefe
 import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 import { EventUserComponent } from './event-user/event-user.component';
 import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
+import { PostPhotosComponent } from './post-photos/post-photos.component';
+import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,14 @@ const routes: Routes = [
       {
         path: 'reminders',
         component: EventRemindersComponent
+      },
+      {
+        path: 'photos',
+        component: PostPhotosComponent
+      },
+      {
+        path: 'invitations',
+        component: SendInvitationsComponent
       }
     ]
   },

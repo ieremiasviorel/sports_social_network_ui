@@ -21,8 +21,9 @@ export class EventJoinComponent implements OnInit {
 
   events: Event[];
   originalEventsList: Event[];
-  selectedEvent: null;
-  joinEventStatus: string = '';
+  selectedEvent: Event;
+  joinEventStatus = '';
+  searchStatus = '';
 
   prefSport: string;
   prefSkill: string;
@@ -30,12 +31,6 @@ export class EventJoinComponent implements OnInit {
   prefPart: number;
 
   searched: string[] = [];
-  selectedEventName: any;
-  selectedEventSport: any;
-  selectedEventSkill: any;
-  selectedEventNrParticipants: any;
-  selectedEventPrice: any;
-  selectedEventDescription: any;
 
   SPORTS_LIST: string[] = [];
   FILTERED_SPORTS_LIST: Observable<string[]>;
@@ -46,7 +41,6 @@ export class EventJoinComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  searchStatus: string = '';
 
   constructor(
     private router: Router,
@@ -102,6 +96,18 @@ export class EventJoinComponent implements OnInit {
     }
   }
 
+  selectedPreferredSport(event: MatAutocompleteSelectedEvent): void {
+    const sportToAdd = event.option.value;
+    this.userPreferredSports.push(sportToAdd);
+    this.preferenceInput.nativeElement.value = '';
+    this.SPORTS_LIST = this.SPORTS_LIST.filter(s => s !== sportToAdd);
+    this.preferenceControl.setValue('');
+
+    this.events = this.events.filter(ev => ev.name.toLowerCase().includes(sportToAdd.toLowerCase()));
+
+    this.selectedEvent = undefined;
+  }
+
   ngOnInit() {
     this.eventsService.getAllEvents().subscribe(events => {
       this.originalEventsList = events;
@@ -125,17 +131,12 @@ export class EventJoinComponent implements OnInit {
       this.joinEventStatus = '';
     } else {
       this.joinEventStatus = 'You have not chosen an event from the list yet.';
+      this.selectedEvent = undefined;
     }
   }
 
-  selectEvent(event) {
+  selectEvent(event: Event): void {
     this.selectedEvent = event;
-    this.selectedEventName = event.name;
-    this.selectedEventSport = event.category;
-    this.selectedEventSkill = event.skill;
-    this.selectedEventNrParticipants = event.participants;
-    this.selectedEventPrice = event.price;
-    this.selectedEventDescription = event.description;
     this.joinEventStatus = '';
   }
 
@@ -146,7 +147,6 @@ export class EventJoinComponent implements OnInit {
 
       }
       search.value = '';
-      console.log(search.value);
     }
   }
 
@@ -176,8 +176,6 @@ export class EventJoinComponent implements OnInit {
     if (this.prefPart) {
       this.events = this.events.filter(ev => ev.participants < this.prefPart);
     }
-    if (this.events.length === 0) {
-      this.searchStatus = 'No events with your preferences have been found.';
-    }
+    this.selectedEvent = undefined;
   }
 }

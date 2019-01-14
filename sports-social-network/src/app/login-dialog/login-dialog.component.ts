@@ -12,6 +12,8 @@ export class LoginDialogComponent implements OnInit {
   username: string;
   password: string;
 
+  loginFail: boolean;
+
   constructor(
     private dialogRef: MatDialogRef<LoginDialogComponent>,
     private authService: AuthService
@@ -24,9 +26,10 @@ export class LoginDialogComponent implements OnInit {
   }
 
   authenticate(): void {
-    const loginSuccess = this.authService.authenticate(this.username, this.password);
-    if (loginSuccess) {
+    if (this.authService.authenticate(this.username, this.password)) {
       this.close();
+    } else {
+      this.loginFail = true;
     }
   }
 }
