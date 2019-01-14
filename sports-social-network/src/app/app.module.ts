@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileDropModule } from 'ngx-file-drop';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -44,6 +45,7 @@ import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
 import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { PostPhotosComponent } from './post-photos/post-photos.component';
 import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
 import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
 
@@ -65,6 +67,7 @@ import { CreateGroupDialogComponent } from './create-group-dialog/create-group-d
     JoinQuizzComponent,
     QuizzDialogComponent,
     EventsMainContainerComponent,
+    PostPhotosComponent,
     SendInvitationsComponent,
     CreateGroupDialogComponent
   ],
@@ -80,6 +83,7 @@ import { CreateGroupDialogComponent } from './create-group-dialog/create-group-d
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    FileDropModule,
 
     MatButtonModule,
     MatMenuModule,

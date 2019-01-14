@@ -29,3 +29,9 @@ export const QUIZZ_DIFFICULTY_LEVELS = [
     'MEDIUM',
     'HARD'
 ];
+
+export const REPETITION = [
+    'hour(s)',
+    'day(s)',
+    'week(s)'
+];
