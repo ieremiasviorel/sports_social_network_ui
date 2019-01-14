@@ -9,7 +9,8 @@ const EVENT_OPERATIONS = [
   { name: 'Past Events', url: '/events/join' },
   { name: 'Send Invitations', url: '/events/join' },
   { name: 'Recent Events', url: '/events/join' },
-  { name: 'Reminders', url: '/events/reminders' }
+  { name: 'Reminders', url: '/events/reminders' },
+  { name: 'Post Photos', url: '/events/photos' }
 ];
 
 @Component({

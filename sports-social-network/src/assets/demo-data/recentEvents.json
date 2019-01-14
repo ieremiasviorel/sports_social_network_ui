@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Footbal with the friends",
+        "category": "FOOTBALL",
+        "skill": "BEGINNER",
+        "price": 10,
+        "participants": 10,
+        "description": "Echipe de amatori, 5 vs 5, in limita timpului disponibil",
+        "image_url": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
+    },
+    {
+        "name": "Baschet Complex Gheorgheni",
+        "category": "BASCHET",
+        "skill": "ADVANCED",
+        "price": 10,
+        "participants": 4,
+        "description": "Echipe de avansati, 2 vs 2, 1 ora",
+        "image_url": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
+    }
+]

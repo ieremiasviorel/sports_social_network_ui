@@ -1,0 +1,48 @@
+.recentEvents {
+  float: left;
+  width: 40%;
+  .listEvents {
+    height: 300px;
+    .listEventItem {
+      background: cadetblue;
+      cursor: pointer;
+      padding-inline-start: 0px;
+    }
+
+    .eventItem {
+      background-color: transparent;
+      height: 40px;
+      width: 100%;
+      border: none;
+      text-align: start;
+    }
+
+    &[type="selected"] {
+      border: 5px solid;
+    }
+  }
+}
+
+.center {
+  float: right;
+  text-align: center;
+  width: 50%;
+  margin-top: 20px;
+
+  vertical-align: middle;
+}
+
+.buttonPost {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: rgb(17, 185, 177);
+  border: 2px solid;
+  color: white;
+  background-color: cadetblue;
+}
+
+.buttonPost:hover {
+  color: rgb(17, 185, 177);
+  background-color: rgb(234, 247, 250);
+}
