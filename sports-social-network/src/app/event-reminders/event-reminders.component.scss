@@ -1,67 +1,128 @@
+@import "../../assets/scss/variables.scss";
+
 .main {
-    margin: auto;
+  .yourReminders {
+    width: 50%;
+    float: left;
+    overflow: hidden;
+    overflow-y: auto;
+    text-align: center;
 
-    .yourReminders {
-        width: 50%;
-        //height: 30%;
-        float: left;
-        overflow: hidden;
-        overflow-y: auto;
-        .listReminders {
-            border: 1px solid olivedrab;
-            height: 300px;
-            .listRemindersItem {
-                background: cadetblue;
-                margin: 5px;
-                border: 1px solid black;
-                margin-right: 40px;
-                padding-left: 10px;
-                cursor: pointer;
-            }
+    .listReminders {
+      height: 300px;
+      .listRemindersItem {
+        background: cadetblue;
+        cursor: pointer;
+        padding-inline-start: 0px;
+      }
 
-            .listRemindersItem:active {
-                border: 1px solid rgb(17, 185, 177);
-                border-width: thick;
-                outline: none;    
-                color: white;
-            }
-        }
+      .reminderItem {
+        background-color: transparent;
+        height: 40px;
+        width: 100%;
+        border: none;
+        text-align: start;
+      }
+
+      &[type="selected"] {
+        border: 5px solid;
+      }
+    }
+  }
+
+  .createReminder {
+    float: right;
+    width: 30%;
+    height: 350px;
+    border: 3px solid white;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 30px;
+
+    h4 {
+      font-family: "FreeMono", sans-serif;
+      color: rgb(2, 29, 51);
     }
 
-    .createReminder {
-        float:right;
-        width: 35%;
-        border: 1px solid olivedrab;
-        margin-top: 0px;
-        margin-right: 40px;
-        padding-left: 20px;
-        
-        h4 {
-            font-family: "FreeMono", sans-serif;
-            color: rgb(2, 29, 51);
-            padding-left: 220px; 
-        }
-
-        mat-option {
-            width: 150px;
-            padding-left: 10px;
-            margin-left: 100px;
-        }
-
+    .eventOption {
+      width: 150px;
+      padding-left: 10px;
+      margin-left: 100px;
+      font-size: smaller;
     }
 
-    button {
-        margin-left: 300px;
-        padding: 10px;
-        border-radius: 5px;
-        border-color: rgb(17, 185, 177);
-        border: 2px solid;
-        color: white;
-        background-color: cadetblue;
-        }
-
-    button:hover {
-        color: rgb(17, 185, 177); 
-        background-color: rgb(234, 247, 250);
+    input {
+      margin-top: 5px;
+      width: 180px;
     }
+
+    .time-form-field {
+      display: inline-block;
+    }
+
+    .time-input {
+      margin: 0 10px;
+      border: 1px $primary solid;
+      border-radius: 2px;
+      background-color: white;
+      text-decoration: none;
+    }
+
+    .decButton {
+      display: inline-block;
+      padding: 0;
+      vertical-align: middle;
+    }
+
+    .incButton {
+      display: inline-block;
+      padding: 0;
+      vertical-align: middle;
+    }
+
+    .repeatForm {
+      margin: 0px;
+      display: inline-block;
+
+      .count {
+        width: 40px;
+        margin-right: 5px;
+      }
+
+      .repeatOption {
+        margin-left: 5px;
+        font-size: smaller;
+      }
+    }
+    p {
+        text-align: left;
+        margin-left: 10px;
+    }
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+
+  input[type="time"]::-webkit-inner-spin-button,
+  input[type="time"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .buttonReminder {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border-color: rgb(17, 185, 177);
+    border: 2px solid;
+    color: white;
+    background-color: cadetblue;
+  }
+
+  .buttonReminder:hover {
+    color: rgb(17, 185, 177);
+    background-color: rgb(234, 247, 250);
+  }
 }

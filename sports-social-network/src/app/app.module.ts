@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileDropModule } from 'ngx-file-drop';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { EventsComponent } from './events/events.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 
@@ -27,7 +27,12 @@ import {
   MatFormFieldModule,
   MatDividerModule,
   MatRadioModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatExpansionModule,
+  MatExpansionPanel,
+  MatListModule
 } from '@angular/material';
 
 import { GroupsComponent } from './groups/groups.component';
@@ -43,12 +48,15 @@ import { JoinQuizzComponent } from './join-quizz/join-quizz.component';
 import { QuizzDialogComponent } from './quizz-dialog/quizz-dialog.component';
 import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { PostPhotosComponent } from './post-photos/post-photos.component';
+import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
+import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
+import { JoinConfirmationDialogComponent } from './join-confirmation-dialog/join-confirmation-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EventsComponent,
     HeaderComponent,
     LoginDialogComponent,
     GroupsComponent,
@@ -62,11 +70,17 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     EventUserComponent,
     JoinQuizzComponent,
     QuizzDialogComponent,
-    EventsMainContainerComponent
+    EventsMainContainerComponent,
+    PostPhotosComponent,
+    SendInvitationsComponent,
+    CreateGroupDialogComponent,
+    JoinConfirmationDialogComponent
   ],
   entryComponents: [
     LoginDialogComponent,
-    QuizzDialogComponent
+    QuizzDialogComponent,
+    CreateGroupDialogComponent,
+    JoinConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +89,7 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    FileDropModule,
 
     MatButtonModule,
     MatMenuModule,
@@ -92,6 +107,10 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     MatDividerModule,
     MatRadioModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatExpansionModule,
+    MatListModule,
 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'

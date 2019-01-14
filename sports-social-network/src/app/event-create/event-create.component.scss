@@ -1,48 +1,31 @@
-.form-createEvent {
-  background: #07575b;
-  padding: 10px;
-  border: 1px solid white;
-  border-radius: 18px;
-  -moz-border-radius: 5px;
-  width: 70%;
-  margin: auto;
-  margin-top: 2%;
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
 
-  p {
-    width: 20%;
-    display: inline-block;
-    margin-left: 0;
-    margin-right: 0;
+  div {
+    width: 30%;
   }
+}
 
-  input {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 40%;
-  }
+mat-form-field {
+  width: 100%;
+}
 
-  agm-map {
-    height: 300px;
-  }
+mat-form-field[appearance=outline] {
+  margin-top: 20px;
+}
 
-  .btn-createEvent {
-    margin: 20px;
-    font-weight: bold;
-    padding: 10px;
-    color: white;
-    font-family: "Comic Sans MS";
-    background: cadetblue;
-    border: 1px solid white;
-    border-radius: 18px;
-    -moz-border-radius: 5px;
-  }
+textarea {
+  height: 80px;
+}
 
-  .btn-cancelEvent {
-    background: red;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    border-radius: 4px;
-    margin: 10px;
-  }
+.form-button {
+  width: 40%;
+  margin: 60px 5%;
+}
+
+agm-map {
+  height: 300px;
 }

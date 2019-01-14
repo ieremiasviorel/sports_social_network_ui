@@ -4,8 +4,8 @@ export class Event {
     skill: string;
     participants: number;
     price: number;
-    description: string;
     type: string;
+    description: string;
     location: string;
     time: string;
     initiator_username: string;

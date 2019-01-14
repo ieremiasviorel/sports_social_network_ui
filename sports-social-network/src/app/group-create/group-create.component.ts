@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
-import { GroupsService } from '../services/groups.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
 import { Group } from '../models/group';
-import {Router} from '@angular/router';
 import { SPORTS, TYPE } from '../constants';
+import { PostsService } from '../services/posts.service';
+import { Post } from '../models/post';
+import { GroupsService } from '../services/groups.service';
 
 @Component({
   selector: 'app-group-create',
@@ -11,6 +14,7 @@ import { SPORTS, TYPE } from '../constants';
   styleUrls: ['./group-create.component.scss']
 })
 export class GroupCreateComponent implements OnInit {
+
   imageUrl = '/assets/images/default-image.png';
   fileToUpload: File = null;
   yourGroups$: Observable<Group[]>;
@@ -18,6 +22,18 @@ export class GroupCreateComponent implements OnInit {
   sports = SPORTS;
 
   model: any = {};
+
+  posts$: Observable<Post[]>;
+
+  constructor(
+    private router: Router,
+    private postsService: PostsService,
+    private groupsService: GroupsService
+  ) { }
+
+  ngOnInit() {
+    this.posts$ = this.postsService.getAllPosts();
+  }
 
   onCreate(groupName, groupDescription, groupSport, groupType, groupMaxMembers) {
     const groupToCreate: Group = new Group();
@@ -34,21 +50,8 @@ export class GroupCreateComponent implements OnInit {
   onCancel() {
     this.router.navigateByUrl('/groups');
   }
-  constructor(private router: Router, private groupsService: GroupsService) { }
 
-  ngOnInit() {
-    this.yourGroups$ = this.groupsService.getAllGroups();
+  goBack() {
+    this.router.navigateByUrl('/groups');
   }
-
-  handleFileInput(file: FileList) {
-    this.fileToUpload = file.item(0);
-
-    // Show image preview
-    const reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.imageUrl = event.target.result;
-    };
-    reader.readAsDataURL(this.fileToUpload);
-  }
-
 }
