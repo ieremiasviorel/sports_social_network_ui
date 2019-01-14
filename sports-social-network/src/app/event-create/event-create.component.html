@@ -1,42 +1,43 @@
-<div class="eventDiv">
-  <form class="form-createEvent">
-    <p>Name of the event:</p>
-    <input #eventName placeholder="{{eventNamePlaceholer}}">
+<form [formGroup]="eventCreationForm" class="flex-container">
+  <div>
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="name of the event">
+    </mat-form-field>
     <br>
-    <p>Number of participants:</p>
-    <input #eventNrPart placeholder="Type required number of participants">
+    <mat-form-field>
+      <input matInput formControlName="participants" placeholder="required no. of participants">
+    </mat-form-field>
     <br>
-    <p>Price:</p>
-    <input #eventPrice placeholder="Type price">
-    <br>
-    <p>Address:</p>
-    <input #eventAddress placeholder="Type address">
-    <br>
-    <p>Additional information:</p>
-    <input #eventAdditionalInfo placeholder="Additional information">
-    <br>
+    <mat-form-field>
+      <input matInput formControlName="price" placeholder="costs or fees">
+    </mat-form-field>
 
-    <br>
-    <p>Sport:</p>
-    <select #eventSport>
-      <option *ngFor="let sport of sports">{{sport}}</option>
-    </select>
-    <br>
-
-    <p>Skill:</p>
-    <select #eventSkill>
-      <option *ngFor="let s of skill">{{s}}</option>
-    </select>
-    <br>
-
-    <p>Type:</p>
-    <select #eventType>
-      <option *ngFor="let t of type">{{t}}</option>
-    </select>
-    <br>
-    <agm-map [latitude]="latitude" [longitude]="longitude"></agm-map>
-    <button class="btn-createEvent" (click)="onCreate(eventName, eventNrPart, eventPrice, eventAddress, eventAdditionalInfo, eventSport, eventSkill, eventType)">CREATE</button>
-    <button class="btn-cancelEvent" (click)="onCancel()">CANCEL</button>
-
-  </form>
-</div>
+    <button mat-raised-button (click)="onCreate()" color="primary" class="form-button">Submit</button>
+    <button mat-raised-button (click)="onCancel()" color="warn" class="form-button">Cancel</button>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select formControlName="category" placeholder="event category">
+        <mat-option *ngFor="let sport of SPORTS" [value]="sport">{{ sport }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="skill" placeholder="participants skill level">
+        <mat-option *ngFor="let skill of SKILL_LEVELS" [value]="skill">{{ skill }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="type" placeholder="event type">
+        <mat-option *ngFor="let type of TYPE" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>additional information</mat-label>
+      <textarea matInput formControlName="description" placeholder="additional information"></textarea>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-calendar [selected]="selectedDate"></mat-calendar>
+  </div>
+</form>
+<agm-map [latitude]="latitude" [longitude]="longitude"></agm-map>

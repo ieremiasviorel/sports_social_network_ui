@@ -4,6 +4,7 @@ export class Event {
     skill: string;
     participants: number;
     price: number;
+    type: string;
     description: string;
     location: string;
     time: string;

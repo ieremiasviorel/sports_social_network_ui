@@ -7,7 +7,7 @@ const EVENT_OPERATIONS = [
   { name: 'My Own Events', url: '/events/user' },
   { name: 'Create Event', url: '/events/create' },
   { name: 'Past Events', url: '/events/join' },
-  { name: 'Send Invitations', url: '/events/join' },
+  { name: 'Send Invitations', url: '/events/invitations' },
   { name: 'Recent Events', url: '/events/join' },
   { name: 'Reminders', url: '/events/reminders' },
   { name: 'Post Photos', url: '/events/photos' }
