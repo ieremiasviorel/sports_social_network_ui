@@ -7,5 +7,15 @@
         "participants": 4,
         "description": "Echipe de amatori, 2 vs 2, 1 ora",
         "image_url": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
+    },
+
+    {
+        "name": "Baschet Complex Gheorgheni",
+        "category": "BASCHET",
+        "skill": "ADVANCED",
+        "price": 10,
+        "participants": 4,
+        "description": "Echipe de avansati, 2 vs 2, 1 ora",
+        "image_url": "https://cdn.ghanasoccernet.com/2017/07/FOOT.jpg"
     }
 ]

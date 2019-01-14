@@ -1,29 +1,51 @@
 <div class="main">
   <div class="yourReminders">
+    <p style="text-align: left; margin-left: 40px; font-weight: bold">My reminders</p>
     <div class="listReminders">
-      <ul *ngFor="let r of yourReminders" style="list-style: none;">
+      <ul *ngFor="let reminder of yourReminders" style="list-style: none;">
         <li class="listRemindersItem">
-          <p>{{r.name}}: in {{r.time}} {{r.unit}}</p>
+          <button (click)="selectReminder(reminder)" class="reminderItem" [type]="selectedReminder == reminder ? 'selected' : null">
+            {{reminder.name}}: in {{reminder.count}} {{reminder.unit}} </button>
         </li>
       </ul>
+      <button class="buttonReminder" (click)="onRemoveReminder()"> Delete selected reminder </button>
     </div>
-    <button type="button" class="deleteReminder"> Delete selected reminder </button>
   </div>
 
   <div class="createReminder">
-    <h4> Create reminder </h4>
+    <h2> CREATE REMINDER </h2>
     <mat-form-field>
-      <mat-select placeHolder="Event">
-        <mat-option *ngFor="let o of yourOptions" [value]=o.name>
+      <mat-select #event placeholder="Event">
+        <mat-option class="eventOption" *ngFor="let o of yourOptions" [value]=o.name>
           {{o.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <div class="time-form-field">
+      <p>Remind me at:</p>
+
+      <button mat-mini-fab color="warn" class="decButton" (click)="decrementTimeInput()">-</button>
+      <input #remindTime type="time" class="time-input" [value]="remindTimeStr">
+      <button mat-mini-fab color="primary" class="incButton" (click)="incrementTimeInput()">+</button>
+   
+    </div>
+   
+    <div class="repeatForm">
+
+      <mat-form-field class="count">
+        <input matInput #numberOf type="number" min=0 max=24 required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select #repetition placeholder="Repeat every">
+          <mat-option class="repeatOption" #repetition *ngFor="let r of repetitions" [value]=r>
+            {{r}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
     <br>
-    <input placeholder="Time before">
-    <br>
-    <input placeholder="Repetition">
-    <br>
-    <button type="button" class="addReminder"> Add reminder </button>
+    <button class="buttonReminder" (click)="onAddReminder(event, remindTime, numberOf, repetition)"> Add reminder </button>
   </div>
 </div>
