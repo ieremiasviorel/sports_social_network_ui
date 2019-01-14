@@ -15,7 +15,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button class="group-button">Join</button>
+      <button mat-button class="group-button" (click)=sendRequest()>Join</button>
       <button mat-button class="group-button" (click)=displayRecommendedGroupDetails(i)>Show Details</button>
     </mat-card-actions>
   </mat-card>
@@ -38,6 +38,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
+      <button mat-button class="group-button" (click)="viewPosts()">View posts</button>
       <button mat-button class="group-button" (click)=displayYourGroupDetails(i)>Show Details</button>
     </mat-card-actions>
   </mat-card>

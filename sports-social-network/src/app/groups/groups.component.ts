@@ -6,6 +6,7 @@ import { Group } from '../models/group';
 import { tap } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { CreateGroupDialogComponent } from '../create-group-dialog/create-group-dialog.component';
+import { JoinConfirmationDialogComponent } from '../join-confirmation-dialog/join-confirmation-dialog.component';
 
 @Component({
   selector: 'app-groups',
@@ -21,10 +22,12 @@ export class GroupsComponent implements OnInit {
   hiddenYour: Array<boolean>;
 
   sentGroup: Group;
+  
 
   constructor(
     private router: Router,
     private dialog: MatDialog,
+    private dialog2: MatDialog,
     private groupsService: GroupsService
   ) {
   }
@@ -59,6 +62,10 @@ export class GroupsComponent implements OnInit {
     this.hiddenYour[i] = !this.hiddenYour[i];
   }
 
+  viewPosts(){
+    this.router.navigateByUrl('/group-create');
+  }
+
   openCreateDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -73,5 +80,13 @@ export class GroupsComponent implements OnInit {
           this.yourGroups$ = this.groupsService.getYourGroups();
         }
       });
+  }
+
+  sendRequest() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.panelClass = 'join-confirmation-dialog';
+    const dialogRef = this.dialog2.open(JoinConfirmationDialogComponent, dialogConfig);
   }
 }
