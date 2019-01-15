@@ -12,17 +12,17 @@ const USERS: User[] = [
 })
 export class AuthService {
 
+  userLoginStatus: Subject<boolean>;
+
   constructor() {
     this.userLoginStatus = new Subject<boolean>();
   }
 
-  userLoginStatus: Subject<boolean>;
-  loggedInUser: User;
-
   authenticate(username: string, password: string): boolean {
-    this.loggedInUser = USERS.find(user => user.username === username && user.password === password);
-    if (this.loggedInUser) {
+    const loggedInUser = USERS.find(user => user.username === username && user.password === password);
+    if (loggedInUser) {
       this.userLoginStatus.next(true);
+      window.sessionStorage.setItem('username', username);
       return true;
     } else {
       this.userLoginStatus.next(false);
@@ -31,20 +31,20 @@ export class AuthService {
   }
 
   logout(username: string): boolean {
-    this.loggedInUser = undefined;
+    window.sessionStorage.removeItem('username');
     this.userLoginStatus.next(false);
     return true;
-  }
-
-  isUserLoggedIn(): boolean {
-    return this.loggedInUser !== undefined;
   }
 
   getLoginStatus(): Subject<boolean> {
     return this.userLoginStatus;
   }
 
+  isUserLoggedIn(): boolean {
+    return window.sessionStorage.getItem('username') != null;
+  }
+
   getLoggedInUser(): User {
-    return this.loggedInUser;
+    return USERS.find(user => user.username === window.sessionStorage.getItem('username'));
   }
 }
