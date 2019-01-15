@@ -177,4 +177,8 @@ export class EventJoinComponent implements OnInit {
     }
     this.selectedEvent = undefined;
   }
+
+  onResetFilters(){
+    this.events=this.originalEventsList;
+  }
 }
