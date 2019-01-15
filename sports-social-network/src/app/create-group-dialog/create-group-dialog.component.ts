@@ -21,6 +21,7 @@ export class CreateGroupDialogComponent implements OnInit {
   description: string;
   selectedSport: string;
   selectedPrivacy: string;
+  created=false;
 
   constructor(
     private router: Router,
@@ -31,10 +32,15 @@ export class CreateGroupDialogComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigateByUrl('/groups');
-    this.dialogRef.close();
+   this.dialogRef.close();
+   
   }
   createGroup() {
+    this.created=true;
+    //this.dialogRef.close({ createdGroup: createdGroup });
+  }
+
+  goHomeWithCreatedGroup() {
     const createdGroup: Group = new Group();
     createdGroup.name = this.name;
     createdGroup.category = this.selectedSport;
@@ -44,5 +50,5 @@ export class CreateGroupDialogComponent implements OnInit {
     createdGroup.logo = 'http://allgbp.com/wp-content/uploads/2016/09/rugby2-640x364.jpg';
     createdGroup.maxNumber = this.members;
     this.dialogRef.close({ createdGroup: createdGroup });
-  }
+    }
 }

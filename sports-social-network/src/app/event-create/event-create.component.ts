@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatCalendar } from '@angular/material';
 
 import { EventsService } from '../services/events.service';
@@ -22,8 +22,6 @@ export class EventCreateComponent implements OnInit {
   selectedDate: Date;
   @ViewChild(MatCalendar) _datePicker: MatCalendar<Date>;
 
-  eventType: string;
-
   latitude: 46.7712;
   longitude: 23.6236;
 
@@ -31,15 +29,26 @@ export class EventCreateComponent implements OnInit {
     private eventsService: EventsService) { }
 
   ngOnInit() {
-    this.eventCreationForm = new FormBuilder().group({
-      name: new FormControl(),
-      category: [''],
-      skill: [''],
-      participants: [''],
-      type: [''],
-      price: [''],
-      description: [''],
-      time: ['']
+    this.eventCreationForm = new FormGroup({
+      'name': new FormControl('', [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
+      'category': new FormControl('', [
+        Validators.required
+      ]),
+      'skill': new FormControl('', [
+        Validators.required
+      ]),
+      'participants': new FormControl('', [
+        Validators.required
+      ]),
+      'type': new FormControl('', [
+        Validators.required
+      ]),
+      'price': new FormControl(''),
+      'description': new FormControl(''),
+      'time': new FormControl('')
     });
 
     this._datePicker.selectedChange.subscribe((date: Date) => {
@@ -48,10 +57,19 @@ export class EventCreateComponent implements OnInit {
     });
   }
 
+  get f() { return this.eventCreationForm.controls; }
+
   onCreate() {
-    const eventToAdd = this.eventCreationForm.value;
-    this.eventsService.joinEvent(eventToAdd);
-    this.router.navigate(['/events/user']);
+    if (this.eventCreationForm.valid) {
+      const eventToAdd = this.eventCreationForm.value;
+      this.eventsService.joinEvent(eventToAdd);
+      this.router.navigate(['/events/user']);
+    } else {
+      Object.keys(this.eventCreationForm.controls)
+      .forEach( control => {
+         this.eventCreationForm.controls[control].markAsTouched();
+       });
+    }
   }
 
   onCancel() {
