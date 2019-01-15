@@ -22,7 +22,7 @@
     </div>
 
     <div class="showPhotos">
-        <img *ngFor="let file of files" src="../assets/images/{{file.relativePath}}" />
+        <img *ngFor="let file of files" (click)="removePhoto(file)" src="../assets/images/{{file.relativePath}}" />
     </div>
   </div>
 

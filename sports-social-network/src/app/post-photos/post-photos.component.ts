@@ -83,4 +83,11 @@ export class PostPhotosComponent implements OnInit {
     this.selectedEvent = event;
     this.selectedEventName = event.name;
   }
+
+  removePhoto(file: UploadFile) {
+    this.files = this.files.filter(f => {
+      return f.relativePath !== file.relativePath;
+    });
+
+  }
 }
