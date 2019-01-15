@@ -52,6 +52,7 @@ import { PostPhotosComponent } from './post-photos/post-photos.component';
 import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
 import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
 import { JoinConfirmationDialogComponent } from './join-confirmation-dialog/join-confirmation-dialog.component';
+import { EventRecentComponent } from './event-recent/event-recent.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { JoinConfirmationDialogComponent } from './join-confirmation-dialog/join
     PostPhotosComponent,
     SendInvitationsComponent,
     CreateGroupDialogComponent,
-    JoinConfirmationDialogComponent
+    JoinConfirmationDialogComponent,
+    EventRecentComponent
   ],
   entryComponents: [
     LoginDialogComponent,
