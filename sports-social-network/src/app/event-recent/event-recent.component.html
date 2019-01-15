@@ -1,11 +1,11 @@
 <h2>Recent events</h2>
 <div class="flex-container">
   <div class="event-list">
-    <div>
-      <ul>
-        <li class="listEventsItem"*ngFor="let event of events">
-          <button  class="tooltip"  (click)="selectEvent(event)" [type]="selectedEvent == event ? 'selected' : null">
-            <span class="tooltiptext" *ngIf="!selectedEvent">You can see players that have participated in the event by clicking</span>
+    <div >
+      <ul class="tooltip">
+        <span class="tooltiptext" *ngIf="!selectedEvent">You can see players that have participated in the event by clicking an event</span>
+        <li class="listEventsItem" *ngFor="let event of events">
+          <button (click)="selectEvent(event)" [type]="selectedEvent == event ? 'selected' : null">
             {{event.name}}</button>
         </li>
       </ul>
@@ -14,10 +14,10 @@
 
   <div class="player-list" *ngIf="selectedEvent">
       <div>
-        <ul>
+        <ul class="tooltip">
+          <span class="tooltiptext" *ngIf="!selectedPlayer">You can see details of the player and rate him by clicking</span>
           <li class="listPlayersItem" *ngFor="let player of randomPlayers">
-            <button class="tooltip" (click)="selectPlayer(player)" [type]="selectedPlayer == player ? 'selected' : null">
-              <span class="tooltiptext" *ngIf="!selectedPlayer">You can see details of the player and rate him by clicking</span>
+            <button (click)="selectPlayer(player)" [type]="selectedPlayer == player ? 'selected' : null">
               {{player.name}}</button>
           </li>
         </ul>
