@@ -10,4 +10,5 @@ export class Event {
     time: string;
     initiator_username: string;
     image_url: string;
+    owner: string;
 }

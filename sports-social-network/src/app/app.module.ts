@@ -58,6 +58,7 @@ import { ProfilePremiumPointsComponent } from './profile-premium-points/profile-
 import { PageUnderDevelopmentComponent } from './page-under-development/page-under-development.component';
 import { UploadPhotosDialogComponent } from './upload-photos-dialog/upload-photos-dialog.component';
 import { EventCreateDialogComponent } from './event-create-dialog/event-create-dialog.component';
+import { EventChangeDialogComponent } from './event-change-dialog/event-change-dialog.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { EventCreateDialogComponent } from './event-create-dialog/event-create-d
     ProfilePremiumPointsComponent,
     PageUnderDevelopmentComponent,
     UploadPhotosDialogComponent,
-    EventCreateDialogComponent
+    EventCreateDialogComponent,
+    EventChangeDialogComponent
   ],
   entryComponents: [
     LoginDialogComponent,
@@ -94,7 +96,8 @@ import { EventCreateDialogComponent } from './event-create-dialog/event-create-d
     CreateGroupDialogComponent,
     JoinConfirmationDialogComponent,
     UploadPhotosDialogComponent,
-    EventCreateDialogComponent
+    EventCreateDialogComponent,
+    EventChangeDialogComponent
   ],
   imports: [
     BrowserModule,
