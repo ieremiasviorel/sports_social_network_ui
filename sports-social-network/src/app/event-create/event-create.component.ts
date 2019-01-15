@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatCalendar } from '@angular/material';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { EventsService } from '../services/events.service';
 import { SPORTS, SKILL_LEVELS, TYPE } from '../constants';
-import {EventCreateDialogComponent} from "../event-create-dialog/event-create-dialog.component";
+import { EventCreateDialogComponent } from '../event-create-dialog/event-create-dialog.component';
 
 @Component({
   selector: 'app-event-create',
@@ -29,7 +29,7 @@ export class EventCreateComponent implements OnInit {
 
   constructor(private router: Router,
     private eventsService: EventsService,
-              public matDialog: MatDialog) { }
+    public matDialog: MatDialog) { }
 
   ngOnInit() {
     this.eventCreationForm = new FormGroup({
@@ -72,9 +72,9 @@ export class EventCreateComponent implements OnInit {
       this.router.navigate(['/events/user']);
     } else {
       Object.keys(this.eventCreationForm.controls)
-      .forEach( control => {
-         this.eventCreationForm.controls[control].markAsTouched();
-       });
+        .forEach(control => {
+          this.eventCreationForm.controls[control].markAsTouched();
+        });
     }
   }
 
