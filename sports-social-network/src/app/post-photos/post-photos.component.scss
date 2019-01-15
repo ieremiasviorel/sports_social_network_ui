@@ -1,3 +1,5 @@
+@import "../../assets/scss/variables.scss";
+
 .recentEvents {
   float: left;
   width: 40%;
@@ -25,14 +27,29 @@
 
 .center {
   float: right;
-  text-align: center;
   width: 50%;
   margin-top: 20px;
 
-  vertical-align: middle;
+  .showPhotos {
+    border: rgb(17, 109, 185) 1px solid;
+    height: 250px;
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+
+    img {
+      margin: 10px;
+      display: inline-block;
+      height: 25%;
+      width: auto;
+    }
+  }
 }
 
 .buttonPost {
+  display: flex;
   margin-top: 5px;
   padding: 10px;
   border-radius: 5px;
@@ -40,6 +57,7 @@
   border: 2px solid;
   color: white;
   background-color: cadetblue;
+  margin-left: 230px;
 }
 
 .buttonPost:hover {

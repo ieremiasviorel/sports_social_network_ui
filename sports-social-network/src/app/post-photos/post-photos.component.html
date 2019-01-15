@@ -4,7 +4,7 @@
     <div class="listEvents">
       <ul *ngFor="let event of yourEvents" style="list-style: none;">
         <li class="listEventItem">
-          <button class="eventItem" [type]="selectedEvent == event ? 'selected' : null">
+          <button (click)="selectEvent(event)" class="eventItem" [type]="selectedEvent == event ? 'selected' : null">
             {{event.name}}</button>
         </li>
       </ul>
@@ -15,26 +15,11 @@
     <file-drop headertext="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
       (onFileLeave)="fileLeave($event)">
     </file-drop>
-    <div class="upload-table">
-      <p> Name </p>
-      <table class="table">
-        <thead>
-        </thead>
-        <tbody class="upload-name-style">
-          <tr *ngFor="let item of files; let i=index">
-            <td><strong>{{ item.relativePath }}</strong></td>
-          </tr>
-        </tbody>
-      </table>
+    <button mat-stroked-button class="buttonPost" (click)="onPostPhotos()"> Upload </button>
+
+    <div class="showPhotos">
+        <img *ngFor="let file of files" src="../assets/images/{{file.relativePath}}" />
     </div>
-    <button class="buttonPost" (click)="onPostPhotos()"> Upload </button>
-
-    <div class="showPhotos" *ngFor="let file of files">
-        {{file.name}}
-        <img src= {{file.relativePath}} />
-      </div>
   </div>
-
-
 
 </div>
