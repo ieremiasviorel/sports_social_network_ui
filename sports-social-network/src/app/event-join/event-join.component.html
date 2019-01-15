@@ -7,9 +7,8 @@
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
     </mat-chip-list>
-    <input [formControl]="preferenceControl" placeholder="Search by name..." #PreferenceInput
-      [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="addPreferredSport($event)">
+    <input [formControl]="preferenceControl" placeholder="Search by name..." #PreferenceInput [matAutocomplete]="auto"
+      [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addPreferredSport($event)">
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedPreferredSport($event)">
       <mat-option *ngFor="let sport of FILTERED_SPORTS_LIST | async" [value]="sport">
         {{ sport }}
@@ -73,9 +72,11 @@
     <mat-slider [(ngModel)]="prefPart" color="primary" min="1" max="100" step="1" value="0" thumbLabel [displayWith]="formatLabel"
       tickInterval="5"></mat-slider>
     <br>
-    <button mat-stroked-button (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">Apply
-      filters</button>
-      <button mat-stroked-button (click)="onResetFilters()">Reset
-          </button>
+    <button mat-stroked-button (click)="onApplyFilters(prefSport, prefSkill, prefPrice, prefPart)">
+      Apply filters
+    </button>
+    <button mat-stroked-button (click)="onResetFilters()" style="float: right">
+      Reset
+    </button>
   </div>
 </div>

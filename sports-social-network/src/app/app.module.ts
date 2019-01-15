@@ -130,7 +130,7 @@ import { EventChangeDialogComponent } from './event-change-dialog/event-change-d
     MatListModule,
 
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCY-Gnr-rkKapvYx1mWSi4ATh3oM33grV0'
+      apiKey: 'AIzaSyCa6KJ4YcdSG-nwfffwqhCHcoA40g1aQzA'
     })
   ],
   providers: [],
