@@ -30,7 +30,12 @@ export class ProfileMainContainerComponent implements OnInit {
       .pipe(filter(ev => ev instanceof NavigationEnd))
       .subscribe((ev: NavigationEnd) => {
         if (ev.url.split('/').length >= 3) {
-          this.selectedMenuOption = this.PROFILE_OPERATIONS.find(menu => menu.url.indexOf(ev.url.split('/')[2]) > -1).name;
+          const newMenuOperation = this.PROFILE_OPERATIONS.find(menu => menu.url.indexOf(ev.url.split('/')[2]) > -1);
+          if (newMenuOperation) {
+            this.selectedMenuOption = newMenuOperation.name;
+          }
+        } else {
+          this.selectedMenuOption = this.PROFILE_MENU_OPTIONS[0];
         }
       });
   }
