@@ -48,7 +48,7 @@ export class CreateGroupDialogComponent implements OnInit {
     createdGroup.type = this.selectedPrivacy;
     createdGroup.numberMembers = 1;
     createdGroup.description = this.description;
-    createdGroup.logo = '../../assets/images/' + this.fileToUpload.name;
+    createdGroup.logo = '../../assets/images/';
     createdGroup.maxNumber = this.members;
     this.dialogRef.close({ createdGroup: createdGroup });
     }
