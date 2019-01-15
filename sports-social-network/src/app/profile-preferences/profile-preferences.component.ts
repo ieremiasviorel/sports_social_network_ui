@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent, MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { UserPreferences } from '../models/user-preferences';
+import { UserPreferencesService } from '../services/user-preferences.service';
 
 @Component({
   selector: 'app-profile-preferences',
@@ -15,10 +17,10 @@ export class ProfilePreferencesComponent implements OnInit {
   SPORTS_LIST: string[] = ['Tennis', 'Running', 'Climbing', 'Badminton', 'Yoga', 'Volleyball'];
   FILTERED_SPORTS_LIST: Observable<string[]>;
 
+  userPreferences: UserPreferences;
+  userPreferencesForm: FormGroup;
+
   userPreferredSports: string[] = ['Football', 'Basketball'];
-
-  menuOptions: string[] = ['Preferences', 'Settings', 'Security', 'About'];
-
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
   @ViewChild('PreferenceInput') preferenceInput: ElementRef<HTMLInputElement>;
@@ -31,10 +33,14 @@ export class ProfilePreferencesComponent implements OnInit {
   endTimeAsDate: Date;
   endTimeAsString: string;
 
-  constructor() {
+  constructor(
+    private userPreferencesService: UserPreferencesService
+  ) {
     this.FILTERED_SPORTS_LIST = this.preferenceControl.valueChanges.pipe(
       startWith(null),
       map((sport: string | null) => sport ? this._filter(sport) : this.SPORTS_LIST));
+
+    this.userPreferences = this.userPreferencesService.getUserPreferences();
 
     this.startTimeAsDate = new Date();
     this.startTimeAsDate.setHours(14, 0, 0);
@@ -45,7 +51,19 @@ export class ProfilePreferencesComponent implements OnInit {
     this.endTimeAsString = this.endTimeAsDate.toTimeString().slice(0, 5);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.userPreferencesForm = new FormGroup({
+      homePageSuggestions: new FormControl(this.userPreferences.homePageSuggestions),
+      individualEvents: new FormControl(this.userPreferences.individualEvents),
+      teamEvents: new FormControl(this.userPreferences.teamEvents),
+      maximumDistance: new FormControl(this.userPreferences.maximumDistance),
+      timeIntervalStart: new FormControl(this.userPreferences.timeIntervalStart),
+      timeIntervalEnd: new FormControl(this.userPreferences.timeIntervalEnd),
+      duringWeekdays: new FormControl(this.userPreferences.duringWeekdays),
+      duringWeekends: new FormControl(this.userPreferences.duringWeekends),
+      exploreIndex: new FormControl(this.userPreferences.exploreIndex)
+    });
+  }
 
   removePreferredSport(sportToRemove: string): void {
     this.userPreferredSports = this.userPreferredSports

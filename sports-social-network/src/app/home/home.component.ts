@@ -43,12 +43,14 @@ export class HomeComponent implements OnInit {
   }
 
   sendMessage(): void {
-    const messageToSend: Message = new Message();
-    messageToSend.content = this.messageText;
-    messageToSend.timestamp = Date.now().toString();
-    messageToSend.type = MessageType.SENT;
+    if (this.messageText) {
+      const messageToSend: Message = new Message();
+      messageToSend.content = this.messageText;
+      messageToSend.timestamp = Date.now().toString();
+      messageToSend.type = MessageType.SENT;
 
-    this.lastDiscussion$ = this.messagesService.sendMessage(messageToSend);
-    this.messageText = '';
+      this.lastDiscussion$ = this.messagesService.sendMessage(messageToSend);
+      this.messageText = '';
+    }
   }
 }

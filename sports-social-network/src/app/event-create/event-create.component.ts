@@ -2,7 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatCalendar } from '@angular/material';
+<<<<<<< HEAD
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+=======
+import { MatDialog } from '@angular/material';
+>>>>>>> viorel
 
 import { EventsService } from '../services/events.service';
 import { SPORTS, SKILL_LEVELS, TYPE } from '../constants';
