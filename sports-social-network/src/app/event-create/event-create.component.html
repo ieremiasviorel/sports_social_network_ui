@@ -23,6 +23,11 @@
     <br>
     <mat-form-field>
       <input matInput formControlName="price" placeholder="costs or fees">
+      <span *ngIf="f.price.invalid && (f.price.dirty || f.price.touched)" class="error-message">
+        <span *ngIf="f.price?.errors.required">
+          You must provide the estimated costs.
+        </span>
+      </span>
     </mat-form-field>
 
     <button mat-raised-button (click)="onCreate()" color="primary" class="form-button">Submit</button>
