@@ -21,7 +21,8 @@ export class CreateGroupDialogComponent implements OnInit {
   description: string;
   selectedSport: string;
   selectedPrivacy: string;
-  created=false;
+  created = false;
+  fileToUpload: File = null;
 
   constructor(
     private router: Router,
@@ -33,10 +34,10 @@ export class CreateGroupDialogComponent implements OnInit {
 
   goHome() {
    this.dialogRef.close();
-   
   }
+
   createGroup() {
-    this.created=true;
+    this.created = true;
     //this.dialogRef.close({ createdGroup: createdGroup });
   }
 
@@ -47,8 +48,12 @@ export class CreateGroupDialogComponent implements OnInit {
     createdGroup.type = this.selectedPrivacy;
     createdGroup.numberMembers = 1;
     createdGroup.description = this.description;
-    createdGroup.logo = 'http://allgbp.com/wp-content/uploads/2016/09/rugby2-640x364.jpg';
+    createdGroup.logo = '../../assets/images/' + this.fileToUpload.name;
     createdGroup.maxNumber = this.members;
     this.dialogRef.close({ createdGroup: createdGroup });
     }
+
+  handleFileInput(file: any) {
+    this.fileToUpload = file.item(0);
+  }
 }

@@ -41,7 +41,6 @@ export class EventJoinComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
-
   constructor(
     private router: Router,
     private eventsService: EventsService
@@ -130,7 +129,7 @@ export class EventJoinComponent implements OnInit {
       this.events = this.events.filter(ev => ev !== this.selectedEvent);
       this.joinEventStatus = '';
     } else {
-      this.joinEventStatus = 'You have not chosen an event from the list yet.';
+      this.joinEventStatus = 'You have not chosen an event by clicking from the list yet.';
       this.selectedEvent = undefined;
     }
   }
