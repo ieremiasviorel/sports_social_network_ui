@@ -21,8 +21,9 @@
       {{ eventStatus }}
     </div>
 
-    <div class="showPhotos">
-        <img *ngFor="let file of files" (click)="removePhoto(file)" src="../assets/images/{{file.relativePath}}" />
+    <div class="tooltip">
+      <span class="tooltiptext">You can remove photos by clicking them</span>
+      <img *ngFor="let file of files" (click)="removePhoto(file)" src="../assets/images/{{file.relativePath}}" />
     </div>
   </div>
 
