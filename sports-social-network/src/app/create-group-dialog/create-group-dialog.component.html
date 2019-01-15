@@ -59,7 +59,7 @@
       <textarea matInput placeholder="Description" [(ngModel)]="description" name="descInput"></textarea>
     </mat-form-field>
     <br>
-    <input type="file">
+    <input type="file" accept="image/*" (change)="handleFileInput($event.target.files)">
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-raised-button class="create-button" type="submit">Create Group</button>
