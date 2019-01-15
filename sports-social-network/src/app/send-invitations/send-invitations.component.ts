@@ -37,7 +37,7 @@ export class SendInvitationsComponent implements OnInit {
     this.eventName=event.name;
   }
 
-  sendMessage(event: Event) {
+  sendInvite(event: Event) {
       for(var i=0;i<this.invited.length;i++){
         this.invited[i]=this.sel[i];
       }
