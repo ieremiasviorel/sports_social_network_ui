@@ -2,9 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatCalendar } from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import { EventsService } from '../services/events.service';
 import { SPORTS, SKILL_LEVELS, TYPE } from '../constants';
+import {EventCreateDialogComponent} from "../event-create-dialog/event-create-dialog.component";
 
 @Component({
   selector: 'app-event-create',
@@ -26,7 +28,8 @@ export class EventCreateComponent implements OnInit {
   longitude: 23.6236;
 
   constructor(private router: Router,
-    private eventsService: EventsService) { }
+    private eventsService: EventsService,
+              public matDialog: MatDialog) { }
 
   ngOnInit() {
     this.eventCreationForm = new FormGroup({
@@ -65,6 +68,7 @@ export class EventCreateComponent implements OnInit {
     if (this.eventCreationForm.valid) {
       const eventToAdd = this.eventCreationForm.value;
       this.eventsService.joinEvent(eventToAdd);
+      this.matDialog.open(EventCreateDialogComponent);
       this.router.navigate(['/events/user']);
     } else {
       Object.keys(this.eventCreationForm.controls)

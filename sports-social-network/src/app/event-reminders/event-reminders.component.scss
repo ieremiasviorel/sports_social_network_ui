@@ -1,31 +1,38 @@
 @import "../../assets/scss/variables.scss";
 
 .main {
+
   .yourReminders {
-    width: 50%;
+    width: 40%;
     float: left;
     overflow: hidden;
     overflow-y: auto;
     text-align: center;
 
-    .listReminders {
-      height: 300px;
-      .listRemindersItem {
-        background: cadetblue;
-        cursor: pointer;
-        padding-inline-start: 0px;
-      }
+    ul {
+      height: 350px;
+      margin: 0;
+      padding-right: 20px;
+      padding-inline-start: 0px;
+      list-style: none;
+      overflow-y: scroll;
+    }
 
-      .reminderItem {
-        background-color: transparent;
-        height: 40px;
+    .listRemindersItem {
+      button {
         width: 100%;
-        border: none;
+        margin-bottom: 10px;
+        border: 1px $primary dashed;
+        padding: 12px 20px;
+        background: cadetblue;
         text-align: start;
-      }
+        font-size: 15px;
 
-      &[type="selected"] {
-        border: 5px solid;
+        &[type=selected] {
+          padding: 20px 15px;
+          border: 5px $primary solid;
+          font: 20px bold;
+        }
       }
     }
   }
@@ -33,7 +40,7 @@
   .createReminder {
     float: right;
     width: 30%;
-    height: 350px;
+    height: 400px;
     border: 3px solid white;
     text-align: center;
     border-radius: 5px;
@@ -45,7 +52,7 @@
     }
 
     .eventOption {
-      width: 150px;
+      width: 250px;
       padding-left: 10px;
       margin-left: 100px;
       font-size: smaller;
@@ -85,7 +92,7 @@
       display: inline-block;
 
       .count {
-        width: 40px;
+        width: 200px;
         margin-right: 5px;
       }
 
@@ -120,9 +127,45 @@
     color: white;
     background-color: cadetblue;
   }
+}
 
-  .buttonReminder:hover {
-    color: rgb(17, 185, 177);
-    background-color: rgb(234, 247, 250);
-  }
+.tooltip {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: rgb(17, 185, 177);
+  border: 2px solid;
+  color: white;
+  background-color: cadetblue;
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: -120%;
+  left: 50%;
+  margin-left: -120px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.error-message {
+  display: inline-block;
+  width: 100%;
+  color: $warn;
+  font-size: small;
 }

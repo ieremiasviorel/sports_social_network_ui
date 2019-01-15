@@ -1,38 +1,64 @@
+@import "../../assets/scss/variables.scss";
+
 .recentEvents {
   float: left;
   width: 40%;
+
   .listEvents {
-    height: 300px;
-    .listEventItem {
-      background: cadetblue;
-      cursor: pointer;
+    ul {
+      height: 350px;
+      margin: 0;
+      padding-right: 20px;
       padding-inline-start: 0px;
+      list-style: none;
+      overflow-y: scroll;
     }
 
-    .eventItem {
-      background-color: transparent;
-      height: 40px;
-      width: 100%;
-      border: none;
-      text-align: start;
-    }
+    .listEventItem {
+      button {
+        width: 100%;
+        margin-bottom: 10px;
+        border: 1px $primary dashed;
+        padding: 12px 20px;
+        background: cadetblue;
+        text-align: start;
+        font-size: 15px;
 
-    &[type="selected"] {
-      border: 5px solid;
+        &[type=selected] {
+          padding: 20px 15px;
+          border: 5px $primary solid;
+          font: 20px bold;
+        }
+      }
     }
   }
 }
 
 .center {
   float: right;
-  text-align: center;
   width: 50%;
   margin-top: 20px;
 
-  vertical-align: middle;
+  .showPhotos {
+    border: rgb(17, 109, 185) 1px solid;
+    height: 250px;
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+
+    img {
+      margin: 10px;
+      display: inline-block;
+      height: 25%;
+      width: auto;
+    }
+  }
 }
 
 .buttonPost {
+  display: flex;
   margin-top: 5px;
   padding: 10px;
   border-radius: 5px;
@@ -40,6 +66,7 @@
   border: 2px solid;
   color: white;
   background-color: cadetblue;
+  margin-left: 230px;
 }
 
 .buttonPost:hover {

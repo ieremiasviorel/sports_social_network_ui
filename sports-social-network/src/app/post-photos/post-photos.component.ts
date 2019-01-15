@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { HttpClient } from '@angular/common/http';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import { Event } from '../models/event';
 import { RecentService } from '../services/recent.service';
+import { UploadPhotosDialogComponent } from '../upload-photos-dialog/upload-photos-dialog.component';
 
 @Component({
   selector: 'app-post-photos',
@@ -15,10 +17,14 @@ export class PostPhotosComponent implements OnInit {
   public files: UploadFile[] = [];
   http: HttpClient;
 
+  selectedEventName = '';
   selectedEvent: Event;
   yourEvents: Event[];
 
-  constructor(private recentService: RecentService) { }
+  uploadedPhotos = '';
+  eventStatus = '';
+
+  constructor(private recentService: RecentService, public uploadDialog: MatDialog) { }
 
 
 
@@ -54,13 +60,27 @@ export class PostPhotosComponent implements OnInit {
   }
 
   public onPostPhotos() {
-    if (this.selectEvent) {
-      // display photos
+    if (this.selectedEvent) {
+      this.eventStatus = '';
+      if (this.files.length !== 0)  {
+        this.openUploadDialog();
+      } else {
+        this.eventStatus = 'You have not uploaded any images yet';
+      }
+    } else {
+      this.eventStatus = 'You have not chosen an event from the list yet.';
+      this.selectedEvent = undefined;
     }
+
+  }
+
+  openUploadDialog(): void {
+    this.uploadDialog.open(UploadPhotosDialogComponent);
   }
 
   selectEvent(event) {
-    console.log(event);
+    console.log(event.name);
     this.selectedEvent = event;
+    this.selectedEventName = event.name;
   }
 }

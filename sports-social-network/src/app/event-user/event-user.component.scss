@@ -7,7 +7,7 @@
 }
 
 .listEvents {
-  width: 40%;
+  width: 30%;
   margin-right: 30px;
 
   ul {
@@ -39,7 +39,8 @@
 }
 
 .event-details {
-  width: 30%;
+  width: 25%;
+  margin-right: 30px;
   height: 310px;
   padding: 20px;
   background: rgba(cadetblue, 0.3);
@@ -51,3 +52,22 @@
   }
 }
 
+.event-change {
+  width: 25%;
+  height: 310px;
+  padding: 20px;
+  background: rgba(cadetblue, 0.3);
+  overflow-y: scroll;
+
+  p {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+}
+
+.error-message {
+  display: inline-block;
+  width: 100%;
+  color: $warn;
+  font-size: small;
+}
