@@ -1,9 +1,9 @@
+<form [formGroup]="userPreferencesForm">
 <h2>General preference</h2>
-
 <div class="options-row">
-  <mat-checkbox color="primary">Suggest new events on Home page</mat-checkbox>
-  <mat-checkbox color="primary">Suggest team events</mat-checkbox>
-  <mat-checkbox color="primary">Suggest single events</mat-checkbox>
+    <mat-checkbox color="primary" formControlName="homePageSuggestions">Suggest new events on Home page</mat-checkbox>
+    <mat-checkbox color="primary" formControlName="individualEvents">Suggest team events</mat-checkbox>
+    <mat-checkbox color="primary" formControlName="teamEvents">Suggest single events</mat-checkbox>
 </div>
 
 <div class="options-row">
@@ -11,7 +11,8 @@
     Preferred distance (km):
   </span>
   <div class="options-row-content">
-    <mat-slider [min]="0" [max]="100" [step]="1" [thumbLabel]="true" [tickInterval]="1" color="primary" style="width: 400px;">
+      <mat-slider formControlName="maximumDistance" [min]="0" [max]="100" [step]="1" [thumbLabel]="true" [tickInterval]="1"
+        color="primary" style="width: 400px;">
     </mat-slider>
   </div>
 </div>
@@ -38,8 +39,8 @@
 <div class="options-row">
   <span class="options-row-label"></span>
   <div class="options-row-content">
-    <mat-checkbox color="primary">Mostly weekends</mat-checkbox>
-    <mat-checkbox color="primary">Mostly working days</mat-checkbox>
+      <mat-checkbox color="primary" formControlName="duringWeekends">Mostly weekends</mat-checkbox>
+      <mat-checkbox color="primary" formControlName="duringWeekdays">Mostly working days</mat-checkbox>
   </div>
 </div>
 
@@ -50,7 +51,7 @@
   </span>
   <div class="options-row-content">
     <span style="width: 80px;">focus on same sports</span>
-    <mat-slider [min]="1" [max]="5" [step]="1" style="width: 500px;" color="primary"></mat-slider>
+      <mat-slider formControlName="exploreIndex" [min]="1" [max]="5" [step]="1" style="width: 500px;" color="primary"></mat-slider>
     <span style="width: 80px; margin-left: 10px;">explore some new sports</span>
   </div>
 </div>
@@ -77,3 +78,4 @@
     </mat-autocomplete>
   </mat-form-field>
 </div>
+</form>
