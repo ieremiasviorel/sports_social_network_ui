@@ -52,7 +52,12 @@ import { PostPhotosComponent } from './post-photos/post-photos.component';
 import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
 import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
 import { JoinConfirmationDialogComponent } from './join-confirmation-dialog/join-confirmation-dialog.component';
+import { EventRecentComponent } from './event-recent/event-recent.component';
+import { ProfileMainContainerComponent } from './profile-main-container/profile-main-container.component';
+import { ProfilePremiumPointsComponent } from './profile-premium-points/profile-premium-points.component';
+import { PageUnderDevelopmentComponent } from './page-under-development/page-under-development.component';
 import { UploadPhotosDialogComponent } from './upload-photos-dialog/upload-photos-dialog.component';
+import { EventCreateDialogComponent } from './event-create-dialog/event-create-dialog.component';
 
 @NgModule({
   declarations: [
@@ -76,14 +81,20 @@ import { UploadPhotosDialogComponent } from './upload-photos-dialog/upload-photo
     SendInvitationsComponent,
     CreateGroupDialogComponent,
     JoinConfirmationDialogComponent,
-    UploadPhotosDialogComponent
+    EventRecentComponent,
+    ProfileMainContainerComponent,
+    ProfilePremiumPointsComponent,
+    PageUnderDevelopmentComponent,
+    UploadPhotosDialogComponent,
+    EventCreateDialogComponent
   ],
   entryComponents: [
     LoginDialogComponent,
     QuizzDialogComponent,
     CreateGroupDialogComponent,
     JoinConfirmationDialogComponent,
-    UploadPhotosDialogComponent
+    UploadPhotosDialogComponent,
+    EventCreateDialogComponent
   ],
   imports: [
     BrowserModule,

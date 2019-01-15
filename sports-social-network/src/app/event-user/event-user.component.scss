@@ -1,46 +1,53 @@
 @import '../../assets/scss/variables.scss';
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0 20px;
+}
+
 .listEvents {
-  width: 30%;
-  float: left;
-  margin: 20px;
+  width: 40%;
+  margin-right: 30px;
+
+  ul {
+    height: 350px;
+    margin: 0;
+    padding-right: 20px;
+    padding-inline-start: 0px;
+    list-style: none;
+    overflow-y: scroll;
+  }
 
   .listEventsItem {
     button {
-      background: cadetblue;
-      margin: 5px;
-      border: 1px solid black;
-      margin-right: 40px;
-      padding: 10px;
       width: 100%;
+      margin-bottom: 10px;
+      border: 1px $primary dashed;
+      padding: 12px 20px;
+      background: cadetblue;
       text-align: start;
+      font-size: 15px;
 
       &[type=selected] {
-        border: 5px solid;
+        padding: 20px 15px;
+        border: 5px $primary solid;
+        font: 20px bold;
       }
-
     }
   }
 }
 
-.eventJoinDetails {
-  float: left;
-  background-color: white;
-  height: 180px;
-  width: 20%;
-  margin: 20px;
+.event-details {
+  width: 30%;
+  height: 310px;
   padding: 20px;
-  overflow: scroll;
-  margin-top: 2%;
-
+  background: rgba(cadetblue, 0.3);
+  overflow-y: scroll;
 
   label {
-    font-weight: bold;
     margin-bottom: 0;
-  }
-
-  p {
-    margin-top: 0;
-    max-width: 100%;
+    font-weight: bold;
   }
 }
+

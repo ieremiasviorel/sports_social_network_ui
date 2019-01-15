@@ -12,6 +12,10 @@ import { EventUserComponent } from './event-user/event-user.component';
 import { EventsMainContainerComponent } from './events-main-container/events-main-container.component';
 import { PostPhotosComponent } from './post-photos/post-photos.component';
 import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
+import { EventRecentComponent } from './event-recent/event-recent.component';
+import { ProfileMainContainerComponent } from './profile-main-container/profile-main-container.component';
+import { ProfilePremiumPointsComponent } from './profile-premium-points/profile-premium-points.component';
+import { PageUnderDevelopmentComponent } from './page-under-development/page-under-development.component';
 
 const routes: Routes = [
   {
@@ -38,6 +42,10 @@ const routes: Routes = [
       {
         path: 'create',
         component: EventCreateComponent
+      },
+      {
+        path: 'recent',
+        component: EventRecentComponent,
       },
       {
         path: 'reminders',
@@ -67,6 +75,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+    component: ProfileMainContainerComponent,
     children: [
       {
         path: '',
@@ -76,6 +85,22 @@ const routes: Routes = [
       {
         path: 'preferences',
         component: ProfilePreferencesComponent
+      },
+      {
+        path: 'premium-points',
+        component: ProfilePremiumPointsComponent
+      },
+      {
+        path: 'settings',
+        component: PageUnderDevelopmentComponent
+      },
+      {
+        path: 'security',
+        component: PageUnderDevelopmentComponent
+      },
+      {
+        path: 'about',
+        component: PageUnderDevelopmentComponent
       }
     ]
   }

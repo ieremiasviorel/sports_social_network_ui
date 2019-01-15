@@ -38,7 +38,9 @@ export class HeaderComponent implements OnInit {
           this.selectedMenu = this.USER_MENUS.find(menu => menu.url.indexOf(ev.url.split('/')[1]) > -1).name;
         }
       });
+  }
 
+  ngOnInit() {
     this.authService.getLoginStatus()
       .subscribe((loginStatus: boolean) => {
         this.isUserLoggedIn = loginStatus;
@@ -46,9 +48,10 @@ export class HeaderComponent implements OnInit {
           this.loggedInUser = this.authService.getLoggedInUser();
         }
       });
-  }
-
-  ngOnInit() {
+    this.isUserLoggedIn = this.authService.isUserLoggedIn();
+    if (this.isUserLoggedIn) {
+      this.loggedInUser = this.authService.getLoggedInUser();
+    }
   }
 
   selectMenu(selectedMenu: string): void {

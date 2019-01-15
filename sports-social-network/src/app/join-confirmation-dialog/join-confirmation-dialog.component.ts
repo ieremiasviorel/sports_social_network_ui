@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material';
 })
 export class JoinConfirmationDialogComponent implements OnInit {
 
-  constructor(private router:Router,
+  constructor(private router: Router,
     private dialogRef: MatDialogRef<JoinConfirmationDialogComponent>) { }
 
   ngOnInit() {
