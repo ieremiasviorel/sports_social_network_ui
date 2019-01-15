@@ -3,24 +3,33 @@
 .recentEvents {
   float: left;
   width: 40%;
+
   .listEvents {
-    height: 300px;
-    .listEventItem {
-      background: cadetblue;
-      cursor: pointer;
+    ul {
+      height: 350px;
+      margin: 0;
+      padding-right: 20px;
       padding-inline-start: 0px;
+      list-style: none;
+      overflow-y: scroll;
     }
 
-    .eventItem {
-      background-color: transparent;
-      height: 40px;
-      width: 100%;
-      border: none;
-      text-align: start;
-    }
+    .listEventItem {
+      button {
+        width: 100%;
+        margin-bottom: 10px;
+        border: 1px $primary dashed;
+        padding: 12px 20px;
+        background: cadetblue;
+        text-align: start;
+        font-size: 15px;
 
-    &[type="selected"] {
-      border: 5px solid;
+        &[type=selected] {
+          padding: 20px 15px;
+          border: 5px $primary solid;
+          font: 20px bold;
+        }
+      }
     }
   }
 }

@@ -2,9 +2,9 @@
   <div class="recentEvents">
     <p style="text-align: left; margin-left: 40px; font-weight: bold">Select one of your recent events:</p>
     <div class="listEvents">
-      <ul *ngFor="let event of yourEvents" style="list-style: none;">
-        <li class="listEventItem">
-          <button (click)="selectEvent(event)" class="eventItem" [type]="selectedEvent == event ? 'selected' : null">
+      <ul>
+        <li class="listEventItem" *ngFor="let event of yourEvents" style="list-style: none;">
+          <button (click)="selectEvent(event)" [type]="selectedEvent == event ? 'selected' : null">
             {{event.name}}</button>
         </li>
       </ul>
@@ -15,7 +15,11 @@
     <file-drop headertext="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
       (onFileLeave)="fileLeave($event)">
     </file-drop>
+
     <button mat-stroked-button class="buttonPost" (click)="onPostPhotos()"> Upload </button>
+    <div style="color: red;font-size: small;">
+      {{ eventStatus }}
+    </div>
 
     <div class="showPhotos">
         <img *ngFor="let file of files" src="../assets/images/{{file.relativePath}}" />

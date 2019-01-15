@@ -22,6 +22,7 @@ export class PostPhotosComponent implements OnInit {
   yourEvents: Event[];
 
   uploadedPhotos = '';
+  eventStatus = '';
 
   constructor(private recentService: RecentService, public uploadDialog: MatDialog) { }
 
@@ -59,9 +60,18 @@ export class PostPhotosComponent implements OnInit {
   }
 
   public onPostPhotos() {
-    if (this.selectEvent && this.files) {
-      this.openUploadDialog();
+    if (this.selectedEvent) {
+      this.eventStatus = '';
+      if (this.files.length !== 0)  {
+        this.openUploadDialog();
+      } else {
+        this.eventStatus = 'You have not uploaded any images yet';
+      }
+    } else {
+      this.eventStatus = 'You have not chosen an event from the list yet.';
+      this.selectedEvent = undefined;
     }
+
   }
 
   openUploadDialog(): void {
