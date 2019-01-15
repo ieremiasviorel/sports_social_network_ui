@@ -52,6 +52,9 @@ import { PostPhotosComponent } from './post-photos/post-photos.component';
 import { SendInvitationsComponent } from './send-invitations/send-invitations.component';
 import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
 import { JoinConfirmationDialogComponent } from './join-confirmation-dialog/join-confirmation-dialog.component';
+import { ProfileMainContainerComponent } from './profile-main-container/profile-main-container.component';
+import { ProfilePremiumPointsComponent } from './profile-premium-points/profile-premium-points.component';
+import { PageUnderDevelopmentComponent } from './page-under-development/page-under-development.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,10 @@ import { JoinConfirmationDialogComponent } from './join-confirmation-dialog/join
     PostPhotosComponent,
     SendInvitationsComponent,
     CreateGroupDialogComponent,
-    JoinConfirmationDialogComponent
+    JoinConfirmationDialogComponent,
+    ProfileMainContainerComponent,
+    ProfilePremiumPointsComponent,
+    PageUnderDevelopmentComponent
   ],
   entryComponents: [
     LoginDialogComponent,
