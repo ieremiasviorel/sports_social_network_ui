@@ -65,10 +65,10 @@ export class PostPhotosComponent implements OnInit {
       if (this.files.length !== 0)  {
         this.openUploadDialog();
       } else {
-        this.eventStatus = 'You have not uploaded any images yet';
+        this.eventStatus = 'You have not uploaded any images yet, you can upload by dropping them above';
       }
     } else {
-      this.eventStatus = 'You have not chosen an event from the list yet.';
+      this.eventStatus = 'You have not chosen an event from the list yet, you can choose one by clicking';
       this.selectedEvent = undefined;
     }
 
