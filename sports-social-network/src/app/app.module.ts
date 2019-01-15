@@ -53,6 +53,9 @@ import { SendInvitationsComponent } from './send-invitations/send-invitations.co
 import { CreateGroupDialogComponent } from './create-group-dialog/create-group-dialog.component';
 import { JoinConfirmationDialogComponent } from './join-confirmation-dialog/join-confirmation-dialog.component';
 import { EventRecentComponent } from './event-recent/event-recent.component';
+import { ProfileMainContainerComponent } from './profile-main-container/profile-main-container.component';
+import { ProfilePremiumPointsComponent } from './profile-premium-points/profile-premium-points.component';
+import { PageUnderDevelopmentComponent } from './page-under-development/page-under-development.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,10 @@ import { EventRecentComponent } from './event-recent/event-recent.component';
     SendInvitationsComponent,
     CreateGroupDialogComponent,
     JoinConfirmationDialogComponent,
-    EventRecentComponent
+    EventRecentComponent,
+    ProfileMainContainerComponent,
+    ProfilePremiumPointsComponent,
+    PageUnderDevelopmentComponent
   ],
   entryComponents: [
     LoginDialogComponent,

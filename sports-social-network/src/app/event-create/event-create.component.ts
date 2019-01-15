@@ -46,7 +46,9 @@ export class EventCreateComponent implements OnInit {
       'type': new FormControl('', [
         Validators.required
       ]),
-      'price': new FormControl(''),
+      'price': new FormControl('', [
+        Validators.required
+      ]),
       'description': new FormControl(''),
       'time': new FormControl('')
     });
