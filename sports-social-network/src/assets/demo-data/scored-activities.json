@@ -25,7 +25,7 @@
     },
     {
         "type": "NETWORK_ACTIVITY",
-        "reason": "Receive average review over 4.5 for Midnight marathon private event",
+        "reason": "Receive reviews over 4.5 for Midnight marathon event",
         "points": 6,
         "timestamp": "13.08.2018 13:00"
     }
